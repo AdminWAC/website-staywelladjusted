@@ -194,7 +194,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
           <img
-            src="https://staywelladjusted.com/wp-content/uploads/2024/11/Header-Logo-1.svg"
+            src="/images-lp-francio/no-bg-banner-well-adjusted-image-1640x662-removebg.png"
             alt="Well Adjusted Chiropractic"
             className="h-14"
           />

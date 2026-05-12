@@ -8,7 +8,7 @@ const HeroSection = () => {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        src="https://staywelladjusted.com/wp-content/uploads/2025/08/comporess_video.mp4"
+        src="/images-lp-francio/welladjustedchiropracticvideo.mp4"
       />
       <div className="absolute inset-0 bg-secondary/20" />
 
