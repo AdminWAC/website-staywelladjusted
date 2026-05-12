@@ -101,7 +101,7 @@ const navItems: NavItem[] = [
     children: [
       { label: "History", path: "/history" },
       { label: "Meet The Team", path: "/meet-the-team" },
-      { label: "Our Blog", path: "/our-blog" },
+      { label: "Our Blog", path: "/blog" },
       { label: "Our Technique", path: "/our-technique" },
     ],
   },
