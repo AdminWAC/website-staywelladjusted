@@ -13,6 +13,8 @@ import HealthStartsHere from "./pages/HealthStartsHere.tsx";
 import ChiropracticCare from "./pages/ChiropracticCare.tsx";
 
 import MeetTheTeam from "./pages/MeetTheTeam.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
+import Blog from "./pages/Blog.tsx";
 import Special from "./pages/Special.tsx";
 import ContactUs from "./pages/ContactUs.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -36,6 +38,8 @@ const App = () => (
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
           <Route path="/meet-the-team" element={<MeetTheTeam />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/special" element={<Special />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/about-us" element={<ContactUs />} />
