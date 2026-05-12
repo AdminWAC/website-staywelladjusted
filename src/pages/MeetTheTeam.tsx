@@ -7,7 +7,7 @@ import imgDavid from "@/assets/team/david-hughes.png";
 import imgShari from "@/assets/team/shari-hughes.png";
 import imgJordan from "@/assets/team/jordan-hughes.png";
 import imgChloe from "@/assets/team/chloe-ragatz.png";
-import imgSky from "@/assets/team/sky-ochave.png";
+
 import imgAngel from "@/assets/team/angel-vega.png";
 import imgCody from "@/assets/team/cody-eischeid.png";
 import imgTatiana from "@/assets/team/tatiana-boyd.png";
@@ -15,7 +15,7 @@ import imgAveri from "@/assets/team/averi-hughes.png";
 import imgWilliam from "@/assets/team/william-stults.png";
 import imgBrittnye from "@/assets/team/brittnye-potter.png";
 import imgDorothy from "@/assets/team/dorothy-richter.png";
-import imgBarbara from "@/assets/team/barbara-jackson.png";
+
 import imgMiranda from "@/assets/team/miranda-evans.png";
 import imgShane from "@/assets/team/shane-countryman.png";
 import imgNathan from "@/assets/team/nathan-potter.png";
@@ -63,12 +63,6 @@ const teamByTab: Record<string, TeamMember[]> = {
       title: "Director of Operations and Marketing",
       image: imgChloe,
       bio: "Chloe Ragatz is the powerhouse behind both the strategy and heart of Well Adjusted Chiropractic. As Director of Operations and Marketing, she ensures that everything from patient outreach to day-to-day office flow runs seamlessly. With hands-on experience in nearly every chiropractic assistant role, Chloe understands the patient journey inside and out—making her uniquely equipped to connect people with the life-changing care they deserve. A former athlete who experienced the benefits of chiropractic firsthand, Chloe is deeply passionate about helping others rediscover their health through natural, holistic care. Whether she's overseeing operations, refining patient education, or leading marketing initiatives, Chloe is committed to creating meaningful, positive experiences at every touchpoint. When she's not in the office, you'll find her soaking up the sunshine, out on the water, or adventuring with her husband, Ethan, and their beloved pets—Penny, Pretzel, and Jax.",
-    },
-    {
-      name: "Sky Ochave",
-      title: "Multi-Clinic Coordinator",
-      image: imgSky,
-      bio: "Born and raised in the Philippines, Sky Ochave brings intelligence, compassion, and a deep commitment to service to Well Adjusted Chiropractic. A cum laude psychology graduate and Registered Psychometrician, she found her calling in healthcare, where she thrives as a dedicated chiropractic assistant. Known for her warmth, quick learning, and unwavering dedication, Sky makes a meaningful impact on patients and our team. Outside of work, she channels her creativity into theater, embracing roles as an actor, director, and playwright.",
     },
     {
       name: "Angel Vega",
@@ -122,12 +116,6 @@ const teamByTab: Record<string, TeamMember[]> = {
       bio: "With over 34 years of experience, Dorothy brings a deep well of knowledge, skill, and compassion to every session. In addition to her work at Well Adjusted Chiropractic, she runs a thriving private practice and spent 20 years teaching at the Healing Arts School of Massage, where she continues to mentor new therapists in their practices. Dorothy is extensively trained in a wide range of therapeutic modalities, including Swedish relaxation, deep tissue, neuromuscular, and myofascial release techniques, as well as trigger point therapy, CranioSacral therapy, somato-emotional release, lymphatic massage, aromatherapy, reflexology, and prenatal and infant massage. Her true passion lies in energy work, and she has studied numerous energy-based modalities to help her clients find both physical and emotional healing. When she's not working, Dorothy enjoys spending quality time with her family and friends.",
     },
     {
-      name: "Barbara Jackson",
-      title: "Massage Therapist",
-      image: imgBarbara,
-      bio: "Barb brings nearly two decades of experience as a massage therapist, with a background in aesthetics and a strong foundation in deep tissue and therapeutic massage. She has spent her career working alongside chiropractors and physical therapists, developing a deep understanding of the spine and muscular system. Barb also specializes in prenatal massage, cupping, and integrates CBD and essential oils to support pain relief. Originally from the West Coast of Florida, Barb has lived in New Jersey, Utah, and Alaska—but moved to Colorado to be near her grandson and quickly fell in love with the state. Outside the office, she enjoys gardening, cooking, reading, crafting, and spending time in nature. You'll often find her outdoors with her grandson or soaking in a sunset—her favorite way to relax. Barb's warm personality and passion for healing make her a valued part of the team.",
-    },
-    {
       name: "Miranda Evans",
       title: "Chiropractic Assistant",
       image: imgMiranda,
@@ -179,12 +167,6 @@ const teamByTab: Record<string, TeamMember[]> = {
       name: "Dr Elliott Alexander",
       title: "Coming Soon...",
       image: imgElliott,
-    },
-    {
-      name: "Barbara Jackson",
-      title: "Massage Therapist",
-      image: imgBarbara,
-      bio: "Barb brings nearly two decades of experience as a massage therapist, with a background in aesthetics and a strong foundation in deep tissue and therapeutic massage. She has spent her career working alongside chiropractors and physical therapists, developing a deep understanding of the spine and muscular system. Barb also specializes in prenatal massage, cupping, and integrates CBD and essential oils to support pain relief. Originally from the West Coast of Florida, Barb has lived in New Jersey, Utah, and Alaska—but moved to Colorado to be near her grandson and quickly fell in love with the state. Outside the office, she enjoys gardening, cooking, reading, crafting, and spending time in nature. You'll often find her outdoors with her grandson or soaking in a sunset—her favorite way to relax. Barb's warm personality and passion for healing make her a valued part of the team.",
     },
   ],
 };

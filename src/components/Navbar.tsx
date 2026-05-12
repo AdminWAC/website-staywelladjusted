@@ -23,28 +23,28 @@ interface ServiceItem {
 
 const allServices: ServiceItem[] = [
   { label: "Chiropractic Care", path: "/chiropractic-care" },
-  { label: "Spinal Decompression", path: "https://staywelladjusted.com/spinal-decompression/" },
-  { label: "Massage Therapy", path: "https://staywelladjusted.com/massage-therapy/" },
-  { label: "PEMF Therapy", path: "https://staywelladjusted.com/pemf-therapy/" },
-  { label: "Sports Physicals", path: "https://staywelladjusted.com/sports-physicals/" },
-  { label: "Nutrition", path: "https://staywelladjusted.com/nutrition/" },
+  { label: "Spinal Decompression", path: "/spinal-decompression" },
+  { label: "Massage Therapy", path: "/massage-therapy" },
+  { label: "PEMF Therapy", path: "/pemf-therapy" },
+  { label: "Sports Physicals", path: "/sports-physicals" },
+  { label: "Nutrition", path: "/nutrition" },
   { label: "DOT Exam", path: "#" },
   { label: "Diagnostic Ultra Sound", path: "#" },
-  { label: "Custom Foot Orthotics", path: "https://staywelladjusted.com/custom-foot-orthotics/" },
-  { label: "Intersegmental Traction", path: "https://staywelladjusted.com/intersegmental-traction/" },
-  { label: "Spinal Orthotics", path: "https://staywelladjusted.com/spinal-orthotics/" },
-  { label: "Vibe Plate", path: "https://staywelladjusted.com/vibe-plate/" },
-  { label: "Wobble Discs", path: "https://staywelladjusted.com/wobble-disks/" },
-  { label: "Dual Shockwave", path: "https://staywelladjusted.com/dual-shockwave/" },
-  { label: "Weight Loss", path: "https://staywelladjusted.com/weight-loss/" },
-  { label: "Saatva Mattress Partner", path: "https://staywelladjusted.com/saatva-mattress-partner" },
+  { label: "Custom Foot Orthotics", path: "/custom-foot-orthotics" },
+  { label: "Intersegmental Traction", path: "/intersegmental-traction" },
+  { label: "Spinal Orthotics", path: "/spinal-orthotics" },
+  { label: "Vibe Plate", path: "/vibe-plate" },
+  { label: "Wobble Discs", path: "/wobble-discs" },
+  { label: "Dual Shockwave", path: "/dual-shockwave" },
+  { label: "Weight Loss", path: "/weight-loss" },
+  { label: "Saatva Mattress Partner", path: "/saatva-mattress-partner" },
 ];
 
 // Active services per location (based on the reference images)
 const locationActiveServices: Record<string, string[]> = {
   "Loveland": [
-    "Chiropractic Care", "Spinal Decompression", "Massage Therapy",
-    "Sports Physicals", "Nutrition", "Custom Foot Orthotics",
+    "Chiropractic Care", "Spinal Decompression", "Massage Therapy", "PEMF Therapy",
+    "Sports Physicals", "Nutrition", "Custom Foot Orthotics", "Intersegmental Traction",
     "Spinal Orthotics", "Wobble Discs", "Dual Shockwave", "Weight Loss", "Saatva Mattress Partner",
   ],
   "Greeley": [
@@ -74,11 +74,11 @@ const locationActiveServices: Record<string, string[]> = {
 };
 
 const serviceLocations = [
-  { label: "Loveland", path: "https://staywelladjusted.com/chiropractor-loveland-co/" },
-  { label: "Greeley", path: "https://staywelladjusted.com/chiropractor-greeley-co/" },
-  { label: "Fort Collins", path: "https://staywelladjusted.com/chiropractor-fort-collins-co/" },
-  { label: "Arlington", path: "https://staywelladjusted.com/chiropractor-arlington-tx/" },
-  { label: "Erie", path: "https://staywelladjusted.com/chiropractor-erie-co/" },
+  { label: "Loveland", path: "/chiropractor-loveland-co" },
+  { label: "Greeley", path: "/chiropractor-greeley-co" },
+  { label: "Fort Collins", path: "/chiropractor-fort-collins-co" },
+  { label: "Arlington", path: "/chiropractor-arlington-tx" },
+  { label: "Erie", path: "/chiropractor-erie-co" },
 ];
 
 const navItems: NavItem[] = [
@@ -89,10 +89,9 @@ const navItems: NavItem[] = [
   },
   {
     label: "TESTIMONIALS",
-    path: "https://staywelladjusted.com/review-us/",
-    external: true,
+    path: "/review-us",
     children: [
-      { label: "Review Us", path: "https://staywelladjusted.com/review-us/", external: true },
+      { label: "Review Us", path: "/review-us" },
     ],
   },
   {
@@ -139,8 +138,7 @@ const navItems: NavItem[] = [
   },
   {
     label: "DUAL SHOCKWAVE",
-    path: "https://staywelladjusted.com/dual-shockwave/",
-    external: true,
+    path: "/dual-shockwave",
   },
 ];
 

@@ -17,6 +17,7 @@ import BlogPost from "./pages/BlogPost.tsx";
 import Blog from "./pages/Blog.tsx";
 import Special from "./pages/Special.tsx";
 import ContactUs from "./pages/ContactUs.tsx";
+import ReviewUs from "./pages/ReviewUs.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/special" element={<Special />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/about-us" element={<ContactUs />} />
+          <Route path="/review-us" element={<ReviewUs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
