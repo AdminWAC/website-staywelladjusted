@@ -262,22 +262,40 @@ const Navbar = () => {
                           const isActive = hoveredLocation
                             ? locationActiveServices[hoveredLocation]?.includes(svc.label)
                             : false;
+                          const serviceClassName = `block px-4 py-1.5 text-sm font-body transition-colors ${
+                            isActive
+                              ? "text-[#4a7fb5] font-bold hover:underline"
+                              : "text-foreground/70"
+                          } ${svc.path !== "#" ? "cursor-pointer" : "cursor-default"}`;
+
+                          if (svc.path === "#") {
+                            return (
+                              <span
+                                key={svc.label}
+                                className={serviceClassName}
+                                onMouseEnter={() => setHoveredService(svc.label)}
+                                onMouseLeave={() => setHoveredService(null)}
+                              >
+                                {svc.label}
+                              </span>
+                            );
+                          }
+
                           return (
-                            <a
+                            <Link
                               key={svc.label}
-                              href={svc.path === "#" ? undefined : svc.path}
-                              target={svc.path !== "#" ? "_blank" : undefined}
-                              rel={svc.path !== "#" ? "noopener noreferrer" : undefined}
-                              className={`block px-4 py-1.5 text-sm font-body transition-colors ${
-                                isActive
-                                  ? "text-[#4a7fb5] font-bold hover:underline"
-                                  : "text-foreground/70"
-                              } ${svc.path !== "#" ? "cursor-pointer" : "cursor-default"}`}
+                              to={svc.path}
+                              className={serviceClassName}
                               onMouseEnter={() => setHoveredService(svc.label)}
                               onMouseLeave={() => setHoveredService(null)}
+                              onClick={() => {
+                                setOpenDropdown(null);
+                                setHoveredLocation(null);
+                                setHoveredService(null);
+                              }}
                             >
                               {svc.label}
-                            </a>
+                            </Link>
                           );
                         })}
                       </div>
