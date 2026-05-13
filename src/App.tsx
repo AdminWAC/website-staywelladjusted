@@ -18,6 +18,7 @@ import Blog from "./pages/Blog.tsx";
 import Special from "./pages/Special.tsx";
 import ContactUs from "./pages/ContactUs.tsx";
 import ReviewUs from "./pages/ReviewUs.tsx";
+import ThankYouCareersErieCO from "./pages/ThankYouCareersErieCO.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/about-us" element={<ContactUs />} />
           <Route path="/review-us" element={<ReviewUs />} />
+          <Route path="/thank-you-careers-erie-co" element={<ThankYouCareersErieCO />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

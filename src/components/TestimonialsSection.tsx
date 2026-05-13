@@ -3,27 +3,27 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
-    image: "https://staywelladjusted.com/wp-content/uploads/2024/11/Mask-group-7.png",
+    image: "/images-wp/mask-group-7.png",
     text: "I am so grateful I have found Well Adjusted Chiropractic, they are professional, knowledgeable and honest. Not like a typical chiropractor. We have used them to relieve headaches, for normal maintenance, for holistic approaches and for ADHD. Very happy!",
     rating: 5,
   },
   {
-    image: "https://staywelladjusted.com/wp-content/uploads/2024/11/Mask-group-6.png",
+    image: "/images-wp/mask-group-6.png",
     text: "We truly feel that part of any road to health and wellness starts with trust and relationships. The comfort and welcoming environment Well Adjusted Family Chiropractic creates is the halfway mark on that road. We feel better just being there because we know we're going to be well looked after.",
     rating: 5,
   },
   {
-    image: "https://staywelladjusted.com/wp-content/uploads/2024/11/Mask-group-5.png",
+    image: "/images-wp/mask-group-5.png",
     text: "While other professions are concerned with changing the environment to suit the weakened body, chiropractic is concerned with strengthening the body to suit the environment.",
     rating: 5,
   },
   {
-    image: "https://staywelladjusted.com/wp-content/uploads/2024/11/image-64.png",
+    image: "/images-wp/image-64.png",
     text: "We have used them to relieve headaches, for normal maintenance, for holistic approaches and for ADHD. Very happy!",
     rating: 5,
   },
   {
-    image: "https://staywelladjusted.com/wp-content/uploads/2024/11/Mask-group-6.png",
+    image: "/images-wp/mask-group-6.png",
     text: "You may not control all the events that happen to you, but you can decide not to be reduced by them. If you cannot make a change, change the way you have been thinking. You might find a new solution.",
     rating: 5,
   },

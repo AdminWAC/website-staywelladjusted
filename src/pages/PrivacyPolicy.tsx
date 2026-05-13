@@ -4,11 +4,11 @@ import Layout from "@/components/Layout";
 import { Phone } from "lucide-react";
 
 const locations = [
-  { name: "WELL ADJUSTED CHIROPRACTIC - ARLINGTON TX", addr: "5717 SW Green Oaks Blvd Arlington, TX 76017", phone: "(682) 238-0625" },
-  { name: "WELL ADJUSTED CHIROPRACTIC - LOVELAND CO", addr: "3850 N Grant Ave STE 100 Loveland, CO 80538", phone: "(970) 669-7620" },
-  { name: "WELL ADJUSTED CHIROPRACTIC - FORT COLLINS CO", addr: "2627 Redwing Rd #110 Fort Collins, CO 80526", phone: "(970) 493-0611" },
-  { name: "WELL ADJUSTED CHIROPRACTIC - GREELEY CO", addr: "2939 W 29th St Greeley, CO 80631", phone: "(970) 353-0337" },
-  { name: "WELL ADJUSTED CHIROPRACTIC - ERIE CO", addr: "2770 Arapahoe Rd Suite 108 Erie, CO 80516", phone: "303-323-9931" },
+  { name: "WELL ADJUSTED CHIROPRACTIC - ARLINGTON TX", addr: "5717 SW Green Oaks Blvd Arlington, TX 76017", phone: "(682) 277-1966" },
+  { name: "WELL ADJUSTED CHIROPRACTIC - LOVELAND CO", addr: "3850 N Grant Ave STE 100 Loveland, CO 80538", phone: "(970) 427-2543" },
+  { name: "WELL ADJUSTED CHIROPRACTIC - FORT COLLINS CO", addr: "2627 Redwing Rd #110 Fort Collins, CO 80526", phone: "(970) 714-2207" },
+  { name: "WELL ADJUSTED CHIROPRACTIC - GREELEY CO", addr: "2939 W 29th St Greeley, CO 80631", phone: "(970) 888-7097" },
+  { name: "WELL ADJUSTED CHIROPRACTIC - ERIE CO", addr: "2770 Arapahoe Rd Suite 108 Erie, CO 80516", phone: "970-670-3607" },
 ];
 
 const PrivacyPolicy = () => {
@@ -146,7 +146,7 @@ const PrivacyPolicy = () => {
               Privacy Request Form
             </a>{" "}
             below.<br />
-            <strong>Phone:</strong> (970) 669-7620
+            <strong>Phone:</strong> (970) 427-2543
           </p>
           <p>By continuing to use our site, you agree to the terms outlined in this Privacy Policy.</p>
         </div>

@@ -174,7 +174,7 @@ export const blogPosts: BlogPost[] = [
     authorImage: imgDavid,
     excerpt:
       "The chiropractic profession has a wide variety of techniques and philosophies, which can make it difficult to find a chiropractor who is the right fit.",
-    image: "https://staywelladjusted.com/wp-content/uploads/2025/07/image-8.png",
+    image: "/images-wp/blog-image-8.png",
     category: "Chiropractic Care",
     externalUrl:
       "https://staywelladjusted.com/blog/what-to-consider-when-selecting-a-chiropractor/",
@@ -188,7 +188,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Supporting Growing Bodies with Natural, Gentle Care. When people think of chiropractic care, they often picture adults — but kids can benefit too.",
     image:
-      "https://staywelladjusted.com/wp-content/uploads/2024/11/%C2%A9OPS-GCC-093-scaled.jpg",
+      "/images-wp/blog-ops-gcc.jpg",
     category: "Family Care",
     externalUrl:
       "https://staywelladjusted.com/blog/why-children-should-see-a-chiropractor/",
@@ -202,7 +202,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Backed by Research. Delivered with Care. Neck pain affects millions — from working professionals and busy parents to athletes and teens.",
     image:
-      "https://staywelladjusted.com/wp-content/uploads/2025/06/welladjusted-2025-06-27-11h10m27s032-scaled.webp",
+      "/images-wp/blog-2025-06.webp",
     category: "Chiropractic Care",
     externalUrl:
       "https://staywelladjusted.com/blog/the-benefits-of-seeing-a-chiropractor-for-neck-pain/",
@@ -216,7 +216,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Numbness and tingling are often signs of nerve interference. Learn how gentle chiropractic care can restore proper signaling.",
     image:
-      "https://staywelladjusted.com/wp-content/uploads/2025/05/welladjusted-2025-05-08-13h36m24s149-scaled.webp",
+      "/images-wp/blog-2025-06.webp",
     category: "Chiropractic Care",
     externalUrl: "https://staywelladjusted.com/our-blog/",
   },
@@ -228,7 +228,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Practical, chiropractor-approved tips to calm muscle inflammation fast — without relying on medication.",
     image:
-      "https://staywelladjusted.com/wp-content/uploads/2025/06/welladjusted-2025-06-27-11h10m27s032-scaled.webp",
+      "/images-wp/blog-2025-06.webp",
     category: "Wellness",
     externalUrl: "https://staywelladjusted.com/our-blog/",
   },

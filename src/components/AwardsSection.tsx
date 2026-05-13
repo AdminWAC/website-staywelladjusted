@@ -1,10 +1,10 @@
 const awards = [
-  { src: "https://staywelladjusted.com/wp-content/uploads/2025/03/unnamed__2_-removebg-preview-150x150.png", alt: "Award" },
-  { src: "https://staywelladjusted.com/wp-content/uploads/2025/06/Header-Logo-for-slider-1.svg", alt: "Award logo" },
-  { src: "https://staywelladjusted.com/wp-content/uploads/2025/03/00-BOS-WINNER-2022-6-150x150.png", alt: "Best of 2022" },
-  { src: "https://staywelladjusted.com/wp-content/uploads/2025/06/Header-Logo-for-slider.svg", alt: "Award logo" },
-  { src: "https://staywelladjusted.com/wp-content/uploads/2025/03/00-BOS-WINNER-2024-2-150x150.png", alt: "Best of 2024" },
-  { src: "https://staywelladjusted.com/wp-content/uploads/2024/11/Header-Logo-1.svg", alt: "Well Adjusted Logo" },
+  { src: "/images-wp/award-unnamed.png", alt: "Award" },
+  { src: "/images-wp/award-slider-1.svg", alt: "Award logo" },
+  { src: "/images-wp/award-bos-2022.png", alt: "Best of 2022" },
+  { src: "/images-wp/award-slider.svg", alt: "Award logo" },
+  { src: "/images-wp/award-bos-2024.png", alt: "Best of 2024" },
+  { src: "/images-wp/header-logo.svg", alt: "Well Adjusted Logo" },
 ];
 
 const AwardsSection = () => {

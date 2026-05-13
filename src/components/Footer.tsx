@@ -41,7 +41,7 @@ const Footer = () => {
           {/* Logo and social icons row */}
           <div className="flex items-center justify-between mb-6">
             <img
-              src="https://staywelladjusted.com/wp-content/uploads/2024/11/Header-Logo-1.svg"
+              src="/images-wp/header-logo.svg"
               alt="Well Adjusted Chiropractic"
               className="h-14 brightness-0 invert"
             />
@@ -135,35 +135,35 @@ const Footer = () => {
                   <Phone className="w-8 h-8 p-1.5 rounded-full bg-white/20 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-body">Arlington TX</p>
-                    <a href="tel:(682) 238-0625" className="font-body text-sm font-bold hover:underline">(682) 238-0625</a>
+                    <a href="tel:(682) 277-1966" className="font-body text-sm font-bold hover:underline">(682) 277-1966</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="w-8 h-8 p-1.5 rounded-full bg-white/20 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-body">Fort Collins CO</p>
-                    <a href="tel:(970) 493-0611" className="font-body text-sm font-bold hover:underline">(970) 493-0611</a>
+                    <a href="tel:(970) 714-2207" className="font-body text-sm font-bold hover:underline">(970) 714-2207</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="w-8 h-8 p-1.5 rounded-full bg-white/20 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-body">Greeley CO</p>
-                    <a href="tel:(970) 353-0337" className="font-body text-sm font-bold hover:underline">(970) 353-0337</a>
+                    <a href="tel:(970) 888-7097" className="font-body text-sm font-bold hover:underline">(970) 888-7097</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="w-8 h-8 p-1.5 rounded-full bg-white/20 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-body">Erie CO</p>
-                    <a href="tel:303-323-9931" className="font-body text-sm font-bold hover:underline">303-323-9931</a>
+                    <a href="tel:970-670-3607" className="font-body text-sm font-bold hover:underline">970-670-3607</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="w-8 h-8 p-1.5 rounded-full bg-white/20 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-body">Loveland CO</p>
-                    <a href="tel:(970) 669-7620" className="font-body text-sm font-bold hover:underline">(970) 669-7620</a>
+                    <a href="tel:(970) 427-2543" className="font-body text-sm font-bold hover:underline">(970) 427-2543</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

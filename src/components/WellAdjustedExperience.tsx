@@ -7,13 +7,16 @@ const WellAdjustedExperience = () => {
         </h2>
         <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
           <video
-            controls
+            autoPlay
+            muted
+            loop
             playsInline
-            poster="https://staywelladjusted.com/wp-content/uploads/2024/11/Mask-group-11.png"
+            controls
+            poster="/images-wp/mask-group-11.png"
             className="w-full h-full object-cover"
           >
             <source
-              src="https://staywelladjusted.com/wp-content/uploads/2025/08/comporess_video.mp4"
+              src="/images-lp-francio/welladjustedchiropracticvideo.mp4"
               type="video/mp4"
             />
           </video>

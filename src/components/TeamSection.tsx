@@ -26,7 +26,7 @@ const TeamSection = () => {
           </div>
           <div>
             <img
-              src="https://staywelladjusted.com/wp-content/uploads/2024/11/Mask-group-11.png"
+              src="/images-wp/mask-group-11.png"
               alt="Well Adjusted Chiropractic Team"
               className="w-full rounded-lg"
             />

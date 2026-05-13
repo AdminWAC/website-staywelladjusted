@@ -12,11 +12,11 @@ import { MapPin } from "lucide-react";
 import { useState } from "react";
 
 const locations = [
-  { name: "WELL ADJUSTED CHIROPRACTIC - ARLINGTON TX", address: "5717 SW Green Oaks Blvd Arlington, TX 76017", phone: "(682) 238-0625", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday , Saturday & Sunday : Closed"] },
-  { name: "WELL ADJUSTED CHIROPRACTIC - LOVELAND CO", address: "3850 N Grant Ave STE 100 Loveland, CO 80538", phone: "(970) 669-7620", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Saturday & Sunday : Closed"] },
-  { name: "WELL ADJUSTED CHIROPRACTIC - GREELEY CO", address: "6200 W 9th St #2A Greeley, CO 80634", phone: "(970) 353-0337", hours: ["Monday : 8:00 am–12:00 pm / 2:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm / 2:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm / 2:00 pm–6:00 pm", "Thursday : 7:00 am–12:00 pm / 2:00 pm–7:00 pm", "Friday : 8:00 am–12:00 pm / 2:00 pm–6:00 pm", "Saturday & Sunday : Closed"] },
-  { name: "WELL ADJUSTED CHIROPRACTIC - FORT COLLINS CO", address: "1075 W Horsetooth Rd Fort Collins, CO 80526", phone: "(970) 493-0611", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday , Saturday & Sunday : Closed"] },
-  { name: "WELL ADJUSTED CHIROPRACTIC - ERIE CO", address: "680 Mitchell Way Unit 160, Erie, CO 80516", phone: "303-323-9931", hours: ["Monday : 9:00 am–12:00 pm / 3:00 pm–6:00 pm", "Tuesday : 3:00 pm–6:00 pm", "Wednesday : 9:00 am–12:00 pm / 3:00 pm–6:00 pm", "Thursday : 9:00 am–12:00 pm / 3:00 pm–6:00 pm", "Friday : 9 am–12:30 pm", "Saturday & Sunday : Closed"] },
+  { name: "WELL ADJUSTED CHIROPRACTIC - ARLINGTON TX", address: "5717 SW Green Oaks Blvd Arlington, TX 76017", phone: "(682) 277-1966", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday , Saturday & Sunday : Closed"] },
+  { name: "WELL ADJUSTED CHIROPRACTIC - LOVELAND CO", address: "3850 N Grant Ave STE 100 Loveland, CO 80538", phone: "(970) 427-2543", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Saturday & Sunday : Closed"] },
+  { name: "WELL ADJUSTED CHIROPRACTIC - GREELEY CO", address: "6200 W 9th St #2A Greeley, CO 80634", phone: "(970) 888-7097", hours: ["Monday : 8:00 am–12:00 pm / 2:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm / 2:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm / 2:00 pm–6:00 pm", "Thursday : 7:00 am–12:00 pm / 2:00 pm–7:00 pm", "Friday : 8:00 am–12:00 pm / 2:00 pm–6:00 pm", "Saturday & Sunday : Closed"] },
+  { name: "WELL ADJUSTED CHIROPRACTIC - FORT COLLINS CO", address: "1075 W Horsetooth Rd Fort Collins, CO 80526", phone: "(970) 714-2207", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday , Saturday & Sunday : Closed"] },
+  { name: "WELL ADJUSTED CHIROPRACTIC - ERIE CO", address: "680 Mitchell Way Unit 160, Erie, CO 80516", phone: "970-670-3607", hours: ["Monday : 9:00 am–12:00 pm / 3:00 pm–6:00 pm", "Tuesday : 3:00 pm–6:00 pm", "Wednesday : 9:00 am–12:00 pm / 3:00 pm–6:00 pm", "Thursday : 9:00 am–12:00 pm / 3:00 pm–6:00 pm", "Friday : 9 am–12:30 pm", "Saturday & Sunday : Closed"] },
 ];
 
 const LocationCard = ({ loc }: { loc: typeof locations[0] }) => {
@@ -58,7 +58,7 @@ const Index = () => {
         <div className="max-w-[1340px] mx-auto px-4">
           <div className="flex justify-center mb-8">
             <img
-              src="https://staywelladjusted.com/wp-content/uploads/2024/11/Header-Logo-1.svg"
+              src="/images-wp/header-logo.svg"
               alt="Well Adjusted Chiropractic"
               className="h-16"
             />
