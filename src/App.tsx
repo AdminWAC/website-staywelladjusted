@@ -19,6 +19,9 @@ import Special from "./pages/Special.tsx";
 import ContactUs from "./pages/ContactUs.tsx";
 import ReviewUs from "./pages/ReviewUs.tsx";
 import ThankYouCareersErieCO from "./pages/ThankYouCareersErieCO.tsx";
+import ChiropractorArlingtonTX from "./pages/ChiropractorArlingtonTX.tsx";
+import ChiropractorLovelandCO from "./pages/ChiropractorLovelandCO.tsx";
+import ChiropractorGreeleyCO from "./pages/ChiropractorGreeleyCO.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -47,6 +50,9 @@ const App = () => (
           <Route path="/about-us" element={<ContactUs />} />
           <Route path="/review-us" element={<ReviewUs />} />
           <Route path="/thank-you-careers-erie-co" element={<ThankYouCareersErieCO />} />
+          <Route path="/chiropractor-arlington-tx" element={<ChiropractorArlingtonTX />} />
+          <Route path="/chiropractor-loveland-co" element={<ChiropractorLovelandCO />} />
+          <Route path="/chiropractor-greeley-co" element={<ChiropractorGreeleyCO />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
