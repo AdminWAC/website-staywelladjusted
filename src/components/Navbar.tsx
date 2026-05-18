@@ -142,7 +142,7 @@ const navItems: NavItem[] = [
   },
 ];
 
-const SCHEDULE_URL = "https://staywelladjusted.com/schedule-an-appointment-new-patient-special-offer/";
+const SCHEDULE_URL = "/schedule-an-appointment-new-patient-special-offer";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -384,14 +384,12 @@ const Navbar = () => {
         </div>
 
         {/* CTA Button */}
-        <a
-          href={SCHEDULE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to={SCHEDULE_URL}
           className="hidden lg:block bg-primary text-primary-foreground px-6 py-3 rounded-md text-sm font-body font-bold tracking-wider hover:bg-primary/90 transition-colors"
         >
           SCHEDULE NOW
-        </a>
+        </Link>
 
         {/* Mobile menu button */}
         <button
@@ -416,15 +414,13 @@ const Navbar = () => {
               </Link>
             </div>
           ))}
-          <a
-            href={SCHEDULE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to={SCHEDULE_URL}
             className="block mt-4 bg-primary text-primary-foreground text-center px-6 py-3 rounded-full text-sm font-body font-semibold"
             onClick={() => setMobileOpen(false)}
           >
             SCHEDULE NOW
-          </a>
+          </Link>
         </div>
       )}
     </nav>

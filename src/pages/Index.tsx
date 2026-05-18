@@ -9,7 +9,7 @@ import CTASection from "@/components/CTASection";
 import PatientReviews from "@/components/PatientReviews";
 import BlogSection from "@/components/BlogSection";
 import { MapPin } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const locations = [
   { name: "WELL ADJUSTED CHIROPRACTIC - ARLINGTON TX", address: "5717 SW Green Oaks Blvd Arlington, TX 76017", phone: "(682) 277-1966", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday , Saturday & Sunday : Closed"] },
@@ -41,6 +41,13 @@ const LocationCard = ({ loc }: { loc: typeof locations[0] }) => {
 };
 
 const Index = () => {
+  useEffect(() => {
+    if (window.location.hash === "#home-contact-us") {
+      setTimeout(() => {
+        document.getElementById("home-contact-us")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, []);
   return (
     <Layout>
       <HeroSection />
@@ -79,7 +86,7 @@ const Index = () => {
       </section>
 
       {/* Find Out More Information Form */}
-      <section className="bg-muted py-12">
+      <section id="home-contact-us" className="bg-muted py-12 scroll-mt-24">
         <div className="max-w-[1340px] mx-auto px-4">
           <h2 className="font-heading text-2xl md:text-3xl text-secondary text-center mb-2 uppercase">
             Find Out More Information on{" "}

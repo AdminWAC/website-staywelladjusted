@@ -170,7 +170,7 @@ const Footer = () => {
                   <Mail className="w-8 h-8 p-1.5 rounded-full bg-white/20 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-body">General Contact</p>
-                    <a href="mailto:privacy@staywelladjusted.com" className="font-body text-sm font-bold hover:underline">privacy@staywelladjusted.com</a>
+                    <a href="https://staywelladjusted.com/#home-contact-us" className="font-body text-sm font-bold hover:underline">Contact us</a>
                   </div>
                 </div>
               </div>

@@ -24,7 +24,9 @@ import ChiropractorLovelandCO from "./pages/ChiropractorLovelandCO.tsx";
 import ChiropractorGreeleyCO from "./pages/ChiropractorGreeleyCO.tsx";
 import ChiropractorFortCollinsCO from "./pages/ChiropractorFortCollinsCO.tsx";
 import ChiropractorErieCO from "./pages/ChiropractorErieCO.tsx";
+import ScheduleAppointment from "./pages/ScheduleAppointment.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           
@@ -57,6 +60,7 @@ const App = () => (
           <Route path="/chiropractor-greeley-co" element={<ChiropractorGreeleyCO />} />
           <Route path="/chiropractor-fort-collins-co" element={<ChiropractorFortCollinsCO />} />
           <Route path="/chiropractor-erie-co" element={<ChiropractorErieCO />} />
+          <Route path="/schedule-an-appointment-new-patient-special-offer" element={<ScheduleAppointment />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
