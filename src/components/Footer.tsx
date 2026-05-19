@@ -192,6 +192,8 @@ const Footer = () => {
             <Link to="/terms-service" className="hover:underline">Terms of Service</Link>
             <span>|</span>
             <Link to="/good-faith-estimate" className="hover:underline">Good Faith Estimate</Link>
+            <span>|</span>
+            <a href="/sitemap.xml" className="hover:underline">Sitemap</a>
           </div>
         </div>
       </div>
