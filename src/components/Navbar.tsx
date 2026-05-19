@@ -359,11 +359,11 @@ const Navbar = () => {
                               )}
                             </button>
                             {openSubDropdown === child.label && (
-                              <div className="bg-background shadow-inner pl-4">
+                              <div className="absolute top-0 left-full bg-background shadow-lg rounded-md py-2 min-w-[200px] z-50">
                                 {child.children.map((sub) =>
                                   renderLink(
                                     sub,
-                                    "block px-4 py-2 text-sm font-body text-foreground hover:bg-muted hover:text-primary transition-colors"
+                                    "block px-4 py-2 text-sm font-body text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                                   )
                                 )}
                               </div>
