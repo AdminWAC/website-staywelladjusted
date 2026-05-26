@@ -1,813 +1,2240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Interactive Nerve Chart — Gateway Family Chiropractic</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-:root {
-  --green-dark: #1E4D35;
-  --green-mid: #2E6B4A;
-  --green-light: #4A9268;
-  --green-pale: #EAF4EE;
-  --tan: #C8A96E;
-  --tan-light: #F5EDD8;
-  --cream: #FAF8F3;
-  --charcoal: #1C1C1A;
-  --gray: #6B6B65;
-  --border: #D9D3C4;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Spine Connection · Gateway Family Chiropractic</title>
+  <meta name="description" content="An interactive patient education tool from Gateway Family Chiropractic in Loveland, Colorado." />
 
-  --c-active: #2E6B4A;
-  --c-cervical: #2E6B4A;
-  --c-thoracic: #5A6B2E;
-  --c-lumbar: #2E4A6B;
-  --c-sacral: #6B2E2E;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  <style>
+    :root {
+      /* Brand */
+      --primary: #3d5c7d;
+      --primary-dark: #314a66;
+      --primary-light: #e4edff;
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--charcoal);
-  min-height: 100vh;
-}
+      --accent: #bda054;
+      --accent-soft: #f0e3ce;
+      --accent-bright: #d8b764;
+      --accent-deep: #8c6f2d;
 
-/* ── HEADER ── */
-header {
-  background: var(--green-dark);
-  padding: 18px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo-wrap { display: flex; align-items: center; gap: 14px; }
-.logo-icon {
-  width: 44px; height: 44px;
-  background: var(--tan);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-.logo-icon svg { width: 24px; height: 24px; fill: white; }
-.logo-text h1 { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; font-weight: 600; letter-spacing: 0.02em; }
-.logo-text p { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 1px; }
-.header-cta {
-  background: var(--tan);
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 10px 22px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: background 0.2s;
-}
-.header-cta:hover { background: #b8963e; }
+      /* Surfaces */
+      --bg: #f4f1eb;
+      --surface: #ffffff;
+      --surface-soft: #f8f6f2;
+      --surface-cool: #f0f1f2;
 
-/* ── HERO ── */
-.hero {
-  background: linear-gradient(135deg, var(--green-dark) 0%, #163826 100%);
-  padding: 56px 40px 48px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 300px; height: 300px;
-  border: 1px solid rgba(200,169,110,0.15);
-  border-radius: 50%;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -80px; left: -80px;
-  width: 400px; height: 400px;
-  border: 1px solid rgba(200,169,110,0.1);
-  border-radius: 50%;
-}
-.hero h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  color: #fff;
-  font-weight: 400;
-  line-height: 1.2;
-  position: relative; z-index: 1;
-}
-.hero h2 em { color: var(--tan); font-style: normal; }
-.hero p {
-  font-size: 16px;
-  color: rgba(255,255,255,0.7);
-  max-width: 580px;
-  margin: 16px auto 0;
-  line-height: 1.7;
-  position: relative; z-index: 1;
-  font-weight: 300;
-}
+      /* Spine regions */
+      --c-cervical: #3d5c7d;
+      --c-thoracic: #607893;
+      --c-lumbar: #bda054;
+      --c-sacral: #8c6f2d;
 
-/* ── MAIN LAYOUT ── */
-.main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 48px 24px 64px;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 32px;
-  align-items: start;
-}
+      /* Text */
+      --text: #2d3748;
+      --text-soft: #4a5568;
+      --text-muted: #718096;
+      --text-faint: #a0aec0;
 
-/* ── SPINE PANEL ── */
-.spine-panel {
-  position: sticky;
-  top: 24px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.spine-panel-header {
-  background: var(--green-dark);
-  padding: 16px 20px;
-  color: #fff;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.spine-svg-wrap {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  background: var(--cream);
-  border-bottom: 1px solid var(--border);
-}
-.spine-svg-wrap svg { width: 100%; max-width: 220px; cursor: pointer; }
+      /* Lines */
+      --border: #e2dcd1;
+      --border-soft: #ece6da;
 
-.vert-segment {
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.vert-segment rect, .vert-segment ellipse {
-  transition: fill 0.15s;
-}
-.vert-segment:hover rect { filter: brightness(1.1); }
-.vert-segment.active rect { stroke: var(--tan); stroke-width: 2; }
-.vert-segment.active text { font-weight: 700; }
+      /* Shadows */
+      --shadow-sm: 0 2px 6px rgba(45, 55, 72, 0.05);
+      --shadow-md: 0 8px 22px rgba(45, 55, 72, 0.08);
+      --shadow-lg: 0 18px 42px rgba(45, 55, 72, 0.12);
+      --shadow-xl: 0 32px 72px rgba(45, 55, 72, 0.16);
 
-.region-legend {
-  padding: 16px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: var(--gray);
-  cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 4px;
-  transition: background 0.15s;
-}
-.legend-item:hover { background: var(--green-pale); }
-.legend-dot {
-  width: 12px; height: 12px;
-  border-radius: 3px;
-  flex-shrink: 0;
-}
+      /* Layout */
+      --radius: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 26px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
 
-/* ── DETAIL PANEL ── */
-.detail-panel { min-height: 500px; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-.intro-card {
-  background: var(--tan-light);
-  border: 1px solid var(--tan);
-  border-radius: 12px;
-  padding: 28px 32px;
-  margin-bottom: 28px;
-}
-.intro-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  color: var(--green-dark);
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-.intro-card p {
-  font-size: 14px;
-  line-height: 1.75;
-  color: #4a4a44;
-  font-weight: 300;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: 'Jost', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      background:
+        radial-gradient(ellipse 60% 50% at 85% 0%, rgba(189, 160, 84, 0.08), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 12% 18%, rgba(61, 92, 125, 0.06), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-.placeholder-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 340px;
-  text-align: center;
-  color: var(--gray);
-  gap: 16px;
-}
-.placeholder-state .spine-icon {
-  width: 64px; height: 64px;
-  background: var(--green-pale);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-.placeholder-state .spine-icon svg {
-  width: 30px; height: 30px;
-  stroke: var(--green-mid);
-  fill: none;
-  stroke-width: 1.5;
-}
-.placeholder-state p { font-size: 14px; line-height: 1.6; max-width: 260px; font-weight: 300; }
+    button, input { font: inherit; color: inherit; }
 
-.detail-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  animation: fadeUp 0.25s ease;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+    h1, h2, h3, h4 {
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin: 0;
+      font-weight: 700;
+    }
 
-.detail-card-header {
-  padding: 24px 28px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-.detail-badge {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #fff;
-  flex-shrink: 0;
-}
-.detail-card-header-text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--charcoal);
-}
-.detail-card-header-text p {
-  font-size: 13px;
-  color: var(--gray);
-  margin-top: 3px;
-  font-weight: 300;
-}
+    a { color: inherit; }
 
-.detail-body { padding: 24px 28px; }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
 
-.detail-section { margin-bottom: 24px; }
-.detail-section:last-child { margin-bottom: 0; }
+    /* ============ TOPBAR ============ */
+    .topbar {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-.section-heading {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--green-mid);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.section-heading::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
 
-.area-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.area-chip {
-  background: var(--green-pale);
-  border: 1px solid #c0dbc9;
-  color: var(--green-dark);
-  font-size: 13px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-weight: 400;
-}
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(150deg, var(--primary), var(--primary-dark));
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(61, 92, 125, 0.28);
+      position: relative;
+    }
 
-.symptom-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.symptom-chip {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 13px;
-  color: var(--charcoal);
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  line-height: 1.4;
-  font-weight: 300;
-}
-.symptom-chip::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--tan);
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 4px;
-}
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, transparent 50%, rgba(189, 160, 84, 0.25));
+      pointer-events: none;
+    }
 
-.disclaimer-box {
-  margin-top: 24px;
-  background: var(--tan-light);
-  border: 1px solid rgba(200,169,110,0.4);
-  border-radius: 8px;
-  padding: 14px 18px;
-  font-size: 12px;
-  color: #6b5a3a;
-  line-height: 1.6;
-  font-weight: 300;
-}
+    .brand-text strong {
+      display: block;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
 
-.cta-box {
-  margin-top: 32px;
-  background: var(--green-dark);
-  border-radius: 12px;
-  padding: 28px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-.cta-box-text h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  color: #fff;
-  font-weight: 400;
-}
-.cta-box-text p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.65);
-  margin-top: 6px;
-  font-weight: 300;
-  line-height: 1.5;
-}
-.cta-btn {
-  background: var(--tan);
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 13px 26px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  text-decoration: none;
-  transition: background 0.2s;
-  letter-spacing: 0.03em;
-}
-.cta-btn:hover { background: #b8963e; }
+    .brand-text span {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-top: 1px;
+    }
 
-/* ── FOOTER ── */
-footer {
-  background: var(--charcoal);
-  padding: 24px 40px;
-  text-align: center;
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  font-weight: 300;
-}
-footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-@media (max-width: 760px) {
-  .main { grid-template-columns: 1fr; }
-  .spine-panel { position: static; }
-  .hero h2 { font-size: 28px; }
-  .hero { padding: 36px 20px 32px; }
-  header { padding: 14px 20px; }
-  .main { padding: 24px 16px 48px; }
-  .symptom-grid { grid-template-columns: 1fr; }
-  .cta-box { flex-direction: column; text-align: center; }
-}
-</style>
+    .btn {
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      letter-spacing: -0.005em;
+      transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), background 0.22s var(--ease), color 0.22s var(--ease), border-color 0.22s var(--ease);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 10px 22px rgba(61, 92, 125, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(61, 92, 125, 0.32);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #2a1f0e;
+      box-shadow: 0 10px 22px rgba(189, 160, 84, 0.32);
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-bright);
+      transform: translateY(-1px);
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      padding: 32px 0 44px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 22px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 6.8vw, 86px);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      max-width: 18ch;
+      font-weight: 700;
+    }
+
+    .hero h1 .lineA {
+      display: block;
+    }
+
+    .hero h1 .lineB {
+      display: block;
+      color: var(--primary);
+    }
+
+    .accent {
+      color: var(--primary);
+    }
+
+    .hero-lede {
+      font-size: clamp(17px, 1.6vw, 20px);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text-soft);
+      max-width: 56ch;
+      margin: 28px 0 0;
+    }
+
+    /* ============ GRAY'S ANATOMY CITATION ============ */
+    .citation-section {
+      padding: 22px 0 48px;
+    }
+
+    .citation-card {
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 32px 36px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .citation-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+    }
+
+    .citation-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .citation-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 10px;
+    }
+
+    .citation-quote {
+      font-size: clamp(18px, 1.6vw, 21px);
+      font-weight: 500;
+      color: var(--text);
+      margin: 0 0 6px;
+      line-height: 1.42;
+      letter-spacing: -0.01em;
+    }
+
+    .citation-source {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--primary);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .citation-explain {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    /* ============ SEARCH ============ */
+    .search-section {
+      padding: 0 0 48px;
+    }
+
+    .search-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .search-wrap { max-width: 720px; }
+
+    .search-input-wrap {
+      position: relative;
+      background: var(--surface);
+      border-radius: 999px;
+      box-shadow: var(--shadow-md);
+      border: 1.5px solid var(--border-soft);
+      transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(61, 92, 125, 0.12), var(--shadow-md);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 20px 60px 20px 56px;
+      border: 0;
+      background: transparent;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 400;
+      outline: 0;
+      font-family: inherit;
+      color: var(--text);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-faint);
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--surface-cool);
+      color: var(--text-soft);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s var(--ease), color 0.2s var(--ease);
+    }
+
+    .clear-btn:hover {
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+    }
+
+    .clear-btn.visible { display: inline-flex; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 999px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-soft);
+      transition: all 0.2s var(--ease);
+    }
+
+    .chip:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(61, 92, 125, 0.22);
+    }
+
+    /* ============ EXPLORER ============ */
+    .explorer {
+      padding: 0 0 96px;
+    }
+
+    .explorer-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .spine-panel { position: sticky; top: 20px; }
+
+    .panel-header {
+      padding: 22px 26px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .panel-header h2 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .panel-header-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .reset-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+      font-family: inherit;
+    }
+
+    .reset-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* ============ SPINE SVG ============ */
+    .spine-stage {
+      padding: 14px 16px 8px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(228, 237, 255, 0.5), transparent 60%),
+        linear-gradient(180deg, transparent, var(--surface-soft));
+    }
+
+    .spine-svg {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      display: block;
+    }
+
+    .spine-spline {
+      stroke: rgba(61, 92, 125, 0.18);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 3 4;
+    }
+
+    .region-bracket {
+      fill: none;
+      stroke: rgba(45, 55, 72, 0.18);
+      stroke-width: 1;
+    }
+
+    .region-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      fill: var(--text-muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .vertebra {
+      cursor: pointer;
+      outline: none;
+    }
+
+    .vertebra-body {
+      transition: fill 0.25s var(--ease), stroke 0.25s var(--ease), transform 0.25s var(--ease), filter 0.25s var(--ease);
+      transform-box: fill-box;
+      transform-origin: center;
+      filter: drop-shadow(0 2px 4px rgba(45, 55, 72, 0.14));
+    }
+
+    .vertebra:hover .vertebra-body,
+    .vertebra:focus-visible .vertebra-body {
+      transform: scale(1.08) translateX(-2px);
+      filter: drop-shadow(0 6px 14px rgba(45, 55, 72, 0.25));
+    }
+
+    .vertebra.active .vertebra-body {
+      fill: var(--accent) !important;
+      stroke: white;
+      stroke-width: 2;
+      filter: drop-shadow(0 8px 20px rgba(189, 160, 84, 0.5));
+      transform: scale(1.12) translateX(-2px);
+    }
+
+    .vertebra.match .vertebra-body {
+      stroke: var(--accent);
+      stroke-width: 2.5;
+      filter: drop-shadow(0 4px 12px rgba(189, 160, 84, 0.35));
+    }
+
+    .vertebra.dimmed .vertebra-body {
+      opacity: 0.25;
+      filter: none;
+    }
+
+    .vertebra-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 8px;
+      font-weight: 700;
+      fill: white;
+      pointer-events: none;
+      text-anchor: middle;
+      letter-spacing: -0.01em;
+    }
+
+    .nerve-line {
+      fill: none;
+      stroke: rgba(61, 92, 125, 0.18);
+      stroke-width: 1;
+      stroke-linecap: round;
+      transition: stroke 0.3s var(--ease), stroke-width 0.3s var(--ease), opacity 0.3s var(--ease);
+    }
+
+    .nerve-line.glow {
+      stroke: var(--accent);
+      stroke-width: 2.2;
+      opacity: 1;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: drawNerve 0.7s var(--ease) forwards;
+    }
+
+    @keyframes drawNerve {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .region-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border-soft);
+      background: var(--surface-soft);
+    }
+
+    .region-tab {
+      background: transparent;
+      border: 0;
+      padding: 16px 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-right: 1px solid var(--border-soft);
+      transition: all 0.2s var(--ease);
+    }
+
+    .region-tab:last-child { border-right: 0; }
+
+    .region-tab:hover {
+      background: var(--surface);
+      color: var(--primary);
+    }
+
+    .region-tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* ============ DETAIL PANEL ============ */
+    .detail-panel { min-height: 700px; }
+    .detail-inner { padding: 36px; }
+
+    .welcome-state {
+      min-height: 600px;
+      display: grid;
+      align-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .welcome-icon {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 24px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      background: var(--primary-light);
+      color: var(--primary);
+      box-shadow: 0 10px 24px rgba(61, 92, 125, 0.14);
+    }
+
+    .welcome-state h3 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px;
+    }
+
+    .welcome-state p {
+      color: var(--text-soft);
+      max-width: 460px;
+      margin: 0 auto;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    .search-summary {
+      display: none;
+      padding: 14px 20px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(189, 160, 84, 0.25);
+      border-radius: var(--radius);
+      color: var(--accent-deep);
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .search-summary.visible { display: block; }
+
+    /* Staggered reveal on detail card sections */
+    .detail-card > * {
+      opacity: 0;
+      animation: revealIn 0.5s var(--ease) forwards;
+    }
+    .detail-card > *:nth-child(1) { animation-delay: 0ms; }
+    .detail-card > *:nth-child(2) { animation-delay: 120ms; }
+    .detail-card > *:nth-child(3) { animation-delay: 220ms; }
+    .detail-card > *:nth-child(4) { animation-delay: 320ms; }
+    .detail-card > *:nth-child(5) { animation-delay: 400ms; }
+    .detail-card > *:nth-child(6) { animation-delay: 460ms; }
+    .detail-card > *:nth-child(7) { animation-delay: 520ms; }
+
+    @keyframes revealIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .detail-head {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 22px;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .level-badge {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      background: var(--primary);
+      box-shadow: 0 10px 24px rgba(61, 92, 125, 0.28);
+      letter-spacing: -0.02em;
+    }
+
+    .level-badge.region-cervical { background: var(--c-cervical); box-shadow: 0 10px 24px rgba(61, 92, 125, 0.28); }
+    .level-badge.region-thoracic { background: var(--c-thoracic); box-shadow: 0 10px 24px rgba(96, 120, 147, 0.28); }
+    .level-badge.region-lumbar { background: var(--c-lumbar); color: #2a1f0e; box-shadow: 0 10px 24px rgba(189, 160, 84, 0.32); }
+    .level-badge.region-sacral { background: var(--c-sacral); box-shadow: 0 10px 24px rgba(140, 111, 45, 0.32); }
+
+    .detail-title h2 {
+      font-size: clamp(28px, 3.5vw, 38px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+
+    .detail-title-region {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      font-weight: 600;
+    }
+
+    .insight-block {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 26px;
+    }
+
+    .insight-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 10px;
+    }
+
+    .insight-text {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .body-map {
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin-bottom: 22px;
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .body-svg {
+      width: 100%;
+      max-width: 110px;
+      display: block;
+    }
+
+    .body-zone {
+      fill: #d4cfc3;
+      transition: fill 0.4s var(--ease), opacity 0.4s var(--ease);
+      opacity: 0.55;
+    }
+
+    .body-zone.active {
+      fill: var(--accent);
+      opacity: 1;
+    }
+
+    .body-copy h3 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 8px;
+      letter-spacing: -0.015em;
+    }
+
+    .body-copy p {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .info-card h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .tag-area {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border: 1px solid rgba(61, 92, 125, 0.15);
+    }
+
+    .tag-symptom {
+      background: var(--accent-soft);
+      color: #7a5b1f;
+      border: 1px solid rgba(189, 160, 84, 0.2);
+    }
+
+    /* Educational note */
+    .edu-note {
+      background: var(--primary-light);
+      border: 1px solid rgba(61, 92, 125, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 18px 22px;
+      margin-bottom: 26px;
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .edu-note-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: white;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .edu-note p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--primary-dark);
+      font-weight: 400;
+    }
+
+    .edu-note strong {
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .related-row {
+      margin-bottom: 26px;
+    }
+
+    .related-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .related-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .related-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-soft);
+      transition: all 0.2s var(--ease);
+    }
+
+    .related-chip:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .detail-cta {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 70%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(189, 160, 84, 0.25), transparent 60%);
+      pointer-events: none;
+    }
+
+    .detail-cta > * { position: relative; z-index: 1; }
+
+    .detail-cta h3 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: white;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .detail-cta p {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .detail-cta .btn-accent {
+      background: var(--accent);
+      color: #2a1f0e;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .detail-cta .btn-accent:hover {
+      background: var(--accent-bright);
+    }
+
+    /* ============ HOW IT WORKS ============ */
+    .how-section {
+      padding: 96px 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 56px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 4.5vw, 56px);
+      line-height: 1.04;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text-soft);
+      max-width: 62ch;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .step-card {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 30px 26px;
+      position: relative;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-soft);
+    }
+
+    .step-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-deep);
+      letter-spacing: 0.16em;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .step-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--surface);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-card h3 {
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -0.015em;
+    }
+
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ============ CTA SECTION ============ */
+    .cta-section {
+      padding: 112px 0;
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: var(--radius-xl);
+      padding: 72px 64px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 60%;
+      height: 160%;
+      background: radial-gradient(circle, rgba(189, 160, 84, 0.28), transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -10%;
+      width: 50%;
+      height: 140%;
+      background: radial-gradient(circle, rgba(216, 183, 100, 0.12), transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-card h2 {
+      font-size: clamp(34px, 4.5vw, 54px);
+      line-height: 1.04;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .cta-card .accent-light {
+      color: var(--accent-bright);
+    }
+
+    .cta-card p {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.86);
+      max-width: 52ch;
+      margin: 0 0 30px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cta-card .btn-accent {
+      background: var(--accent);
+      color: #2a1f0e;
+      font-size: 15px;
+      padding: 14px 22px;
+    }
+
+    .cta-card .btn-accent:hover {
+      background: var(--accent-bright);
+    }
+
+    .cta-card .btn-ghost {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .cta-card .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .cta-info {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+
+    .cta-info dt {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 6px;
+    }
+
+    .cta-info dd {
+      font-size: 17px;
+      font-weight: 500;
+      color: white;
+      margin: 0 0 22px;
+      line-height: 1.45;
+      letter-spacing: -0.005em;
+    }
+
+    .cta-info dd:last-child { margin-bottom: 0; }
+
+    .cta-info a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      transition: border-color 0.2s var(--ease);
+    }
+
+    .cta-info a:hover {
+      border-color: var(--accent-bright);
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      padding: 56px 0 72px;
+      border-top: 1px solid var(--border-soft);
+      background: var(--surface);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 62ch;
+      font-weight: 400;
+    }
+
+    .footer-text strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .footer-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: right;
+      font-weight: 400;
+    }
+
+    .footer-meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1100px) {
+      .explorer-grid { grid-template-columns: 1fr; }
+      .spine-panel { position: static; }
+      .spine-svg { max-width: 360px; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      .container { padding: 0 20px; }
+      .topbar { padding: 18px 0; }
+      .brand-text span { display: none; }
+      .top-actions .btn-ghost { display: none; }
+      .hero { padding: 16px 0 32px; }
+
+      .citation-card {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 16px;
+      }
+
+      .info-grid { grid-template-columns: 1fr; }
+      .body-map { grid-template-columns: 1fr; text-align: center; }
+      .body-svg { margin: 0 auto; }
+
+      .detail-head {
+        grid-template-columns: 72px 1fr;
+        gap: 16px;
+      }
+      .level-badge { width: 72px; height: 72px; font-size: 22px; }
+      .detail-inner { padding: 24px; }
+
+      .detail-cta {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+
+      .how-section { padding: 64px 0; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 72px 0; }
+      .cta-card { padding: 48px 28px; }
+
+      .cta-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .footer-meta { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo-wrap">
-    <div class="logo-icon">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C10.5 2 9 3.5 9 5c0 1 .5 1.9 1.2 2.5L9 9H7.5C6.7 9 6 9.7 6 10.5S6.7 12 7.5 12H9v1H7.5C6.7 13 6 13.7 6 14.5S6.7 16 7.5 16H9v1H7.5C6.7 17 6 17.7 6 18.5S6.7 20 7.5 20H9c.3 1.2 1.5 2 3 2s2.7-.8 3-2h1.5c.8 0 1.5-.7 1.5-1.5S17.3 17 16.5 17H15v-1h1.5c.8 0 1.5-.7 1.5-1.5S17.3 13 16.5 13H15v-1h1.5c.8 0 1.5-.7 1.5-1.5S17.3 9 16.5 9H15l-1.2-1.5C14.5 6.9 15 6 15 5c0-1.5-1.5-3-3-3z"/>
-      </svg>
-    </div>
-    <div class="logo-text">
-      <h1>Gateway Family Chiropractic</h1>
-      <p>Loveland, Colorado</p>
-    </div>
-  </div>
-  <a href="tel:9706697420" class="header-cta">Book Appointment</a>
-</header>
-
-<!-- HERO -->
-<div class="hero">
-  <h2>Health <em>Starts</em> in the Spine</h2>
-  <p>Your nervous system controls every function of your body. Select a vertebral level below to explore the connection between your spine and your overall health.</p>
-</div>
-
-<!-- MAIN -->
-<div class="main">
-
-  <!-- SPINE PANEL -->
-  <div class="spine-panel">
-    <div class="spine-panel-header">Select a vertebral level</div>
-    <div class="spine-svg-wrap">
-      <svg id="spineSvg" viewBox="0 0 200 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive spine diagram">
-        <title>Interactive spine — click a vertebra to learn more</title>
-
-        <!-- Spinal cord line -->
-        <line x1="100" y1="30" x2="100" y2="620" stroke="#c8a96e" stroke-width="2" opacity="0.3"/>
-
-        <!-- CERVICAL label -->
-        <text x="14" y="54" font-size="9" fill="#2E6B4A" font-family="DM Sans, sans-serif" font-weight="500" letter-spacing="0.08em">CERVICAL</text>
-
-        <!-- C1 -->
-        <g class="vert-segment" data-id="1C" onclick="selectVert('1C')">
-          <rect x="55" y="38" width="90" height="18" rx="9" fill="#2E6B4A"/>
-          <text x="100" y="51" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif" font-weight="400">C1 — Atlas</text>
-        </g>
-        <!-- C2 -->
-        <g class="vert-segment" data-id="2C" onclick="selectVert('2C')">
-          <rect x="52" y="60" width="96" height="18" rx="9" fill="#2E6B4A"/>
-          <text x="100" y="73" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">C2 — Axis</text>
-        </g>
-        <!-- C3 -->
-        <g class="vert-segment" data-id="3C" onclick="selectVert('3C')">
-          <rect x="50" y="82" width="100" height="18" rx="9" fill="#2E6B4A"/>
-          <text x="100" y="95" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">C3</text>
-        </g>
-        <!-- C4 -->
-        <g class="vert-segment" data-id="4C" onclick="selectVert('4C')">
-          <rect x="48" y="104" width="104" height="18" rx="9" fill="#2E6B4A"/>
-          <text x="100" y="117" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">C4</text>
-        </g>
-        <!-- C5 -->
-        <g class="vert-segment" data-id="5C" onclick="selectVert('5C')">
-          <rect x="46" y="126" width="108" height="18" rx="9" fill="#2E6B4A"/>
-          <text x="100" y="139" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">C5</text>
-        </g>
-        <!-- C6 -->
-        <g class="vert-segment" data-id="6C" onclick="selectVert('6C')">
-          <rect x="44" y="148" width="112" height="18" rx="9" fill="#2E6B4A"/>
-          <text x="100" y="161" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">C6</text>
-        </g>
-        <!-- C7 -->
-        <g class="vert-segment" data-id="7C" onclick="selectVert('7C')">
-          <rect x="42" y="170" width="116" height="18" rx="9" fill="#2E6B4A"/>
-          <text x="100" y="183" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">C7</text>
-        </g>
-
-        <!-- THORACIC label -->
-        <text x="14" y="206" font-size="9" fill="#5A6B2E" font-family="DM Sans, sans-serif" font-weight="500" letter-spacing="0.08em">THORACIC</text>
-
-        <!-- T1-T12 -->
-        <g class="vert-segment" data-id="1T" onclick="selectVert('1T')"><rect x="40" y="194" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="205" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T1</text></g>
-        <g class="vert-segment" data-id="2T" onclick="selectVert('2T')"><rect x="40" y="213" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="224" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T2</text></g>
-        <g class="vert-segment" data-id="3T" onclick="selectVert('3T')"><rect x="40" y="232" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="243" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T3</text></g>
-        <g class="vert-segment" data-id="4T" onclick="selectVert('4T')"><rect x="40" y="251" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="262" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T4</text></g>
-        <g class="vert-segment" data-id="5T" onclick="selectVert('5T')"><rect x="40" y="270" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="281" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T5</text></g>
-        <g class="vert-segment" data-id="6T" onclick="selectVert('6T')"><rect x="40" y="289" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="300" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T6</text></g>
-        <g class="vert-segment" data-id="7T" onclick="selectVert('7T')"><rect x="40" y="308" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="319" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T7</text></g>
-        <g class="vert-segment" data-id="8T" onclick="selectVert('8T')"><rect x="40" y="327" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="338" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T8</text></g>
-        <g class="vert-segment" data-id="9T" onclick="selectVert('9T')"><rect x="40" y="346" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="357" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T9</text></g>
-        <g class="vert-segment" data-id="10T" onclick="selectVert('10T')"><rect x="40" y="365" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="376" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T10</text></g>
-        <g class="vert-segment" data-id="11T" onclick="selectVert('11T')"><rect x="40" y="384" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="395" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T11</text></g>
-        <g class="vert-segment" data-id="12T" onclick="selectVert('12T')"><rect x="40" y="403" width="120" height="16" rx="8" fill="#5A6B2E"/><text x="100" y="414" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">T12</text></g>
-
-        <!-- LUMBAR label -->
-        <text x="14" y="432" font-size="9" fill="#2E4A6B" font-family="DM Sans, sans-serif" font-weight="500" letter-spacing="0.08em">LUMBAR</text>
-
-        <!-- L1-L5 -->
-        <g class="vert-segment" data-id="1L" onclick="selectVert('1L')"><rect x="38" y="422" width="124" height="20" rx="10" fill="#2E4A6B"/><text x="100" y="436" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">L1</text></g>
-        <g class="vert-segment" data-id="2L" onclick="selectVert('2L')"><rect x="36" y="445" width="128" height="20" rx="10" fill="#2E4A6B"/><text x="100" y="459" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">L2</text></g>
-        <g class="vert-segment" data-id="3L" onclick="selectVert('3L')"><rect x="34" y="468" width="132" height="20" rx="10" fill="#2E4A6B"/><text x="100" y="482" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">L3</text></g>
-        <g class="vert-segment" data-id="4L" onclick="selectVert('4L')"><rect x="32" y="491" width="136" height="20" rx="10" fill="#2E4A6B"/><text x="100" y="505" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">L4</text></g>
-        <g class="vert-segment" data-id="5L" onclick="selectVert('5L')"><rect x="30" y="514" width="140" height="20" rx="10" fill="#2E4A6B"/><text x="100" y="528" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">L5</text></g>
-
-        <!-- SACRUM label -->
-        <text x="14" y="550" font-size="9" fill="#6B2E2E" font-family="DM Sans, sans-serif" font-weight="500" letter-spacing="0.08em">SACRUM</text>
-
-        <!-- Sacrum -->
-        <g class="vert-segment" data-id="Sacrum" onclick="selectVert('Sacrum')"><rect x="28" y="538" width="144" height="28" rx="14" fill="#6B2E2E"/><text x="100" y="556" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">Sacrum</text></g>
-
-        <!-- Coccyx -->
-        <g class="vert-segment" data-id="Coccyx" onclick="selectVert('Coccyx')"><rect x="36" y="570" width="128" height="22" rx="11" fill="#6B2E2E" opacity="0.75"/><text x="100" y="585" text-anchor="middle" font-size="10" fill="white" font-family="DM Sans, sans-serif">Coccyx</text></g>
-      </svg>
-    </div>
-
-    <!-- Legend -->
-    <div class="region-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#2E6B4A"></div> Cervical (C1–C7)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#5A6B2E"></div> Thoracic (T1–T12)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#2E4A6B"></div> Lumbar (L1–L5)</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#6B2E2E"></div> Sacrum &amp; Coccyx</div>
-    </div>
-  </div>
-
-  <!-- DETAIL PANEL -->
-  <div class="detail-panel">
-
-    <div class="intro-card">
-      <h3>Your spine is the pathway to your health</h3>
-      <p>Your nervous system controls and coordinates every function of your body. Spinal misalignments — called subluxations — can irritate the nervous system and affect the organs and structures those nerves serve. Select any vertebral level on the spine to explore what areas and symptoms may be associated with that level.</p>
-    </div>
-
-    <div id="detailContent">
-      <div class="placeholder-state">
-        <div class="spine-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 3h6M9 7h6M9 11h6M9 15h6M9 19h6M6 3v18M18 3v18" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+  <header>
+    <div class="container">
+      <nav class="topbar" aria-label="Primary">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="position:relative;z-index:1;">
+              <path d="M12 3c-1.5 0-2.7 1.2-2.7 2.7 0 .9.5 1.7 1.2 2.1L10 9.5H8.5a1.5 1.5 0 0 0 0 3H10v1.5H8.5a1.5 1.5 0 0 0 0 3H10v1.5H8.5a1.5 1.5 0 0 0 0 3h1.6c.4 1.1 1.4 1.8 2.4 1.8s2-.7 2.4-1.8h1.6a1.5 1.5 0 0 0 0-3H15V17h1.5a1.5 1.5 0 0 0 0-3H15v-1.5h1.5a1.5 1.5 0 0 0 0-3H15L13.5 7.8c.7-.4 1.2-1.2 1.2-2.1C14.7 4.2 13.5 3 12 3Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <strong>Gateway Family Chiropractic</strong>
+            <span>Loveland, Colorado</span>
+          </div>
         </div>
-        <p>Click any vertebral level on the spine to see associated areas and possible symptoms.</p>
-      </div>
+        <div class="top-actions">
+          <a class="btn btn-ghost" href="#how">How it works</a>
+          <a class="btn btn-primary" href="tel:9706697420">Call (970) 669-7420</a>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <div class="cta-box">
-      <div class="cta-box-text">
-        <h3>Ready to get checked?</h3>
-        <p>A spinal evaluation can identify whether subluxations may be affecting your health.</p>
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> A spinal health explorer</div>
+        <h1>
+          <span class="lineA">Pain is where symptoms appear.</span>
+          <span class="lineB">The spine is where we look first.</span>
+        </h1>
+        <p class="hero-lede">Search what you're feeling, or pick a vertebra below. We will show you the connection that nearly every chiropractor talks about, in the words of the chart itself.</p>
       </div>
-      <a href="tel:9706697420" class="cta-btn">Schedule Today →</a>
-    </div>
+    </section>
 
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>Gateway Family Chiropractic &nbsp;·&nbsp; 3850 N. Grant Ave. Suite 100, Loveland, CO 80538 &nbsp;·&nbsp; <a href="tel:9706697420">(970) 669-7420</a> &nbsp;·&nbsp; <a href="https://www.gatewayfamilychiro.com">gatewayfamilychiro.com</a></p>
-  <p style="margin-top:8px">This chart is for educational purposes only. Consult a licensed chiropractor for diagnosis and treatment.</p>
-</footer>
-
-<script>
-const vertebraData = {
-  '1C': {
-    label: 'C1 — Atlas',
-    region: 'Cervical spine',
-    color: '#2E6B4A',
-    areas: ['Blood supply to head', 'Pituitary gland', 'Scalp', 'Bones of face', 'Brain', 'Inner & middle ear', 'Sympathetic nervous system'],
-    symptoms: ['Headaches', 'Nervousness', 'Insomnia', 'Head colds', 'High blood pressure', 'Migraine headaches', 'Nervous breakdowns', 'Amnesia', 'Chronic tiredness', 'Dizziness']
-  },
-  '2C': {
-    label: 'C2 — Axis',
-    region: 'Cervical spine',
-    color: '#2E6B4A',
-    areas: ['Eyes', 'Optic nerves', 'Auditory nerves', 'Sinuses', 'Mastoid bones', 'Tongue', 'Forehead'],
-    symptoms: ['Sinus trouble', 'Allergies', 'Crossed eyes', 'Deafness', 'Eye troubles', 'Earache', 'Fainting spells', 'Certain cases of blindness']
-  },
-  '3C': {
-    label: 'C3',
-    region: 'Cervical spine',
-    color: '#2E6B4A',
-    areas: ['Cheeks', 'Outer ear', 'Face bones', 'Teeth', 'Trigeminal nerve'],
-    symptoms: ['Neuralgia', 'Neuritis', 'Acne or pimples', 'Eczema']
-  },
-  '4C': {
-    label: 'C4',
-    region: 'Cervical spine',
-    color: '#2E6B4A',
-    areas: ['Nose', 'Lips', 'Mouth', 'Eustachian tube'],
-    symptoms: ['Hay fever', 'Runny nose', 'Hearing loss', 'Adenoids']
-  },
-  '5C': {
-    label: 'C5',
-    region: 'Cervical spine',
-    color: '#2E6B4A',
-    areas: ['Vocal cords', 'Neck glands', 'Pharynx'],
-    symptoms: ['Laryngitis', 'Hoarseness', 'Throat conditions']
-  },
-  '6C': {
-    label: 'C6',
-    region: 'Cervical spine',
-    color: '#2E6B4A',
-    areas: ['Neck muscles', 'Shoulders', 'Tonsils'],
-    symptoms: ['Stiff neck', 'Pain in upper arms', 'Tonsillitis', 'Whooping cough', 'Croup']
-  },
-  '7C': {
-    label: 'C7',
-    region: 'Cervical spine',
-    color: '#2E6B4A',
-    areas: ['Thyroid gland', 'Bursae in shoulder', 'Elbows'],
-    symptoms: ['Bursitis', 'Colds', 'Thyroid conditions']
-  },
-  '1T': {
-    label: 'T1',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Arms: elbow down', 'Hands, wrist, fingers', 'Esophagus', 'Trachea'],
-    symptoms: ['Asthma', 'Cough', 'Difficult breathing', 'Shortness of breath', 'Pain in lower arms and hands']
-  },
-  '2T': {
-    label: 'T2',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Heart valves and coverings', 'Coronary arteries'],
-    symptoms: ['Functional heart conditions', 'Certain chest conditions']
-  },
-  '3T': {
-    label: 'T3',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Lungs', 'Bronchial tubes', 'Pleura', 'Chest', 'Breast'],
-    symptoms: ['Bronchitis', 'Pleurisy', 'Pneumonia', 'Congestion', 'Influenza']
-  },
-  '4T': {
-    label: 'T4',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Gallbladder', 'Common duct'],
-    symptoms: ['Gallbladder conditions', 'Jaundice', 'Shingles']
-  },
-  '5T': {
-    label: 'T5',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Liver', 'Solar plexus', 'Blood circulation'],
-    symptoms: ['Liver conditions', 'Fevers', 'Low blood pressure', 'Anemia', 'Poor circulation', 'Arthritis']
-  },
-  '6T': {
-    label: 'T6',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Stomach'],
-    symptoms: ['Nervous stomach', 'Indigestion', 'Heartburn', 'Dyspepsia']
-  },
-  '7T': {
-    label: 'T7',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Pancreas', 'Duodenum'],
-    symptoms: ['Ulcers', 'Gastritis']
-  },
-  '8T': {
-    label: 'T8',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Spleen'],
-    symptoms: ['Lowered resistance']
-  },
-  '9T': {
-    label: 'T9',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Adrenal glands', 'Supra-renal glands'],
-    symptoms: ['Allergies', 'Hives']
-  },
-  '10T': {
-    label: 'T10',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Kidneys'],
-    symptoms: ['Kidney troubles', 'Hardening of arteries', 'Chronic tiredness', 'Nephritis', 'Pyelitis']
-  },
-  '11T': {
-    label: 'T11',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Kidneys', 'Ureters'],
-    symptoms: ['Acne', 'Pimples', 'Eczema', 'Boils']
-  },
-  '12T': {
-    label: 'T12',
-    region: 'Thoracic spine',
-    color: '#5A6B2E',
-    areas: ['Small intestines', 'Lymph circulation'],
-    symptoms: ['Rheumatism', 'Gas pains', 'Certain types of sterility']
-  },
-  '1L': {
-    label: 'L1',
-    region: 'Lumbar spine',
-    color: '#2E4A6B',
-    areas: ['Large intestines', 'Inguinal ring'],
-    symptoms: ['Constipation', 'Colitis', 'Dysentery', 'Diarrhea', 'Some ruptures or hernias']
-  },
-  '2L': {
-    label: 'L2',
-    region: 'Lumbar spine',
-    color: '#2E4A6B',
-    areas: ['Appendix', 'Abdomen', 'Upper leg'],
-    symptoms: ['Cramps', 'Difficult breathing', 'Acidosis', 'Varicose veins']
-  },
-  '3L': {
-    label: 'L3',
-    region: 'Lumbar spine',
-    color: '#2E4A6B',
-    areas: ['Sex organs', 'Uterus', 'Bladder', 'Knees'],
-    symptoms: ['Bladder troubles', 'Menstrual troubles', 'Painful or irregular periods', 'Miscarriages', 'Bed wetting', 'Impotency', 'Many knee pains']
-  },
-  '4L': {
-    label: 'L4',
-    region: 'Lumbar spine',
-    color: '#2E4A6B',
-    areas: ['Prostate gland', 'Muscles of lower back', 'Sciatic nerve'],
-    symptoms: ['Sciatica', 'Lumbago', 'Difficult or painful urination', 'Too frequent urination', 'Backaches']
-  },
-  '5L': {
-    label: 'L5',
-    region: 'Lumbar spine',
-    color: '#2E4A6B',
-    areas: ['Lower legs', 'Ankles', 'Feet'],
-    symptoms: ['Poor circulation in legs', 'Swollen ankles', 'Weak ankles and arches', 'Cold feet', 'Weakness in legs', 'Leg cramps']
-  },
-  'Sacrum': {
-    label: 'Sacrum',
-    region: 'Sacrum & Coccyx',
-    color: '#6B2E2E',
-    areas: ['Hip bones', 'Buttocks'],
-    symptoms: ['Sacro-iliac conditions', 'Spinal curvatures']
-  },
-  'Coccyx': {
-    label: 'Coccyx',
-    region: 'Sacrum & Coccyx',
-    color: '#6B2E2E',
-    areas: ['Rectum', 'Anus'],
-    symptoms: ['Hemorrhoids', 'Pruritis (itching)', 'Pain at end of spine on sitting']
-  }
-};
-
-let activeId = null;
-
-function selectVert(id) {
-  // Remove active from previous
-  if (activeId) {
-    const prev = document.querySelector(`[data-id="${activeId}"]`);
-    if (prev) prev.classList.remove('active');
-  }
-
-  activeId = id;
-  const el = document.querySelector(`[data-id="${id}"]`);
-  if (el) el.classList.add('active');
-
-  const d = vertebraData[id];
-  if (!d) return;
-
-  const areasHTML = d.areas.map(a => `<span class="area-chip">${a}</span>`).join('');
-  const symptomsHTML = d.symptoms.map(s => `<div class="symptom-chip">${s}</div>`).join('');
-
-  document.getElementById('detailContent').innerHTML = `
-    <div class="detail-card">
-      <div class="detail-card-header">
-        <div class="detail-badge" style="background:${d.color}">${id}</div>
-        <div class="detail-card-header-text">
-          <h2>${d.label}</h2>
-          <p>${d.region}</p>
+    <!-- ============ GRAY'S ANATOMY CITATION ============ -->
+    <section class="citation-section">
+      <div class="container">
+        <div class="citation-card">
+          <div class="citation-icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M9 7h6M9 11h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="citation-label">From the chart's own preamble</span>
+            <p class="citation-quote">"The nervous system controls and coordinates all organs and structures of the human body."</p>
+            <p class="citation-source">Gray's Anatomy, 29th Edition, page 4</p>
+            <p class="citation-explain">Misalignments (subluxations) of spinal vertebrae and discs may cause irritation to the nervous system, which could affect the structures, organs, and functions listed under "areas" and the "possible symptoms" that are associated with malfunctions of the areas noted.</p>
+          </div>
         </div>
       </div>
-      <div class="detail-body">
-        <div class="detail-section">
-          <div class="section-heading">Associated areas</div>
-          <div class="area-grid">${areasHTML}</div>
+    </section>
+
+    <!-- ============ SEARCH ============ -->
+    <section class="search-section">
+      <div class="container">
+        <label class="search-label" for="searchInput">Start with how you feel</label>
+        <div class="search-wrap">
+          <div class="search-input-wrap">
+            <span class="search-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="m21 21-4.2-4.2m2.2-5.3a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <input id="searchInput" class="search-input" type="search" placeholder="Try: headaches, sciatica, digestion, numb hands, low back pain..." autocomplete="off" />
+            <button id="clearSearch" class="clear-btn" type="button" aria-label="Clear search">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="chips" role="list">
+            <button class="chip" type="button" data-search="headaches">Headaches</button>
+            <button class="chip" type="button" data-search="sciatica">Sciatica</button>
+            <button class="chip" type="button" data-search="digestion">Digestion</button>
+            <button class="chip" type="button" data-search="numb hands">Numb hands</button>
+            <button class="chip" type="button" data-search="low back pain">Low back pain</button>
+            <button class="chip" type="button" data-search="neck stiffness">Neck stiffness</button>
+            <button class="chip" type="button" data-search="sinus">Sinus</button>
+            <button class="chip" type="button" data-search="shoulder">Shoulder</button>
+          </div>
         </div>
-        <div class="detail-section">
-          <div class="section-heading">Possible symptoms</div>
-          <div class="symptom-grid">${symptomsHTML}</div>
+      </div>
+    </section>
+
+    <!-- ============ EXPLORER ============ -->
+    <section class="explorer">
+      <div class="container">
+        <div class="explorer-grid">
+
+          <aside class="panel spine-panel" aria-label="Interactive spine diagram">
+            <div class="panel-header">
+              <div>
+                <span class="panel-header-eyebrow">Step 1</span>
+                <h2>Select a vertebral level</h2>
+              </div>
+              <button class="reset-btn" type="button" id="resetBtn">Reset</button>
+            </div>
+
+            <div class="spine-stage">
+              <svg id="spineSvg" class="spine-svg" viewBox="0 0 360 800" role="img" aria-labelledby="spineTitle">
+                <title id="spineTitle">Interactive spine diagram</title>
+                <g id="regionLabels"></g>
+                <path class="spine-spline" d="M180 32 C168 92 169 152 181 214 C196 281 196 359 181 432 C167 502 163 590 182 698" />
+                <g id="nerveLines"></g>
+                <g id="vertebraNodes"></g>
+              </svg>
+            </div>
+
+            <div class="region-tabs" role="tablist">
+              <button class="region-tab" data-region="Cervical Spine" type="button">Cervical</button>
+              <button class="region-tab" data-region="Thoracic Spine" type="button">Thoracic</button>
+              <button class="region-tab" data-region="Lumbar Spine" type="button">Lumbar</button>
+              <button class="region-tab" data-region="Sacrum & Coccyx" type="button">Sacrum</button>
+            </div>
+          </aside>
+
+          <section class="panel detail-panel" aria-live="polite">
+            <div class="detail-inner">
+              <div id="searchSummary" class="search-summary"></div>
+
+              <div id="welcomeState" class="welcome-state">
+                <div class="welcome-icon" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 3v18M15 3v18M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h3>Start with <span class="accent">where it shows up</span>.</h3>
+                <p>Patients rarely think in spinal levels. They think in headaches, stiffness, digestion, numbness, fatigue. This explorer starts where you are.</p>
+              </div>
+
+              <div id="detailState" hidden></div>
+            </div>
+          </section>
+
         </div>
-        <div class="disclaimer-box">
-          <strong>Educational note:</strong> Spinal misalignments (subluxations) may cause nervous system irritation that could affect the areas and symptoms listed. This chart is for educational purposes only. Individual results vary. Please consult a licensed chiropractor for a proper evaluation.
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="how-section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> How chiropractic helps</div>
+          <h2>Your nervous system runs <span class="accent">through your spine</span>.</h2>
+          <p>Every signal your brain sends to your body, and every signal your body sends back, travels through nerves that exit between the bones of your spine. When those bones are misaligned, the nervous system can be affected. Here is the simple chain we look at.</p>
+        </div>
+
+        <div class="steps-grid">
+
+          <article class="step-card">
+            <span class="step-num">01</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2v6m0 0 3-3m-3 3-3-3M5 12h14M5 12l3-3m-3 3 3 3m11-3-3-3m3 3-3 3M12 16v6m0 0-3-3m3 3 3-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Stress accumulates in your spine</h3>
+            <p>Long hours at a desk, lifting, repetitive motion, sleep posture, falls, even daily stress. Your spine absorbs all of it.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-num">02</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <rect x="6" y="4" width="12" height="4" rx="1.5" stroke="currentColor" stroke-width="1.7"/>
+                <rect x="8" y="10" width="12" height="4" rx="1.5" stroke="currentColor" stroke-width="1.7"/>
+                <rect x="5" y="16" width="12" height="4" rx="1.5" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <h3>Vertebrae can shift out of alignment</h3>
+            <p>When a vertebra moves out of its proper position, it changes how the entire structure of your spine functions and moves.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-num">03</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12c2-4 6-4 8 0s6 4 8 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <circle cx="4" cy="12" r="1.6" fill="currentColor"/>
+                <circle cx="20" cy="12" r="1.6" fill="currentColor"/>
+                <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <h3>That can irritate nearby nerves</h3>
+            <p>Nerves exit between every pair of vertebrae. Misalignment can create the kind of nervous system interference your body feels downstream.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-num">04</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v18M3 8h6M3 12h6M3 16h6M15 8h6M15 12h6M15 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Restoring alignment removes interference</h3>
+            <p>Chiropractic adjustments are designed to restore proper position and motion, supporting the body's natural ability to heal and regulate itself.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-grid">
+            <div>
+              <h2>Find out what your spine <span class="accent-light">may be contributing to</span>.</h2>
+              <p>We evaluate your spine, your posture, your nervous system, and your full history. Then we give you a clear, honest picture of what we see and what we recommend.</p>
+              <div class="cta-buttons">
+                <a class="btn btn-accent" href="tel:9706697420">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                  Schedule Your Spinal Evaluation
+                </a>
+                <a class="btn btn-ghost" href="https://www.gatewayfamilychiro.com">
+                  Visit our site
+                </a>
+              </div>
+            </div>
+            <dl class="cta-info">
+              <dt>Location</dt>
+              <dd>3850 N. Grant Ave.<br />Suite 100<br />Loveland, CO 80538</dd>
+              <dt>Phone</dt>
+              <dd><a href="tel:9706697420">(970) 669-7420</a></dd>
+              <dt>Web</dt>
+              <dd><a href="https://www.gatewayfamilychiro.com">gatewayfamilychiro.com</a></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-text">
+          <strong>An educational tool</strong>
+          This explorer is provided for general patient education. The relationships shown here, drawn from the chart of effects of spinal misalignments commonly referenced in chiropractic literature, illustrate associations between spinal levels and body regions and are not intended as a diagnosis, a guarantee of clinical outcomes, or a substitute for a personalized examination. If you are experiencing symptoms, please speak with a licensed healthcare provider.
+        </div>
+        <div class="footer-meta">
+          <strong>Gateway Family Chiropractic</strong>
+          3850 N. Grant Ave. Suite 100<br />
+          Loveland, CO 80538<br />
+          (970) 669-7420
         </div>
       </div>
     </div>
-  `;
+  </footer>
 
-  // Smooth scroll to detail on mobile
-  if (window.innerWidth < 760) {
-    document.getElementById('detailContent').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-</script>
+  <script>
+    /* ========================================================
+       VERTEBRA DATA
+       Symptom lists quote the chart verbatim.
+       Insight texts rewritten to be patient-facing.
+       ======================================================== */
+    const vertebraData = {
+      "1C": {
+        label: "C1 · Atlas", display: "C1", region: "Cervical Spine", regionClass: "cervical",
+        bodyZones: ["head"],
+        areas: ["Blood supply to the head", "Pituitary gland", "Scalp", "Facial bones", "Brain", "Inner & middle ear", "Sympathetic nervous system"],
+        symptoms: ["Headaches", "Nervousness", "Insomnia", "Head colds", "High blood pressure", "Migraine headaches", "Chronic tiredness", "Dizziness"],
+        aliases: ["headache", "headaches", "migraine", "migraines", "dizzy", "dizziness", "sleep", "insomnia", "fatigue", "tired", "tiredness", "blood pressure", "head", "nervousness"],
+        insight: "If your symptoms include headaches, restless sleep, or that persistent tension at the base of the skull, the upper cervical area is one of the first places we evaluate."
+      },
+      "2C": {
+        label: "C2 · Axis", display: "C2", region: "Cervical Spine", regionClass: "cervical",
+        bodyZones: ["head", "face"],
+        areas: ["Eyes", "Optic nerves", "Auditory nerves", "Sinuses", "Mastoid bones", "Tongue", "Forehead"],
+        symptoms: ["Sinus trouble", "Allergies", "Earache", "Eye troubles", "Hearing concerns", "Fainting spells"],
+        aliases: ["sinus", "sinuses", "allergy", "allergies", "eyes", "eye", "ear", "earache", "hearing", "forehead", "fainting", "vision"],
+        insight: "Persistent sinus pressure, eye strain, and chronic congestion often brings us to look at C2 and how the upper neck is moving."
+      },
+      "3C": {
+        label: "C3", display: "C3", region: "Cervical Spine", regionClass: "cervical",
+        bodyZones: ["face", "neck"],
+        areas: ["Cheeks", "Outer ear", "Facial bones", "Teeth", "Trifacial nerve"],
+        symptoms: ["Neuralgia", "Neuritis", "Acne or pimples", "Eczema"],
+        aliases: ["face", "cheek", "teeth", "tooth", "jaw", "trigeminal", "trifacial", "neuralgia", "skin", "eczema", "acne"],
+        insight: "Facial nerve sensations, jaw tension, and persistent skin irritation are patterns we trace through the mid-cervical area."
+      },
+      "4C": {
+        label: "C4", display: "C4", region: "Cervical Spine", regionClass: "cervical",
+        bodyZones: ["face", "neck"],
+        areas: ["Nose", "Lips", "Mouth", "Eustachian tube"],
+        symptoms: ["Hay fever", "Runny nose", "Hearing loss", "Adenoids"],
+        aliases: ["nose", "mouth", "lips", "eustachian", "hay fever", "runny nose", "hearing", "adenoid"],
+        insight: "Upper respiratory tightness, recurring congestion, and chronic ear discomfort often draw us to this level of the neck."
+      },
+      "5C": {
+        label: "C5", display: "C5", region: "Cervical Spine", regionClass: "cervical",
+        bodyZones: ["neck", "throat"],
+        areas: ["Vocal cords", "Neck glands", "Pharynx"],
+        symptoms: ["Laryngitis", "Hoarseness", "Throat conditions"],
+        aliases: ["throat", "voice", "vocal", "hoarse", "hoarseness", "laryngitis", "neck glands", "swallowing"],
+        insight: "Voice strain, throat irritation, and tightness in the front of the neck show up at this level more often than patients expect."
+      },
+      "6C": {
+        label: "C6", display: "C6", region: "Cervical Spine", regionClass: "cervical",
+        bodyZones: ["neck", "shoulders", "arms"],
+        areas: ["Neck muscles", "Shoulders", "Tonsils"],
+        symptoms: ["Stiff neck", "Pain in upper arms", "Tonsillitis", "Whooping cough", "Croup"],
+        aliases: ["neck stiffness", "stiff neck", "neck pain", "shoulder", "shoulders", "upper arm", "arm pain", "tonsils", "cough"],
+        insight: "Stiff neck, persistent shoulder tension, and pain that radiates into the upper arm are exactly the patterns C6 is involved in."
+      },
+      "7C": {
+        label: "C7", display: "C7", region: "Cervical Spine", regionClass: "cervical",
+        bodyZones: ["neck", "shoulders", "arms"],
+        areas: ["Thyroid gland", "Bursae in shoulder", "Elbows"],
+        symptoms: ["Bursitis", "Colds", "Thyroid conditions"],
+        aliases: ["elbow", "elbows", "shoulder", "bursitis", "thyroid", "colds", "immune"],
+        insight: "The cervico-thoracic junction is where neck tension meets upper back stress. Often a key level for chronic shoulder or elbow complaints."
+      },
+      "1T": {
+        label: "T1", display: "T1", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["arms", "chest"],
+        areas: ["Arms (elbow down)", "Hands", "Wrists", "Fingers", "Esophagus", "Trachea"],
+        symptoms: ["Asthma", "Cough", "Difficult breathing", "Shortness of breath", "Pain in lower arms and hands"],
+        aliases: ["arm", "arms", "hand", "hands", "wrist", "finger", "fingers", "numb hands", "numbness", "tingling hands", "cough", "breathing", "asthma"],
+        insight: "Numbness, tingling, or weakness in the hands and forearms commonly involves T1 and the upper thoracic outlet."
+      },
+      "2T": {
+        label: "T2", display: "T2", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["chest"],
+        areas: ["Heart valves and coverings", "Coronary arteries"],
+        symptoms: ["Functional heart conditions", "Certain chest conditions"],
+        aliases: ["heart", "chest", "chest tightness", "cardiac", "upper back"],
+        insight: "Upper thoracic tightness and posture-related chest discomfort live here. Cardiac symptoms always need physician evaluation first."
+      },
+      "3T": {
+        label: "T3", display: "T3", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["chest"],
+        areas: ["Lungs", "Bronchial tubes", "Pleura", "Chest", "Breast"],
+        symptoms: ["Bronchitis", "Pleurisy", "Pneumonia", "Congestion", "Influenza"],
+        aliases: ["lungs", "breathing", "bronchitis", "congestion", "chest", "rib", "ribs", "flu"],
+        insight: "Patients with chronic congestion, breathing restriction, or post-illness rib stiffness often benefit from looking at this level."
+      },
+      "4T": {
+        label: "T4", display: "T4", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen", "chest"],
+        areas: ["Gallbladder", "Common duct"],
+        symptoms: ["Gallbladder conditions", "Jaundice", "Shingles"],
+        aliases: ["gallbladder", "gall bladder", "shingles", "jaundice", "mid back"],
+        insight: "Mid-back tension that wraps around to the right side, often paired with digestive complaints, can involve this level."
+      },
+      "5T": {
+        label: "T5", display: "T5", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen"],
+        areas: ["Liver", "Solar plexus", "Blood circulation"],
+        symptoms: ["Liver conditions", "Fevers", "Low blood pressure", "Anemia", "Poor circulation", "Arthritis"],
+        aliases: ["liver", "circulation", "blood pressure", "arthritis", "mid back", "solar plexus"],
+        insight: "Deep mid-back tightness, fatigue, and circulation complaints sometimes trace to the area around T5."
+      },
+      "6T": {
+        label: "T6", display: "T6", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen"],
+        areas: ["Stomach"],
+        symptoms: ["Stomach troubles", "Nervous stomach", "Indigestion", "Heartburn", "Dyspepsia"],
+        aliases: ["stomach", "digestion", "indigestion", "heartburn", "reflux", "acid reflux", "nervous stomach"],
+        insight: "Chronic indigestion, heartburn, and that 'stomach in knots' feeling are tightly connected to mid-back posture and breathing."
+      },
+      "7T": {
+        label: "T7", display: "T7", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen"],
+        areas: ["Pancreas", "Duodenum"],
+        symptoms: ["Ulcers", "Gastritis"],
+        aliases: ["pancreas", "duodenum", "ulcer", "gastritis", "digestion", "abdomen"],
+        insight: "Deep mid-back discomfort paired with abdominal complaints often brings us to evaluate this level."
+      },
+      "8T": {
+        label: "T8", display: "T8", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen"],
+        areas: ["Spleen"],
+        symptoms: ["Lowered resistance"],
+        aliases: ["spleen", "immune", "resistance", "immunity", "mid back"],
+        insight: "T8 is part of how we discuss general resilience and the nervous system's regulation of the body's resistance."
+      },
+      "9T": {
+        label: "T9", display: "T9", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen"],
+        areas: ["Adrenal and supra-renal glands"],
+        symptoms: ["Allergies", "Hives"],
+        aliases: ["adrenal", "adrenals", "stress", "allergies", "hives", "immune"],
+        insight: "Chronic stress, allergy patterns, and patients who feel 'wired but tired' often have adrenal-level conversations grounded here."
+      },
+      "10T": {
+        label: "T10", display: "T10", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen", "lowback"],
+        areas: ["Kidneys"],
+        symptoms: ["Kidney troubles", "Hardening of the arteries", "Chronic tiredness", "Nephritis"],
+        aliases: ["kidney", "kidneys", "fatigue", "tired", "mid back", "flank"],
+        insight: "Deep flank discomfort, chronic tiredness, and lower thoracic stiffness are patterns we evaluate at this level."
+      },
+      "11T": {
+        label: "T11", display: "T11", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen", "lowback"],
+        areas: ["Kidneys", "Ureters"],
+        symptoms: ["Skin conditions: acne, pimples, eczema, or boils"],
+        aliases: ["kidney", "ureter", "skin", "acne", "eczema", "boils", "flank"],
+        insight: "Persistent skin irritations, chronic flank tension, and lower thoracic complaints often involve this level."
+      },
+      "12T": {
+        label: "T12", display: "T12", region: "Thoracic Spine", regionClass: "thoracic",
+        bodyZones: ["abdomen", "lowback"],
+        areas: ["Small intestines", "Lymph circulation"],
+        symptoms: ["Rheumatism", "Gas pains", "Certain types of sterility"],
+        aliases: ["small intestine", "intestines", "gas", "bloating", "lymph", "digestion", "low back", "rheumatism"],
+        insight: "T12 is the bridge between the rib cage, diaphragm, and low back. A common level when digestion and low back complaints overlap."
+      },
+      "1L": {
+        label: "L1", display: "L1", region: "Lumbar Spine", regionClass: "lumbar",
+        bodyZones: ["abdomen", "lowback", "hips"],
+        areas: ["Large intestines", "Inguinal ring"],
+        symptoms: ["Constipation", "Colitis", "Dysentery", "Diarrhea", "Some ruptures or hernias"],
+        aliases: ["large intestine", "colon", "constipation", "diarrhea", "colitis", "hernia", "groin", "digestion"],
+        insight: "Chronic constipation, lower abdominal tension, or groin-region complaints frequently involve L1."
+      },
+      "2L": {
+        label: "L2", display: "L2", region: "Lumbar Spine", regionClass: "lumbar",
+        bodyZones: ["abdomen", "hips", "legs"],
+        areas: ["Appendix", "Abdomen", "Upper leg"],
+        symptoms: ["Cramps", "Difficult breathing", "Acidosis", "Varicose veins"],
+        aliases: ["appendix", "abdomen", "cramps", "upper leg", "thigh", "varicose", "hip"],
+        insight: "Upper thigh pain, hip flexor tightness, and lower abdominal cramping are exactly the patterns L2 is part of."
+      },
+      "3L": {
+        label: "L3", display: "L3", region: "Lumbar Spine", regionClass: "lumbar",
+        bodyZones: ["hips", "legs"],
+        areas: ["Sex organs", "Uterus", "Bladder", "Knees"],
+        symptoms: ["Bladder troubles", "Menstrual troubles (painful or irregular periods)", "Miscarriages", "Bed wetting", "Knee pain"],
+        aliases: ["bladder", "menstrual", "period", "knee", "knees", "bed wetting", "pelvis", "hip", "uterus"],
+        insight: "Bladder complaints, menstrual discomfort, and persistent knee pain are connected here through the lower lumbar nerves."
+      },
+      "4L": {
+        label: "L4", display: "L4", region: "Lumbar Spine", regionClass: "lumbar",
+        bodyZones: ["lowback", "hips", "legs"],
+        areas: ["Prostate gland", "Muscles of the lower back", "Sciatic nerve"],
+        symptoms: ["Sciatica", "Lumbago", "Difficult, painful, or too frequent urination", "Backaches"],
+        aliases: ["sciatica", "sciatic", "low back", "lower back", "backache", "back pain", "leg pain", "urination", "prostate", "lumbago"],
+        insight: "Sciatica and low back pain bring more patients to our office than any other complaints. L4 is almost always part of the conversation."
+      },
+      "5L": {
+        label: "L5", display: "L5", region: "Lumbar Spine", regionClass: "lumbar",
+        bodyZones: ["lowback", "legs", "feet"],
+        areas: ["Lower legs", "Ankles", "Feet"],
+        symptoms: ["Poor circulation in the legs", "Swollen ankles and arches", "Weak ankles", "Cold feet", "Weakness in the legs", "Leg cramps"],
+        aliases: ["feet", "foot", "ankle", "ankles", "cold feet", "leg cramps", "weak legs", "lower leg", "circulation"],
+        insight: "Numb feet, cold legs, weak ankles, or leg cramps that disrupt your sleep often trace back to L5."
+      },
+      "Sacrum": {
+        label: "Sacrum", display: "S", region: "Sacrum & Coccyx", regionClass: "sacral",
+        bodyZones: ["hips", "lowback"],
+        areas: ["Hip bones", "Buttocks"],
+        symptoms: ["Sacroiliac conditions", "Spinal curvatures"],
+        aliases: ["sacrum", "si joint", "sacroiliac", "hip", "hips", "buttock", "buttocks", "pelvis", "tailbone"],
+        insight: "The sacrum is the foundation of your spine. Pelvic imbalance, sacroiliac discomfort, and uneven gait often start here."
+      },
+      "Coccyx": {
+        label: "Coccyx", display: "Co", region: "Sacrum & Coccyx", regionClass: "sacral",
+        bodyZones: ["lowback", "hips"],
+        areas: ["Rectum", "Anus"],
+        symptoms: ["Hemorrhoids (piles)", "Pruritis (itching)", "Pain at end of spine on sitting"],
+        aliases: ["coccyx", "tailbone", "sitting pain", "pain sitting", "rectum", "hemorrhoids", "itching", "piles"],
+        insight: "Tailbone pain when sitting, often years after a fall or trauma, is exactly the pattern the coccyx is involved in."
+      }
+    };
+
+    /* ========================================================
+       SPINE LAYOUT
+       ======================================================== */
+    const spineLayout = [
+      { id: "1C", x: 180, y: 50, w: 56, h: 18, type: "cervical" },
+      { id: "2C", x: 180, y: 76, w: 60, h: 18, type: "cervical" },
+      { id: "3C", x: 180, y: 102, w: 64, h: 19, type: "cervical" },
+      { id: "4C", x: 181, y: 129, w: 68, h: 19, type: "cervical" },
+      { id: "5C", x: 182, y: 157, w: 72, h: 20, type: "cervical" },
+      { id: "6C", x: 184, y: 185, w: 76, h: 20, type: "cervical" },
+      { id: "7C", x: 186, y: 214, w: 80, h: 21, type: "cervical" },
+
+      { id: "1T", x: 188, y: 246, w: 86, h: 22, type: "thoracic" },
+      { id: "2T", x: 190, y: 274, w: 88, h: 22, type: "thoracic" },
+      { id: "3T", x: 191, y: 302, w: 90, h: 22, type: "thoracic" },
+      { id: "4T", x: 192, y: 330, w: 92, h: 22, type: "thoracic" },
+      { id: "5T", x: 192, y: 358, w: 92, h: 23, type: "thoracic" },
+      { id: "6T", x: 191, y: 386, w: 94, h: 23, type: "thoracic" },
+      { id: "7T", x: 189, y: 414, w: 94, h: 23, type: "thoracic" },
+      { id: "8T", x: 187, y: 442, w: 96, h: 24, type: "thoracic" },
+      { id: "9T", x: 184, y: 471, w: 98, h: 24, type: "thoracic" },
+      { id: "10T", x: 181, y: 500, w: 100, h: 25, type: "thoracic" },
+      { id: "11T", x: 179, y: 528, w: 102, h: 25, type: "thoracic" },
+      { id: "12T", x: 177, y: 557, w: 104, h: 26, type: "thoracic" },
+
+      { id: "1L", x: 176, y: 588, w: 110, h: 28, type: "lumbar" },
+      { id: "2L", x: 176, y: 619, w: 114, h: 28, type: "lumbar" },
+      { id: "3L", x: 177, y: 651, w: 116, h: 28, type: "lumbar" },
+      { id: "4L", x: 179, y: 683, w: 116, h: 28, type: "lumbar" },
+      { id: "5L", x: 181, y: 715, w: 114, h: 26, type: "lumbar" },
+
+      { id: "Sacrum", x: 182, y: 745, w: 90, h: 22, type: "sacrum" },
+      { id: "Coccyx", x: 182, y: 769, w: 52, h: 14, type: "coccyx" }
+    ];
+
+    const regionFill = {
+      cervical: "#3d5c7d",
+      thoracic: "#607893",
+      lumbar: "#bda054",
+      sacrum: "#8c6f2d",
+      coccyx: "#8c6f2d"
+    };
+
+    /* ========================================================
+       INITIALIZE THE SPINE SVG
+       ======================================================== */
+    function initSpine() {
+      const nodesGroup = document.getElementById("vertebraNodes");
+      const nerveGroup = document.getElementById("nerveLines");
+      const regionGroup = document.getElementById("regionLabels");
+
+      const regions = [
+        { label: "Cervical", y1: 42, y2: 226 },
+        { label: "Thoracic", y1: 236, y2: 572 },
+        { label: "Lumbar", y1: 580, y2: 730 },
+        { label: "Sacrum", y1: 738, y2: 778 }
+      ];
+
+      regions.forEach(r => {
+        const x = 36;
+        const bracket = `
+          <path class="region-bracket" d="M ${x} ${r.y1} L ${x - 8} ${r.y1} L ${x - 8} ${r.y2} L ${x} ${r.y2}"/>
+          <text class="region-label" x="${x - 14}" y="${(r.y1 + r.y2) / 2}" text-anchor="end" dominant-baseline="middle" transform="rotate(-90 ${x - 14} ${(r.y1 + r.y2) / 2})">${r.label}</text>
+        `;
+        regionGroup.insertAdjacentHTML("beforeend", bracket);
+      });
+
+      spineLayout.forEach(v => {
+        const data = vertebraData[v.id];
+        if (!data) return;
+
+        const fill = regionFill[v.type];
+
+        const nerveStartX = v.x + v.w / 2;
+        const nerveEndX = 332;
+        const nerveEndY = v.y + (Math.random() * 4 - 2);
+        const ctrlX = (nerveStartX + nerveEndX) / 2 + 12;
+
+        nerveGroup.insertAdjacentHTML("beforeend", `
+          <path class="nerve-line" data-for="${v.id}" d="M ${nerveStartX} ${v.y} Q ${ctrlX} ${nerveEndY - 2}, ${nerveEndX} ${nerveEndY}" />
+        `);
+
+        const vGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        vGroup.setAttribute("class", "vertebra");
+        vGroup.setAttribute("data-id", v.id);
+        vGroup.setAttribute("data-region", data.region);
+        vGroup.setAttribute("tabindex", "0");
+        vGroup.setAttribute("role", "button");
+        vGroup.setAttribute("aria-label", `${data.label}, ${data.region}`);
+
+        const radius = v.type === "sacrum" ? 8 : v.type === "coccyx" ? 6 : v.h / 2.4;
+        const labelColor = v.type === "lumbar" ? "#2a1f0e" : "white";
+        const rect = `<rect class="vertebra-body" x="${v.x - v.w / 2}" y="${v.y - v.h / 2}" width="${v.w}" height="${v.h}" rx="${radius}" fill="${fill}" />`;
+        const label = `<text class="vertebra-label" x="${v.x}" y="${v.y}" dominant-baseline="middle" fill="${labelColor}">${data.display}</text>`;
+
+        vGroup.innerHTML = rect + label;
+        nodesGroup.appendChild(vGroup);
+
+        vGroup.addEventListener("click", () => selectVertebra(v.id));
+        vGroup.addEventListener("keydown", e => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            selectVertebra(v.id);
+          }
+        });
+      });
+    }
+
+    /* ========================================================
+       BODY SILHOUETTE
+       ======================================================== */
+    function getBodySvg(activeZones = []) {
+      const isActive = z => activeZones.includes(z) ? "active" : "";
+      return `
+        <svg class="body-svg" viewBox="0 0 120 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle class="body-zone ${isActive("head")}" cx="60" cy="22" r="16" />
+          <ellipse class="body-zone ${isActive("face")}" cx="60" cy="28" rx="11" ry="9" />
+          <rect class="body-zone ${isActive("neck")}" x="53" y="38" width="14" height="12" rx="2" />
+          <rect class="body-zone ${isActive("throat")}" x="56" y="40" width="8" height="9" rx="2" />
+          <path class="body-zone ${isActive("shoulders")}" d="M 35 56 Q 40 48 60 48 Q 80 48 85 56 L 82 64 Q 60 56 38 64 Z" />
+          <path class="body-zone ${isActive("arms")}" d="M 26 60 Q 24 70 25 100 Q 26 130 30 145 L 38 144 Q 36 130 36 100 Q 36 75 40 64 Z" />
+          <path class="body-zone ${isActive("arms")}" d="M 94 60 Q 96 70 95 100 Q 94 130 90 145 L 82 144 Q 84 130 84 100 Q 84 75 80 64 Z" />
+          <path class="body-zone ${isActive("chest")}" d="M 38 64 Q 60 58 82 64 L 84 100 Q 60 92 36 100 Z" />
+          <path class="body-zone ${isActive("abdomen")}" d="M 36 100 Q 60 92 84 100 L 84 140 Q 60 134 36 140 Z" />
+          <path class="body-zone ${isActive("lowback")}" d="M 36 138 Q 60 132 84 138 L 86 156 Q 60 150 34 156 Z" />
+          <path class="body-zone ${isActive("hips")}" d="M 34 152 Q 60 146 86 152 L 88 174 Q 60 168 32 174 Z" />
+          <path class="body-zone ${isActive("legs")}" d="M 40 172 Q 38 195 42 218 L 52 218 Q 54 195 52 172 Z" />
+          <path class="body-zone ${isActive("legs")}" d="M 80 172 Q 82 195 78 218 L 68 218 Q 66 195 68 172 Z" />
+          <ellipse class="body-zone ${isActive("feet")}" cx="47" cy="226" rx="8" ry="5" />
+          <ellipse class="body-zone ${isActive("feet")}" cx="73" cy="226" rx="8" ry="5" />
+        </svg>
+      `;
+    }
+
+    function bodyZoneLabel(zones) {
+      const map = {
+        head: "Head", face: "Face & sensory region", neck: "Neck", throat: "Throat & vocal region",
+        shoulders: "Shoulders", arms: "Arms & hands", chest: "Chest & upper torso",
+        abdomen: "Abdominal region", lowback: "Low back & lumbar region",
+        hips: "Hips & pelvis", legs: "Legs", feet: "Feet & ankles"
+      };
+      return zones.map(z => map[z] || z).join(", ");
+    }
+
+    function bodyZoneDescription(zones) {
+      if (zones.includes("head") || zones.includes("face")) {
+        return "Patients often describe this area as 'above the shoulders.' It includes the head, face, scalp, and the sensory systems of vision, hearing, taste, and smell.";
+      }
+      if (zones.includes("neck") || zones.includes("throat")) {
+        return "The neck and throat region is where many desk-related and stress-related complaints first surface, often before they radiate elsewhere.";
+      }
+      if (zones.includes("arms")) {
+        return "Symptoms in the arms, hands, or fingers frequently originate further up the chain, in the lower neck or upper back, rather than in the arm itself.";
+      }
+      if (zones.includes("chest")) {
+        return "The chest and upper torso depend on rib mechanics, posture, and breathing patterns. Cardiac symptoms always require physician evaluation first.";
+      }
+      if (zones.includes("abdomen")) {
+        return "The abdominal region houses digestion and core nerve supply. Posture, stress, and spinal mechanics all influence how this region feels.";
+      }
+      if (zones.includes("lowback") || zones.includes("hips")) {
+        return "The lower back and hips carry your body's weight. Even small mechanical imbalances here ripple through walking, standing, and sleeping.";
+      }
+      if (zones.includes("legs") || zones.includes("feet")) {
+        return "Symptoms in the legs, ankles, or feet often trace back to the lumbar spine. The sciatic nerve is the most well-known example.";
+      }
+      return "This region is one many patients learn to better understand once they see its connection to the spine and nervous system.";
+    }
+
+    /* ========================================================
+       SELECT A VERTEBRA AND RENDER THE DETAIL PANEL
+       ======================================================== */
+    let activeVertebraId = null;
+
+    function selectVertebra(id, opts = {}) {
+      const data = vertebraData[id];
+      if (!data) return;
+
+      activeVertebraId = id;
+
+      document.querySelectorAll(".vertebra").forEach(el => {
+        el.classList.toggle("active", el.dataset.id === id);
+        if (!opts.preserveMatch) el.classList.remove("match", "dimmed");
+      });
+
+      document.querySelectorAll(".nerve-line").forEach(line => {
+        line.classList.remove("glow");
+        if (line.dataset.for === id) {
+          void line.offsetWidth;
+          line.classList.add("glow");
+        }
+      });
+
+      document.querySelectorAll(".region-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.dataset.region === data.region);
+      });
+
+      renderDetail(data, opts);
+
+      if (window.innerWidth < 1100 && !opts.fromSearch) {
+        document.querySelector(".detail-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function renderDetail(data, opts = {}) {
+      const detailState = document.getElementById("detailState");
+      const welcomeState = document.getElementById("welcomeState");
+
+      welcomeState.hidden = true;
+      detailState.hidden = false;
+
+      const areaTags = data.areas.map(a => `<span class="tag tag-area">${a}</span>`).join("");
+      const symptomTags = data.symptoms.map(s => `<span class="tag tag-symptom">${s}</span>`).join("");
+
+      const currentKey = Object.keys(vertebraData).find(k => vertebraData[k] === data);
+      const related = Object.entries(vertebraData)
+        .filter(([id, d]) => d.region === data.region && id !== currentKey)
+        .slice(0, 5);
+
+      const relatedChips = related.map(([id, d]) => `
+        <button class="related-chip" data-id="${id}">${d.label}</button>
+      `).join("");
+
+      detailState.innerHTML = `
+        <div class="detail-card">
+          <div class="detail-head">
+            <div class="level-badge region-${data.regionClass}">${data.display}</div>
+            <div class="detail-title">
+              <h2>${data.label}</h2>
+              <span class="detail-title-region">${data.region}</span>
+            </div>
+          </div>
+
+          <div class="insight-block">
+            <span class="insight-label">Why this level matters</span>
+            <p class="insight-text">${data.insight}</p>
+          </div>
+
+          <div class="body-map">
+            ${getBodySvg(data.bodyZones)}
+            <div class="body-copy">
+              <h3>${bodyZoneLabel(data.bodyZones)}</h3>
+              <p>${bodyZoneDescription(data.bodyZones)}</p>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>Areas associated</h4>
+              <div class="tag-list">${areaTags}</div>
+            </div>
+            <div class="info-card">
+              <h4>Possible symptoms</h4>
+              <div class="tag-list">${symptomTags}</div>
+            </div>
+          </div>
+
+          <div class="edu-note">
+            <div class="edu-note-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p><strong>How to read this:</strong> These are associations from the chart referenced in chiropractic literature. It is not a diagnosis. This vertebra is one of the areas we evaluate, not necessarily the cause of what you are feeling. A thorough exam tells us what is actually going on.</p>
+          </div>
+
+          ${related.length ? `
+            <div class="related-row">
+              <span class="related-label">Other levels in the ${data.region.toLowerCase()}</span>
+              <div class="related-chips">${relatedChips}</div>
+            </div>
+          ` : ""}
+
+          <div class="detail-cta">
+            <div>
+              <h3>See what your spine may be contributing to.</h3>
+              <p>A thorough evaluation at Gateway Family Chiropractic tells you what is actually happening with your spine and nervous system.</p>
+            </div>
+            <a class="btn btn-accent" href="tel:9706697420">
+              Schedule Your Evaluation
+            </a>
+          </div>
+        </div>
+      `;
+
+      detailState.querySelectorAll(".related-chip").forEach(chip => {
+        chip.addEventListener("click", () => selectVertebra(chip.dataset.id));
+      });
+    }
+
+    function showWelcome() {
+      document.getElementById("welcomeState").hidden = false;
+      document.getElementById("detailState").hidden = true;
+      document.getElementById("searchSummary").classList.remove("visible");
+      document.querySelectorAll(".vertebra").forEach(el => {
+        el.classList.remove("active", "match", "dimmed");
+      });
+      document.querySelectorAll(".nerve-line").forEach(line => line.classList.remove("glow"));
+      document.querySelectorAll(".region-tab").forEach(t => t.classList.remove("active"));
+      activeVertebraId = null;
+    }
+
+    /* ========================================================
+       SEARCH LOGIC
+       ======================================================== */
+    function searchVertebrae(query) {
+      const q = query.toLowerCase().trim();
+      if (!q) return [];
+
+      const matches = [];
+      Object.entries(vertebraData).forEach(([id, data]) => {
+        const haystack = [
+          ...data.aliases,
+          ...data.symptoms.map(s => s.toLowerCase()),
+          ...data.areas.map(a => a.toLowerCase()),
+          data.label.toLowerCase(),
+          data.display.toLowerCase()
+        ].join(" | ");
+
+        let score = 0;
+        const queryTokens = q.split(/\s+/);
+
+        queryTokens.forEach(token => {
+          if (token.length < 2) return;
+          if (data.aliases.includes(token)) score += 10;
+          else if (data.aliases.some(a => a.includes(token))) score += 6;
+          else if (haystack.includes(token)) score += 3;
+        });
+
+        if (score > 0) matches.push({ id, score });
+      });
+
+      matches.sort((a, b) => b.score - a.score);
+      return matches.slice(0, 8).map(m => m.id);
+    }
+
+    function runSearch(query) {
+      const matches = searchVertebrae(query);
+      const summary = document.getElementById("searchSummary");
+
+      document.querySelectorAll(".vertebra").forEach(el => {
+        el.classList.remove("active", "match", "dimmed");
+      });
+
+      if (matches.length === 0) {
+        summary.textContent = `No spinal levels matched "${query}". Try a different term, or pick a vertebra directly.`;
+        summary.classList.add("visible");
+        return;
+      }
+
+      document.querySelectorAll(".vertebra").forEach(el => {
+        if (matches.includes(el.dataset.id)) {
+          el.classList.add("match");
+        } else {
+          el.classList.add("dimmed");
+        }
+      });
+
+      summary.textContent = `${matches.length} spinal ${matches.length === 1 ? "level" : "levels"} associated with "${query}". Showing top result.`;
+      summary.classList.add("visible");
+
+      selectVertebra(matches[0], { preserveMatch: true, fromSearch: true });
+    }
+
+    function selectRegion(regionName) {
+      const firstId = Object.entries(vertebraData).find(([id, d]) => d.region === regionName)?.[0];
+      if (firstId) selectVertebra(firstId);
+    }
+
+    /* ========================================================
+       EVENT BINDINGS
+       ======================================================== */
+    document.addEventListener("DOMContentLoaded", () => {
+      initSpine();
+
+      const searchInput = document.getElementById("searchInput");
+      const clearBtn = document.getElementById("clearSearch");
+
+      let searchTimeout;
+      searchInput.addEventListener("input", e => {
+        const v = e.target.value;
+        clearBtn.classList.toggle("visible", v.length > 0);
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          if (v.trim()) runSearch(v);
+          else showWelcome();
+        }, 200);
+      });
+
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        clearBtn.classList.remove("visible");
+        showWelcome();
+        searchInput.focus();
+      });
+
+      document.querySelectorAll(".chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          const q = chip.dataset.search;
+          searchInput.value = q;
+          clearBtn.classList.add("visible");
+          runSearch(q);
+        });
+      });
+
+      document.querySelectorAll(".region-tab").forEach(tab => {
+        tab.addEventListener("click", () => selectRegion(tab.dataset.region));
+      });
+
+      document.getElementById("resetBtn").addEventListener("click", () => {
+        searchInput.value = "";
+        clearBtn.classList.remove("visible");
+        showWelcome();
+      });
+    });
+  </script>
 </body>
 </html>
