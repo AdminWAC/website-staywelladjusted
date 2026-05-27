@@ -34,7 +34,7 @@ const renderBlock = (block: BlogContent, i: number) => {
         </ul>
       );
     case "image":
-      return <img key={i} src={block.src} alt={block.alt || ""} className="rounded-lg my-6 w-full" />;
+      return null;
   }
 };
 
@@ -61,6 +61,7 @@ const BlogPost = () => {
   if (!post) return <Navigate to="/" replace />;
 
   const related = getRelatedPosts(post.slug, 5);
+  const articleContent = post.content?.filter((block) => block.type !== "image") ?? [];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -138,7 +139,7 @@ const BlogPost = () => {
           <img src={post.image} alt={post.imageAlt || post.title} className="rounded-xl w-full mb-8 object-cover max-h-[460px]" />
 
           <div className="prose-content">
-            {post.content?.map(renderBlock)}
+            {articleContent.map(renderBlock)}
           </div>
 
           {/* Author bio card */}

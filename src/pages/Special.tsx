@@ -145,29 +145,6 @@ const Special = () => {
         </div>
       </section>
 
-      {/* Auto-scrolling image gallery */}
-      <section className="py-8 bg-[#fdf6ee] overflow-hidden">
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-hidden"
-          style={{ whiteSpace: "nowrap" }}
-        >
-          {/* Duplicate images for seamless loop */}
-          {[...galleryImages, ...galleryImages].map((src, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 w-[180px] h-[180px] rounded-lg overflow-hidden"
-            >
-              <img
-                 src={src}
-                 alt={`Well Adjusted team photo ${(i % galleryImages.length) + 1}`}
-                 className="w-full h-full object-cover"
-                 loading="lazy"
-               />
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Google Maps + Locations */}
       <section className="py-12 bg-muted">

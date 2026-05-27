@@ -1,10 +1,22 @@
 import imgDavid from "@/assets/team/david-hughes.png";
+import imgFrancio from "@/assets/team/francio-sousa.jpg";
 import correctiveChiropracticCover from "@/assets/blog/corrective-chiropractic-care.png";
 import arlingtonHowOften from "@/assets/blog/arlington-how-often-chiropractor.jpg";
 import lovelandStress from "@/assets/blog/loveland-stress-signs.jpg";
 import greeleyAtrophy from "@/assets/blog/greeley-muscle-atrophy.jpg";
 import fortCollinsDecompression from "@/assets/blog/fort-collins-spinal-decompression.jpg";
 import erieChildren from "@/assets/blog/erie-children-chiropractor.jpg";
+
+const francioBio =
+  "Francio Sousa is the Digital Dominance Lead for Well Adjusted Chiropractic, partnering with the clinical team to share trusted, evidence-informed insights on chiropractic care, recovery, and family wellness.";
+
+const francioPostSlugs = new Set([
+  "how-often-should-you-see-a-chiropractor",
+  "signs-your-body-is-shutting-down-from-stress",
+  "can-you-regain-muscle-that-has-atrophied",
+  "do-chiropractors-recommend-decompression-for-neck-or-low-back",
+  "what-age-can-you-start-seeing-a-chiropractor",
+]);
 
 export interface BlogPost {
   slug: string;
@@ -28,13 +40,14 @@ export type BlogContent =
   | { type: "ul"; items: string[] }
   | { type: "image"; src: string; alt?: string };
 
-export const blogPosts: BlogPost[] = [
+const rawBlogPosts: BlogPost[] = [
   {
     slug: "how-often-should-you-see-a-chiropractor",
     title: "How Often Should You See a Chiropractor?",
     date: "March 27, 2026",
-    author: "Dr. David Hughes",
-    authorImage: imgDavid,
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
     category: "Chiropractic Care",
     excerpt:
       "If you've been searching for arlington chiropractors, chances are you're either dealing with discomfort, looking to improve your posture, or simply trying to understand how chiropractic care works.",
@@ -45,7 +58,7 @@ export const blogPosts: BlogPost[] = [
       { type: "p", text: "One of the most common questions people ask before starting care is:" },
       { type: "p", text: "How often should I see a Chiropractor?" },
       { type: "p", text: "The answer isn't always straightforward - but understanding how chiropractic care works will help you set the right expectations and get the best results." },
-      { type: "image", src: arlingtonHowOften, alt: "A man holding his neck in pain while talking to a female doctor" },
+      
       { type: "h2", text: "Why Chiropractic Care Isn't \"One-Size-Fits-All\"" },
       { type: "p", text: "Unlike taking medication for temporary relief, chiropractic care focuses on how your body is currently functioning and the overall state of your nerve system." },
       { type: "p", text: "That means your care plan depends on several factors, including:" },
@@ -133,8 +146,9 @@ export const blogPosts: BlogPost[] = [
     slug: "signs-your-body-is-shutting-down-from-stress",
     title: "What Are the Signs Your Body Is Shutting Down from Stress?",
     date: "March 26, 2026",
-    author: "Dr. David Hughes",
-    authorImage: imgDavid,
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
     category: "Wellness",
     excerpt:
       "If you've been searching for therapeutic massage therapists in Loveland CO, chances are your body has been sending you signals that something isn't right.",
@@ -146,7 +160,7 @@ export const blogPosts: BlogPost[] = [
       { type: "p", text: "So the question is:" },
       { type: "p", text: "What Are the Signs Your Body Is Shutting Down from Stress?" },
       { type: "p", text: "Let's break it down." },
-      { type: "image", src: lovelandStress, alt: "A woman sitting on the floor with a laptop, holding her neck in pain" },
+      
       { type: "h2", text: "How Chronic Stress Affects Your Body" },
       { type: "p", text: "Your body is designed to handle short bursts of stress. This is known as the fight-or-flight response." },
       { type: "p", text: "But when stress becomes chronic, your body stays in that state for too long and serious issues can arise." },
@@ -232,8 +246,9 @@ export const blogPosts: BlogPost[] = [
     slug: "can-you-regain-muscle-that-has-atrophied",
     title: "Can You Regain Muscle That Has Atrophied?",
     date: "March 25, 2026",
-    author: "Dr. David Hughes",
-    authorImage: imgDavid,
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
     category: "Wellness",
     excerpt:
       "If you've been searching for massage therapists Greeley CO, there's a good chance you're dealing with muscle weakness, stiffness, or loss of strength after an injury or period of inactivity.",
@@ -244,7 +259,7 @@ export const blogPosts: BlogPost[] = [
       { type: "p", text: "One common concern people have is:" },
       { type: "p", text: "Can you regain muscle that has atrophied?" },
       { type: "p", text: "The good news is - in most cases, yes, you can. But it requires the right approach." },
-      { type: "image", src: greeleyAtrophy, alt: "A woman performing a squat exercise with a barbell in a gym" },
+      
       { type: "h2", text: "What Is Muscle Atrophy?" },
       { type: "p", text: "Muscle atrophy happens when muscle tissue decreases in size due to:" },
       { type: "ul", items: [
@@ -320,13 +335,14 @@ export const blogPosts: BlogPost[] = [
     slug: "do-chiropractors-recommend-decompression-for-neck-or-low-back",
     title: "Do Chiropractors Recommend Decompression For My Neck Or Low Back?",
     date: "March 24, 2026",
-    author: "Dr. David Hughes",
-    authorImage: imgDavid,
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
     category: "Chiropractic Care",
     excerpt:
       "If you've been searching for spinal decompression near me, chances are you're dealing with neck or low back discomfort, stiffness, or limited mobility.",
     image: fortCollinsDecompression,
-    imageAlt: "Spinal decompression therapy illustration",
+    imageAlt: "Chiropractor checking a patient’s neck and upper back posture",
     content: [
       { type: "p", text: "If you've been searching for spinal decompression near me, chances are you're dealing with neck or low back discomfort, stiffness, or limited mobility." },
       { type: "p", text: "One question that often comes up is:" },
@@ -388,8 +404,9 @@ export const blogPosts: BlogPost[] = [
     slug: "what-age-can-you-start-seeing-a-chiropractor",
     title: "What Age Can You Start Seeing a Chiropractor?",
     date: "March 23, 2026",
-    author: "Dr. David Hughes",
-    authorImage: imgDavid,
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
     category: "Family Care",
     excerpt:
       "If you've been searching for Chiropractic Care for Children in Erie CO, you might be wondering whether chiropractic care is appropriate for children - especially infants.",
@@ -400,7 +417,7 @@ export const blogPosts: BlogPost[] = [
       { type: "p", text: "A very common question from parents is:" },
       { type: "p", text: "What age can my child start seeing a chiropractor?" },
       { type: "p", text: "The answer may surprise you!" },
-      { type: "image", src: erieChildren, alt: "A young boy lying on a blue mat while an adult holds his hands and feet, performing a stretching exercise" },
+      
       { type: "h2", text: "Can Babies See a Chiropractor?" },
       { type: "p", text: "Yes - chiropractic care can be adapted for all ages, including newborns." },
       { type: "p", text: "However, it's important to understand that infant chiropractic care is completely different from adult chiropractic care." },
@@ -659,6 +676,22 @@ export const blogPosts: BlogPost[] = [
     externalUrl: "https://staywelladjusted.com/our-blog/",
   },
 ];
+
+export const blogPosts: BlogPost[] = rawBlogPosts.map((post) => {
+  const content = post.content?.filter((block) => block.type !== "image");
+
+  if (!francioPostSlugs.has(post.slug)) {
+    return content ? { ...post, content } : post;
+  }
+
+  return {
+    ...post,
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    content,
+  };
+});
 
 export const getRelatedPosts = (slug: string, count = 5): BlogPost[] => {
   return blogPosts.filter((p) => p.slug !== slug).slice(0, count);

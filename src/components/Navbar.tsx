@@ -82,7 +82,6 @@ const serviceLocations = [
 ];
 
 const navItems: NavItem[] = [
-  { label: "HEALTH STARTS HERE", path: "/health-starts-here" },
   {
     label: "SERVICES",
     path: "#",
@@ -100,6 +99,7 @@ const navItems: NavItem[] = [
     children: [
       { label: "History", path: "/history" },
       { label: "Meet The Team", path: "/meet-the-team" },
+      { label: "Health Starts Here", path: "/health-starts-here" },
       { label: "Our Blog", path: "/blog" },
       { label: "Our Technique", path: "/our-technique" },
     ],
