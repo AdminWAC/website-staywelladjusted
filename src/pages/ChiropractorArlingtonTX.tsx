@@ -32,7 +32,7 @@ const PALETTE = {
 const doctors = [
   { name: "Cody Eischeid, D.C.", photo: codyEischeid },
   { name: "Averi Hughes", photo: averiHughes },
-  { name: "Tatiana Boyd", photo: tatianaBoyd },
+  { name: "Tatiana Gottlieb", photo: tatianaBoyd },
 ];
 
 const reviews = [

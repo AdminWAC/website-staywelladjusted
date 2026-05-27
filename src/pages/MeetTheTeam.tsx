@@ -80,7 +80,7 @@ const teamByTab: Record<string, TeamMember[]> = {
       image: imgCody,
     },
     {
-      name: "Tatiana Boyd",
+      name: "Tatiana Gottlieb",
       title: "Lead Front Desk & Chiropractic Assistant",
       image: imgTatiana,
       overlayName: true,
