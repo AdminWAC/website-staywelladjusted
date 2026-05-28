@@ -34,6 +34,11 @@ const staticEntries: SitemapEntry[] = [
 ];
 
 const blogSlugs = [
+  "how-long-does-it-take-to-realign-your-spine-arlington-tx",
+  "can-you-control-your-sympathetic-nervous-system-loveland-co",
+  "which-is-better-shockwave-or-softwave-therapy-greeley-co",
+  "are-more-moms-choosing-chiropractic-care-during-pregnancy-fort-collins-co",
+  "can-spinal-misalignment-cause-bowel-problems-erie-co",
   "how-often-should-you-see-a-chiropractor",
   "signs-your-body-is-shutting-down-from-stress",
   "can-you-regain-muscle-that-has-atrophied",
@@ -44,7 +49,11 @@ const blogSlugs = [
   "why-children-should-see-a-chiropractor",
   "the-benefits-of-seeing-a-chiropractor-for-neck-pain",
   "how-chiropractic-care-helps-with-numbness-and-tingling",
-  "how-to-reduce-muscle-inflammation-quickly",
+  "where-do-the-toxins-go-after-a-chiropractic-adjustment-arlington-tx",
+  "how-to-reduce-muscle-inflammation-quickly-loveland-co",
+  "what-is-the-most-common-side-effect-after-a-massage-greeley-co",
+  "how-many-inches-can-you-gain-from-decompressing-your-spine-fort-collins-co",
+  "can-chiropractic-help-with-infant-colic-erie-co",
 ];
 
 const entries: SitemapEntry[] = [
