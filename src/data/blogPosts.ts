@@ -1,14 +1,34 @@
 import imgDavid from "@/assets/team/david-hughes.png";
 import imgFrancio from "@/assets/team/francio-sousa.jpg";
+import imgNate from "@/assets/team/nathan-potter.png";
+
 import correctiveChiropracticCover from "@/assets/blog/corrective-chiropractic-care.png";
 import arlingtonHowOften from "@/assets/blog/arlington-how-often-chiropractor.jpg";
 import lovelandStress from "@/assets/blog/loveland-stress-signs.jpg";
 import greeleyAtrophy from "@/assets/blog/greeley-muscle-atrophy.jpg";
 import fortCollinsDecompression from "@/assets/blog/fort-collins-spinal-decompression.jpg";
 import erieChildren from "@/assets/blog/erie-children-chiropractor.jpg";
+import arlingtonRealignSpine from "@/assets/blog/arlington-realign-spine.jpg";
+import lovelandSympathetic from "@/assets/blog/loveland-sympathetic-nervous.jpg";
+import greeleyShockwave from "@/assets/blog/greeley-shockwave-vs-softwave.jpg";
+import fortCollinsPregnancy from "@/assets/blog/fort-collins-pregnancy-chiropractic.jpg";
+import erieBowel from "@/assets/blog/erie-spinal-misalignment-bowel.jpg";
+import numbnessAndTingling from "@/assets/blog/numbness-and-tingling.jpg";
+import arlingtonToxins from "@/assets/blog/arlington-toxins.webp";
+import lovelandInflammation from "@/assets/blog/loveland-muscle-inflammation.webp";
+import greeleyMassage from "@/assets/blog/greeley-massage-side-effects.webp";
+import fortCollinsInches from "@/assets/blog/fort-collins-decompression-inches.webp";
+import erieInfantColic from "@/assets/blog/erie-infant-colic.jpg";
 
 const francioBio =
   "Francio Sousa is the Digital Dominance Lead for Well Adjusted Chiropractic, partnering with the clinical team to share trusted, evidence-informed insights on chiropractic care, recovery, and family wellness.";
+
+const davidBio =
+  "Dr. David Hughes knew at 14 that he wanted to be a chiropractor. He earned his B.S. in Anatomy from Parker College of Chiropractic. He actively contributes to research, mentorship, and chiropractic advocacy. He co-founded the Formerly \"Gateway to Wellness Foundation\", supporting those in need. Working alongside family, he brings a personal touch to patient care.";
+
+const nateBio =
+  "Dr. Nate Potter is a chiropractor at Well Adjusted Chiropractic in Greeley, CO. He earned his Doctor of Chiropractic from Life University in 2012 after undergraduate studies at Oklahoma State, with a major in English. Drawing on his clinical expertise and advanced training in neurologically focused techniques, Dr. Nate reviews each article for accuracy before publication.";
+
 
 const francioPostSlugs = new Set([
   "how-often-should-you-see-a-chiropractor",
@@ -16,6 +36,16 @@ const francioPostSlugs = new Set([
   "can-you-regain-muscle-that-has-atrophied",
   "do-chiropractors-recommend-decompression-for-neck-or-low-back",
   "what-age-can-you-start-seeing-a-chiropractor",
+  "how-long-does-it-take-to-realign-your-spine-arlington-tx",
+  "can-you-control-your-sympathetic-nervous-system-loveland-co",
+  "which-is-better-shockwave-or-softwave-therapy-greeley-co",
+  "are-more-moms-choosing-chiropractic-care-during-pregnancy-fort-collins-co",
+  "can-spinal-misalignment-cause-bowel-problems-erie-co",
+  "where-do-the-toxins-go-after-a-chiropractic-adjustment-arlington-tx",
+  "how-to-reduce-muscle-inflammation-quickly-loveland-co",
+  "what-is-the-most-common-side-effect-after-a-massage-greeley-co",
+  "how-many-inches-can-you-gain-from-decompressing-your-spine-fort-collins-co",
+  "can-chiropractic-help-with-infant-colic-erie-co",
 ]);
 
 export interface BlogPost {
@@ -25,6 +55,10 @@ export interface BlogPost {
   author: string;
   authorImage?: string;
   authorBio?: string;
+  reviewer?: string;
+  reviewerImage?: string;
+  reviewerBio?: string;
+
   excerpt: string;
   image: string;
   imageAlt?: string;
@@ -41,6 +75,406 @@ export type BlogContent =
   | { type: "image"; src: string; alt?: string };
 
 const rawBlogPosts: BlogPost[] = [
+  {
+    slug: "how-long-does-it-take-to-realign-your-spine-arlington-tx",
+    title: "How Long Does It Take to Realign Your Spine?",
+    date: "March 30, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Chiropractic Care",
+    excerpt:
+      "If you've been searching about soreness after adjustment or wondering how long it takes to feel results from chiropractic care in Arlington TX, you're not alone.",
+    image: arlingtonRealignSpine,
+    imageAlt: "A woman shown in three stages of posture correction, moving from a slouched position to standing straight",
+    content: [
+      { type: "p", text: "If you've been searching about soreness after adjustment or wondering how long it takes to feel results from chiropractic care, you're not alone." },
+      { type: "p", text: "One of the most common questions patients ask is: How long does it take to realign your spine?" },
+      { type: "p", text: "The honest answer is - it depends on your body, your condition, and your consistency with care." },
+
+      { type: "h2", text: "What Does \"Realigning Your Spine\" Actually Mean?" },
+      { type: "p", text: "Spinal \"realignment\" doesn't mean your bones are permanently out of place and instantly fixed in one visit." },
+      { type: "p", text: "Instead, chiropractic care focuses on:" },
+      { type: "ul", items: [
+        "Restoring proper joint movement",
+        "Releasing tension in muscles and fascia",
+        "Improving nervous system communication",
+      ]},
+      { type: "p", text: "This is a process, not a one-time event." },
+
+      { type: "h2", text: "How Long Does It Usually Take?" },
+      { type: "p", text: "While every case is different, many patients begin to notice changes within:" },
+      { type: "ul", items: [
+        "A few visits (initial relief)",
+        "A few weeks (improved mobility and reduced tension)",
+        "Ongoing care (long-term correction and wellness)",
+      ]},
+      { type: "p", text: "Consistency plays a major role in how quickly your body adapts." },
+
+      { type: "h2", text: "Why You Might Feel Soreness After an Adjustment" },
+      { type: "p", text: "Some people may experience some soreness after adjustments, especially in the beginning of care." },
+      { type: "p", text: "This happens because:" },
+      { type: "ul", items: [
+        "Your body is adapting to new movement patterns",
+        "Muscles are being activated differently",
+        "Tension is shifting and releasing",
+        "Nerve System is responding",
+      ]},
+      { type: "p", text: "It can be similar to how your body feels after a workout. This soreness is usually mild and temporary." },
+
+      { type: "h2", text: "Factors That Affect Your Progress" },
+      { type: "p", text: "Several factors influence how long it takes to realign your spine:" },
+      { type: "ul", items: [
+        "How long the issue has been present",
+        "Your posture and daily habits",
+        "Your age and activity level",
+        "How consistent you are with your doctor's recommendations",
+      ]},
+
+      { type: "h2", text: "The Importance of Consistency" },
+      { type: "p", text: "One of the biggest mistakes people make is stopping care too early, once they experience the initial relief. Our goals are bigger than just temporary pain relief and the best benefits take some time to experience." },
+      { type: "p", text: "Your body needs time to:" },
+      { type: "ul", items: [
+        "Adapt to changes from the adjustments",
+        "Regain stability",
+        "Maintain and hold proper alignment",
+      ]},
+      { type: "p", text: "Consistent visits help establish progress and long-term results." },
+
+      { type: "h2", text: "Chiropractic Care Is About Function, Not Just Pain" },
+      { type: "p", text: "Realigning your spine is not just about reducing discomfort - it's about improving how your body functions overall." },
+      { type: "p", text: "This includes:" },
+      { type: "ul", items: [
+        "Better posture",
+        "Improved mobility",
+        "Reduced tension",
+        "Better nervous system function",
+      ]},
+
+      { type: "h2", text: "The Bottom Line" },
+      { type: "p", text: "There's no exact timeline that fits everyone. Each patient at Well Adjusted Chiropractic receives an individual care plan based on their situation, personal goals and our exam findings." },
+      { type: "p", text: "Realigning your spine is a gradual process that depends on your body and your commitment to regular chiropractic care." },
+
+      { type: "h2", text: "Looking for Chiropractic Care in Arlington TX?" },
+      { type: "p", text: "If you're experiencing soreness after an adjustment or want to improve your spinal health, the team at Well Adjusted Chiropractic in Arlington TX is here to help!" },
+      { type: "p", text: "We provide personalized care plans designed to help you feel better, move better, and stay aligned long-term." },
+      { type: "p", text: "Schedule your visit today and start your journey toward better health!" },
+    ],
+  },
+  {
+    slug: "can-you-control-your-sympathetic-nervous-system-loveland-co",
+    title: "Can You Control Your Sympathetic Nervous System?",
+    date: "March 31, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Nervous System Health",
+    excerpt:
+      "Can you actually control your sympathetic nervous system? The short answer is — you can't directly control it, but you can influence it in powerful ways.",
+    image: lovelandSympathetic,
+    imageAlt: "Illustration representing the parasympathetic versus sympathetic nervous system",
+    content: [
+      { type: "p", text: "If you've been researching the parasympathetic versus sympathetic nervous system, you may be wondering: Can you actually control your sympathetic nervous system?" },
+      { type: "p", text: "The short answer is - you can't directly control it, but you can influence it in powerful ways." },
+      { type: "p", text: "Understanding how this system works can help you reduce stress, improve recovery, and support your overall health." },
+
+      { type: "h2", text: "What Is the Sympathetic Nervous System?" },
+      { type: "p", text: "Your sympathetic nervous system is responsible for your body's \"fight or flight\" response." },
+      { type: "p", text: "It activates when your body perceives stress and prepares you to react by:" },
+      { type: "ul", items: [
+        "Increasing heart rate",
+        "Tightening muscles",
+        "Raising alertness",
+        "Redirecting energy to survival functions",
+      ]},
+      { type: "p", text: "This response is helpful in short bursts - but not when it stays constantly activated from most modern life stressors." },
+
+      { type: "h2", text: "Parasympathetic vs Sympathetic Nervous System" },
+      { type: "p", text: "To understand balance, you need to look at both systems:" },
+      { type: "ul", items: [
+        "Sympathetic nervous system → \"fight or flight\" (stress mode)",
+        "Parasympathetic nervous system → \"rest and digest\" (recovery mode)",
+      ]},
+      { type: "p", text: "The goal is not to eliminate stress - but to restore balance between these two systems." },
+
+      { type: "h2", text: "Can You Control It?" },
+      { type: "p", text: "You don't consciously control your sympathetic nervous system like you would move your arm or leg." },
+      { type: "p", text: "However, you can influence how often and how intensely it activates." },
+      { type: "p", text: "Think of it like this:" },
+      { type: "ul", items: [
+        "You can't turn it off manually",
+        "But you can train your body to shift out of stress mode faster",
+      ]},
+
+      { type: "h2", text: "Signs Your Sympathetic System Is Overactive" },
+      { type: "p", text: "When your body stays in \"fight or flight\" too long, you may notice:" },
+      { type: "ul", items: [
+        "Constant tension in the neck and shoulders",
+        "Fatigue or burnout",
+        "Poor concentration",
+        "Difficulty sleeping",
+        "Increased stress or anxiety",
+        "Digestive issues",
+      ]},
+      { type: "p", text: "This is often a sign your body is struggling to return to balance." },
+
+      { type: "h2", text: "How to Support Nervous System Balance" },
+      { type: "p", text: "There are several ways to help your body shift toward a healthier balance:" },
+      { type: "h3", text: "Breathing Techniques" },
+      { type: "p", text: "Slow, controlled breathing focusing on longer exhales can help activate the parasympathetic system." },
+      { type: "h3", text: "Movement and Exercise" },
+      { type: "p", text: "Gentle movement and stretching helps release built-up tension." },
+      { type: "h3", text: "Sleep and Recovery" },
+      { type: "p", text: "Quality sleep is essential for nervous system regulation." },
+      { type: "h3", text: "Reducing Physical Stress" },
+      { type: "p", text: "Posture and spinal alignment play a bigger role than most people realize." },
+
+      { type: "h2", text: "The Role of Chiropractic Care" },
+      { type: "p", text: "Chiropractic care focuses on improving nerve system function by addressing spinal movement, alignment and tissue tone." },
+      { type: "p", text: "When your spinal joints are not moving properly, inflammation and nerve irritation can result." },
+      { type: "p", text: "Chiropractic adjustments help:" },
+      { type: "ul", items: [
+        "Reduce physical, mental and emotional tension",
+        "Improve communication between brain and body",
+        "Support better balance between sympathetic and parasympathetic systems",
+      ]},
+
+      { type: "h2", text: "Why This Matters" },
+      { type: "p", text: "When your nervous system is balanced, your body can:" },
+      { type: "ul", items: [
+        "Recover more efficiently",
+        "Manage stress better",
+        "Improve overall function",
+      ]},
+      { type: "p", text: "That means your stress resilience is increased and you are more adaptable to life events!" },
+
+      { type: "h2", text: "The Bottom Line" },
+      { type: "p", text: "You may not directly control your sympathetic nervous system - but you can absolutely influence it." },
+      { type: "p", text: "Small, consistent changes can make a big difference in how your body responds to stress." },
+
+      { type: "h2", text: "Chiropractic Care in Loveland CO" },
+      { type: "p", text: "If you're looking to better manage your stress and improve nervous system balance, the team at Well Adjusted Chiropractic in Loveland CO is here to help!" },
+      { type: "p", text: "We focus on helping your body function better so you can feel more balanced, energized, and heal naturally." },
+    ],
+  },
+  {
+    slug: "which-is-better-shockwave-or-softwave-therapy-greeley-co",
+    title: "Which Is Better: Shockwave or SoftWave Therapy?",
+    date: "April 1, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Therapies",
+    excerpt:
+      "If you've been searching for a shockwave clinic in Greeley CO, you've probably come across both shockwave therapy and SoftWave therapy. Here are the important differences.",
+    image: greeleyShockwave,
+    imageAlt: "A medical professional in blue scrubs using a handheld device on a patient's leg",
+    content: [
+      { type: "p", text: "If you've been searching for a shockwave clinic in Greeley CO, you've probably come across both shockwave therapy and SoftWave therapy." },
+      { type: "p", text: "They sound similar - and both are used for pain relief and recovery - but there are important differences that can influence your results." },
+      { type: "p", text: "So, which one is better?" },
+
+      { type: "h2", text: "What Is Shockwave Therapy?" },
+      { type: "p", text: "Shockwave therapy uses acoustic waves to stimulate healing in injured or painful areas." },
+      { type: "p", text: "It is commonly used at a shockwave clinic to treat:" },
+      { type: "ul", items: [
+        "Chronic pain",
+        "Tendon injuries",
+        "Muscle tightness",
+      ]},
+      { type: "p", text: "The treatment works by increasing blood flow and activating the body's natural healing response." },
+
+      { type: "h2", text: "What Is SoftWave Therapy?" },
+      { type: "p", text: "SoftWave therapy is a more advanced form of wave therapy that uses electrohydraulic waves to reach deeper tissue and cover a broader area." },
+      { type: "p", text: "It is designed to:" },
+      { type: "ul", items: [
+        "Stimulate cellular repair",
+        "Improve circulation",
+        "Accelerate healing",
+        "Reduce inflammation",
+      ]},
+
+      { type: "h2", text: "Key Differences Between Shockwave and SoftWave" },
+      { type: "h3", text: "Treatment Focus" },
+      { type: "ul", items: [
+        "Shockwave → more targeted treatment",
+        "SoftWave → broader coverage",
+      ]},
+      { type: "h3", text: "Intensity" },
+      { type: "ul", items: [
+        "Shockwave → typically more intense sensation",
+        "SoftWave → often more comfortable",
+      ]},
+      { type: "h3", text: "Application" },
+      { type: "p", text: "SoftWave often allows for a broader healing approach, while shockwave delivers focused energy to specific areas." },
+
+      { type: "h2", text: "When SoftWave May Be the Better Choice" },
+      { type: "p", text: "SoftWave therapy may be preferred when:" },
+      { type: "ul", items: [
+        "A larger area needs treatment",
+        "A more comfortable experience is desired",
+        "A broader healing approach is beneficial",
+      ]},
+
+      { type: "h2", text: "Why Shockwave Therapy Is Still a Powerful Option" },
+      { type: "p", text: "Shockwave therapy remains one of the most trusted non-invasive treatments for:" },
+      { type: "ul", items: [
+        "Tendon-related injuries",
+        "Chronic localized pain",
+        "Sports-related conditions",
+      ]},
+      { type: "p", text: "It's widely used because it delivers focused energy exactly where it's needed." },
+
+      { type: "h2", text: "Combining Shockwave With Chiropractic Care" },
+      { type: "p", text: "At a professional shockwave clinic, combining therapies often leads to better results." },
+      { type: "p", text: "Chiropractic care helps:" },
+      { type: "ul", items: [
+        "Restore proper alignment",
+        "Improve movement",
+        "Support nervous system function",
+      ]},
+      { type: "p", text: "Shockwave therapy then enhances specific tissue healing - making the combination highly effective." },
+
+      { type: "h2", text: "Shockwave Clinic in Greeley CO" },
+      { type: "p", text: "If you're searching for a shockwave clinic in Greeley CO, Well Adjusted Chiropractic offers advanced shockwave therapy combined with personalized chiropractic care." },
+      { type: "p", text: "Schedule your visit today and take the next step toward faster recovery, better movement and doing what you love most pain free!" },
+    ],
+  },
+  {
+    slug: "are-more-moms-choosing-chiropractic-care-during-pregnancy-fort-collins-co",
+    title: "Are More Moms Choosing Chiropractic Care During Pregnancy?",
+    date: "April 2, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Pregnancy Care",
+    excerpt:
+      "If you've been searching about chiropractic and pregnancy, you're likely wondering if chiropractic care is safe or healthy during pregnancy. Here's what to know.",
+    image: fortCollinsPregnancy,
+    imageAlt: "A pregnant woman performing a stretch on a yoga mat with the assistance of a professional",
+    content: [
+      { type: "p", text: "If you've been searching about chiropractic and pregnancy, you're likely wondering if chiropractic care is safe or healthy during pregnancy." },
+      { type: "p", text: "This is a very common question - and an important one." },
+      { type: "p", text: "So, are chiropractic adjustments safe during pregnancy?" },
+
+      { type: "h2", text: "Why Pregnancy Affects the Body So Much" },
+      { type: "p", text: "During pregnancy, your body goes through major physical changes, including:" },
+      { type: "ul", items: [
+        "Large postural shifts",
+        "Increased weight in the front of the body",
+        "Powerful adaptations in the nerve system",
+        "Hormonal changes affecting ligament laxity",
+        "Increased stress on the spine and pelvis",
+      ]},
+      { type: "p", text: "These changes can lead to:" },
+      { type: "ul", items: [
+        "Lower back pain or sciatica",
+        "Pelvic pressure and discomfort",
+        "Tension in the hips",
+        "Difficulty sleeping or getting comfortable",
+        "Neck pain, carpal tunnel issues and more",
+      ]},
+
+      { type: "h2", text: "Is Chiropractic Care Safe During Pregnancy?" },
+      { type: "p", text: "Chiropractic care is absolutely safe for pregnant women, when the chiropractor is trained and experienced in prenatal care." },
+      { type: "p", text: "Adjustments during pregnancy are:" },
+      { type: "ul", items: [
+        "Gentle and modified to your stage of pregnancy",
+        "Performed using specialized techniques and tables",
+        "Focused on comfort, safety and proper alignment",
+      ]},
+
+      { type: "h2", text: "The Importance of Pelvic Alignment" },
+      { type: "p", text: "One key focus during pregnancy is maintaining proper pelvic alignment." },
+      { type: "p", text: "When the pelvis is balanced, it often:" },
+      { type: "ul", items: [
+        "Reduces pain and discomfort",
+        "Supports better movement and sleep",
+        "Creates an optimal environment for the baby and mother",
+      ]},
+
+      { type: "h2", text: "When Should You Consider Chiropractic Care?" },
+      { type: "p", text: "You should consider chiropractic care if you're experiencing:" },
+      { type: "ul", items: [
+        "Back, hip or sciatic pain",
+        "Nausea and headaches",
+        "Postural tension and discomfort",
+        "Difficulty moving comfortably",
+        "Digestive challenges",
+      ]},
+      { type: "p", text: "Even without pain, many expecting mothers choose chiropractic care as part of their wellness routine to help their child have the best start to life possible." },
+
+      { type: "h2", text: "What to Expect During a Visit" },
+      { type: "p", text: "Each visit is tailored to where you are in your pregnancy journey. Our team uses gentle, prenatal-specific techniques to help support your comfort, mobility and overall well-being throughout each trimester." },
+
+      { type: "h2", text: "Chiropractic Care for Pregnancy in Fort Collins CO" },
+      { type: "p", text: "If you're looking for support as a pregnant woman in Fort Collins CO, Well Adjusted Chiropractic offers gentle, personalized care designed to support your comfort and well-being throughout pregnancy." },
+      { type: "p", text: "Schedule your visit today and feel the difference!" },
+    ],
+  },
+  {
+    slug: "can-spinal-misalignment-cause-bowel-problems-erie-co",
+    title: "Can Spinal Misalignment Cause Bowel Problems?",
+    date: "April 3, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Whole-Body Wellness",
+    excerpt:
+      "If you've been searching for a Chiropractor in Erie, you may be surprised to learn that spinal health can be connected to digestion and bowel function.",
+    image: erieBowel,
+    imageAlt: "A woman examining a man's back",
+    content: [
+      { type: "p", text: "If you've been searching for a Chiropractor in Erie, you may be dealing with more than just back pain." },
+      { type: "p", text: "Many people are surprised to learn that spinal health can be connected to other functions in the body - including digestion." },
+      { type: "p", text: "So the question is: Can spinal misalignment cause bowel or digestive problems?" },
+
+      { type: "h2", text: "How the Spine and Digestive System Are Connected" },
+      { type: "p", text: "Your spine plays a key role in protecting the nervous system, which controls how your body functions - including digestion." },
+      { type: "p", text: "The nerves that influence bowel function originate in the spine and travel to the digestive organs." },
+      { type: "p", text: "When everything is working properly, communication between the brain and body is smooth and digestion is optimal." },
+
+      { type: "h2", text: "What Is Spinal Misalignment?" },
+      { type: "p", text: "Spinal misalignments are areas where the spine is not moving or functioning properly." },
+      { type: "p", text: "This can lead to:" },
+      { type: "ul", items: [
+        "Increased pain and tension",
+        "Restricted movement and poor posture",
+        "Stress on surrounding nerves",
+      ]},
+
+      { type: "h2", text: "The Role of the Nervous System" },
+      { type: "p", text: "Your nerve system regulates:" },
+      { type: "ul", items: [
+        "Muscle contractions and movement in the digestive tract",
+        "Timing of digestion and release of stomach acid and bile",
+        "Overall gut function and nutrient absorption",
+      ]},
+      { type: "p", text: "If there is nerve interference with your digestive system, it may affect how efficiently these processes occur." },
+
+      { type: "h2", text: "How Chiropractic Care Can Help" },
+      { type: "p", text: "Chiropractic care focuses on improving:" },
+      { type: "ul", items: [
+        "Spinal movement and biomechanics",
+        "Healthy alignment and posture",
+        "Nerve system function and communication",
+      ]},
+      { type: "p", text: "This supports your overall health and wellness, including digestion." },
+      { type: "p", text: "Many patients report improvements in:" },
+      { type: "ul", items: [
+        "Relief of constipation",
+        "More digestive ease",
+        "Increased feeling of wellbeing",
+      ]},
+
+      { type: "h2", text: "A Whole-Body Approach to Wellness" },
+      { type: "p", text: "Beginning chiropractic care can be a huge step toward improving your overall body function and wellness, digestion included!" },
+
+      { type: "h2", text: "Chiropractors in Erie CO" },
+      { type: "p", text: "If you're searching for a Chiropractor in Erie, the team at Well Adjusted Chiropractic provides exceptional personalized care focused on improving how your body functions as a whole." },
+      { type: "p", text: "Schedule your visit today and take a step toward better overall wellness!" },
+    ],
+  },
   {
     slug: "how-often-should-you-see-a-chiropractor",
     title: "How Often Should You See a Chiropractor?",
@@ -658,39 +1092,473 @@ const rawBlogPosts: BlogPost[] = [
     authorImage: imgDavid,
     excerpt:
       "Numbness and tingling are often signs of nerve interference. Learn how gentle chiropractic care can restore proper signaling.",
-    image:
-      "/images-wp/blog-2025-06.webp",
+    image: numbnessAndTingling,
     category: "Chiropractic Care",
     externalUrl: "https://staywelladjusted.com/our-blog/",
   },
   {
-    slug: "how-to-reduce-muscle-inflammation-quickly",
+    slug: "where-do-the-toxins-go-after-a-chiropractic-adjustment-arlington-tx",
+    title: "Where Do the Toxins Go After a Chiropractic Adjustment?",
+    date: "March 3, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Chiropractic Care",
+    excerpt:
+      "Many people who are new to chiropractic care ask an interesting question after their first visit: where do the toxins go after a chiropractic adjustment?",
+    image: arlingtonToxins,
+    imageAlt: "Where Do the Toxins Go After a Chiropractic Adjustment",
+    content: [
+      { type: "p", text: "Many people who are new to chiropractic care ask an interesting question after their first visit: Where do the toxins go after a chiropractic adjustment?" },
+      { type: "p", text: "Sometimes after an adjustment, people report feeling lighter, more energized, or occasionally even slightly tired for a few hours. Because of this, some assume the body is \"releasing toxins.\" But what is actually happening inside your body after an adjustment?" },
+      { type: "p", text: "Let's take a closer look at what science and chiropractic practice tell us." },
+
+      { type: "h2", text: "Understanding What Happens During a Chiropractic Adjustment" },
+      { type: "p", text: "A chiropractic adjustment focuses on restoring proper movement and alignment in the spine and joints. When joints in the spine become restricted or misaligned—often called subluxations—they can interfere with normal nerve communication between the brain and the body." },
+      { type: "p", text: "During an adjustment, a chiropractor applies a precise and controlled force to a specific joint. This helps restore normal motion, reduce pressure on surrounding nerves, and improve the body's ability to function properly." },
+      { type: "p", text: "Instead of \"pushing toxins out,\" the real goal of chiropractic care is to optimize how your nervous system communicates with the rest of your body." },
+
+      { type: "h2", text: "So Where Do the \"Toxins\" Go After an Adjustment?" },
+      { type: "p", text: "The short answer is: your body already has systems designed to process and remove waste naturally." },
+      { type: "p", text: "These systems include:" },
+      { type: "ul", items: [
+        "The liver, which filters and processes chemicals in the bloodstream",
+        "The kidneys, which remove waste through urine",
+        "The lymphatic system, which helps clear cellular waste and support immune function",
+        "The digestive system, which eliminates waste from the body",
+      ]},
+      { type: "p", text: "A chiropractic adjustment does not directly \"release toxins.\" However, by improving joint movement and nervous system communication, adjustments can support normal circulation and body function, which may help these systems operate more efficiently." },
+
+      { type: "h2", text: "Why Some People Feel Different After an Adjustment" },
+      { type: "p", text: "Even though toxins are not being flushed out in a dramatic way, people may still notice temporary sensations after an adjustment." },
+      { type: "p", text: "Some common experiences include:" },
+      { type: "ul", items: [
+        "Feeling relaxed or sleepy",
+        "Increased energy",
+        "Mild soreness similar to post-exercise soreness",
+        "Improved mobility",
+        "Better posture awareness",
+      ]},
+      { type: "p", text: "These changes often occur because the body is adapting to improved joint movement and nervous system signaling." },
+      { type: "p", text: "Think of it like rebooting a computer or stretching after sitting all day—your body is simply adjusting to a healthier pattern of movement." },
+
+      { type: "h2", text: "The Role of the Nervous System in Healing" },
+      { type: "p", text: "Your nervous system controls virtually every function in the body—from muscle movement to digestion and immune responses." },
+      { type: "p", text: "When spinal joints move properly, nerve signals can travel more efficiently between the brain and the body. Many chiropractors focus on adjustments because they help reduce mechanical stress on the nervous system." },
+      { type: "p", text: "This improved communication may help the body regulate itself better, which is why many patients report benefits such as:" },
+      { type: "ul", items: [
+        "Better mobility",
+        "Reduced tension",
+        "Improved posture",
+        "Greater overall comfort",
+      ]},
+
+      { type: "h2", text: "How to Support Your Body After an Adjustment" },
+      { type: "p", text: "After a chiropractic visit, there are simple things you can do to help your body adapt comfortably." },
+      { type: "h3", text: "Drink Water" },
+      { type: "p", text: "Staying hydrated supports circulation and helps your body maintain normal metabolic processes." },
+      { type: "h3", text: "Move Naturally" },
+      { type: "p", text: "Gentle movement like walking can help your joints adapt to their improved mobility." },
+      { type: "h3", text: "Pay Attention to Posture" },
+      { type: "p", text: "Many spinal issues come from daily habits like prolonged sitting, phone use, or poor ergonomics." },
+      { type: "h3", text: "Follow Your Chiropractor's Care Plan" },
+      { type: "p", text: "Consistent care often produces better long-term results than occasional visits." },
+
+      { type: "h2", text: "The Bottom Line" },
+      { type: "p", text: "The idea that chiropractic adjustments \"release toxins\" is a common myth. Your body already has sophisticated systems for filtering and eliminating waste." },
+      { type: "p", text: "What chiropractic care actually does is help restore proper spinal motion and support healthy nervous system function. When your body moves better and communicates better internally, it often performs better overall." },
+
+      { type: "h2", text: "Looking for Chiropractic Care in Arlington TX?" },
+      { type: "p", text: "If you're experiencing stiffness, tension, or discomfort and want to improve how your body moves and functions, professional chiropractic care may help." },
+      { type: "p", text: "If you are looking for arlington chiropractors, the team at Well Adjusted Chiropractic in Arlington TX focuses on personalized care designed to support spinal health, mobility, and overall wellness. In case you're in the Arlington area and curious about how chiropractic care can help you feel your best, consider scheduling a visit with Well Adjusted Chiropractic and start your journey toward better movement and comfort." },
+    ],
+  },
+  {
+    slug: "how-to-reduce-muscle-inflammation-quickly-loveland-co",
     title: "How to Reduce Muscle Inflammation Quickly (Chiropractor Tips)",
     date: "March 12, 2026",
     author: "Francio Sousa",
-    excerpt:
-      "Practical, chiropractor-approved tips to calm muscle inflammation fast — without relying on medication.",
-    image:
-      "/images-wp/blog-2025-06.webp",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
     category: "Wellness",
-    externalUrl: "https://staywelladjusted.com/our-blog/",
+    excerpt:
+      "Muscle inflammation is one of the most common causes of pain after physical activity, stress, poor posture, or injury. Here are effective ways to reduce it quickly.",
+    image: lovelandInflammation,
+    imageAlt: "How to Reduce Muscle Inflammation Quickly (Loveland CO Chiropractor Tips)",
+    content: [
+      { type: "h2", text: "How to Reduce Muscle Inflammation Quickly" },
+      { type: "p", text: "Muscle inflammation is one of the most common causes of pain after physical activity, stress, poor posture, or injury. Many people in Loveland, Colorado experience muscle inflammation in areas like the neck, lower back, and shoulders — especially after long work hours, workouts, or repetitive movements." },
+      { type: "p", text: "The good news is that there are several effective ways to reduce muscle inflammation quickly and help your body recover faster." },
+
+      { type: "h2", text: "1. Apply Cold Therapy" },
+      { type: "p", text: "Cold therapy is one of the fastest ways to reduce inflammation." },
+      { type: "p", text: "Ice helps by:" },
+      { type: "ul", items: [
+        "Reducing swelling",
+        "Slowing blood flow to the inflamed area",
+        "Decreasing pain signals",
+      ]},
+      { type: "p", text: "Apply an ice pack wrapped in a towel for 15–20 minutes at a time. This can be repeated several times throughout the day." },
+      { type: "p", text: "Cold therapy is particularly helpful after workouts or sudden muscle strain." },
+
+      { type: "h2", text: "2. Gentle Stretching" },
+      { type: "p", text: "Light stretching helps improve circulation and prevents muscles from tightening further." },
+      { type: "p", text: "Focus on slow and controlled movements such as:" },
+      { type: "ul", items: [
+        "Neck stretches",
+        "Hamstring stretches",
+        "Shoulder rolls",
+        "Lower back mobility exercises",
+      ]},
+      { type: "p", text: "Avoid aggressive stretching if the area is extremely painful." },
+
+      { type: "h2", text: "3. Stay Hydrated" },
+      { type: "p", text: "Dehydration can increase inflammation and delay muscle recovery." },
+      { type: "p", text: "Water helps flush inflammatory byproducts from the muscles and supports tissue repair." },
+      { type: "p", text: "Try to drink water consistently throughout the day, especially after exercise or long periods of physical activity." },
+
+      { type: "h2", text: "4. Rest the Inflamed Muscle" },
+      { type: "p", text: "One of the biggest mistakes people make is continuing to stress an inflamed muscle." },
+      { type: "p", text: "Allow the affected area time to recover by reducing repetitive movement or heavy physical activity." },
+      { type: "p", text: "Rest doesn't mean complete inactivity — light movement is usually beneficial — but avoid anything that worsens the pain." },
+
+      { type: "h2", text: "5. Chiropractic Care for Muscle Inflammation" },
+      { type: "p", text: "When muscle inflammation is caused by spinal misalignment, poor posture, or nerve irritation, chiropractic adjustments may help reduce pressure on the surrounding muscles and joints." },
+      { type: "p", text: "By restoring proper joint movement, chiropractic care can help:" },
+      { type: "ul", items: [
+        "Reduce muscle tension",
+        "Improve circulation",
+        "Support faster recovery",
+        "Prevent recurring inflammation",
+      ]},
+      { type: "p", text: "Many patients in Loveland CO seek chiropractic care when muscle inflammation becomes persistent or keeps returning." },
+
+      { type: "h2", text: "When Should You Seek Professional Help?" },
+      { type: "p", text: "If muscle inflammation lasts more than a few days or keeps returning, it may indicate an underlying issue such as:" },
+      { type: "ul", items: [
+        "Joint restriction",
+        "Nerve irritation",
+        "Postural imbalance",
+        "Overuse injuries",
+      ]},
+      { type: "p", text: "A professional evaluation can help determine the root cause and create a treatment plan to support long-term recovery." },
+
+      { type: "h2", text: "Final Thoughts" },
+      { type: "p", text: "Muscle inflammation is common, but with the right approach it can often be reduced quickly. Cold therapy, gentle movement, hydration, and proper rest all play an important role in recovery." },
+      { type: "p", text: "If inflammation becomes persistent or affects your daily activities, professional care like therapeutic massage therapists may help address the underlying cause and improve overall mobility." },
+    ],
+  },
+  {
+    slug: "what-is-the-most-common-side-effect-after-a-massage-greeley-co",
+    title: "What is the most common side effect after a massage",
+    date: "March 19, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Wellness",
+    excerpt:
+      "If you've ever searched for massage therapists Greeley CO, chances are you're looking for relief from muscle tension, stress, or chronic discomfort. Here's what to expect after a massage.",
+    image: greeleyMassage,
+    imageAlt: "massage therapists greeley co",
+    content: [
+      { type: "p", text: "If you've ever searched for massage therapists Greeley CO, chances are you're looking for relief from muscle tension, stress, or chronic discomfort." },
+      { type: "p", text: "Massage therapy is widely known for helping the body relax and recover – but many people wonder:" },
+      { type: "p", text: "what is the most common side effect after a massage?" },
+      { type: "p", text: "Let's break it down so you know exactly what to expect and how chiropractic care can complement your recovery." },
+
+      { type: "h2", text: "The Most Common Side Effect: Mild Soreness" },
+      { type: "p", text: "The most common side effect after a massage is temporary muscle soreness." },
+      { type: "p", text: "This can feel similar to what you experience after a workout. Why does this happen?" },
+      { type: "p", text: "During a massage, muscles are:" },
+      { type: "ul", items: [
+        "Manipulated",
+        "Stretched",
+        "Pressed and stimulated",
+      ]},
+      { type: "p", text: "This increases blood flow and releases built-up tension. If your muscles were tight or inflamed before, this sudden change can lead to mild soreness for 24 – 48 hours." },
+
+      { type: "h2", text: "Other Normal Reactions After a Massage" },
+      { type: "p", text: "In addition to soreness, some people may experience:" },
+      { type: "ul", items: [
+        "Feeling very relaxed or sleepy",
+        "Increased thirst",
+        "Slight fatigue",
+        "Improved mobility",
+        "Temporary sensitivity in certain areas",
+      ]},
+      { type: "p", text: "These are all normal responses as your body adjusts." },
+
+      { type: "h2", text: "Why This Happens (And Why It's Not a Bad Thing)" },
+      { type: "p", text: "Massage therapy improves circulation and helps muscles relax. When blood flow increases, your body begins to repair and rebalance tissues more efficiently." },
+      { type: "p", text: "This is actually part of the recovery process – not something harmful." },
+      { type: "p", text: "However, if your body is consistently out of alignment, muscle tension tends to come back." },
+
+      { type: "h2", text: "How Chiropractic Care Enhances the Results" },
+      { type: "p", text: "This is where chiropractic care plays a key role." },
+      { type: "p", text: "While massage focuses on muscles, chiropractic care focuses on:" },
+      { type: "ul", items: [
+        "Joint alignment",
+        "Spinal movement",
+        "Nervous system function",
+      ]},
+      { type: "p", text: "If joints are not moving properly, muscles will continue to compensate – leading to recurring tightness and discomfort." },
+      { type: "p", text: "By combining massage with chiropractic adjustments, you can:" },
+      { type: "ul", items: [
+        "Reduce muscle tension long-term",
+        "Improve posture",
+        "Support faster recovery",
+        "Prevent recurring inflammation",
+      ]},
+
+      { type: "h2", text: "Searching for Massage Therapists in Greeley CO?" },
+      { type: "p", text: "If you're looking for massage therapists in Greeley CO, it's important to think beyond temporary relief." },
+      { type: "p", text: "A combined approach that includes chiropractic care can help address both:" },
+      { type: "ul", items: [
+        "The symptoms (muscle tension)",
+        "The root cause (alignment and movement issues)",
+      ]},
+
+      { type: "h2", text: "How to Reduce Soreness After a Massage" },
+      { type: "p", text: "To help your body recover smoothly:" },
+      { type: "ul", items: [
+        "Drink plenty of water",
+        "Stay lightly active (walking helps)",
+        "Avoid intense workouts right after",
+        "Stretch gently",
+        "Follow your provider's recommendations",
+      ]},
+
+      { type: "h2", text: "The Bottom Line" },
+      { type: "p", text: "The most common side effect after a massage is temporary soreness, and it's usually a sign that your body is responding to treatment." },
+      { type: "p", text: "For longer-lasting results, combining massage therapy with chiropractic care can help your body function more efficiently and prevent recurring issues." },
+
+      { type: "h2", text: "Looking for Chiropractic Care in Greeley CO?" },
+      { type: "p", text: "If you've been searching for massage therapists Greeley CO but want a more complete solution for pain, tension, and recovery, chiropractic care can make a big difference." },
+      { type: "p", text: "The team at Well Adjusted Chiropractic in Greeley CO focuses on helping your body move better, recover faster, and stay aligned long-term." },
+      { type: "p", text: "If you're in the Greeley area, schedule a visit and experience the difference for yourself." },
+    ],
+  },
+  {
+    slug: "how-many-inches-can-you-gain-from-decompressing-your-spine-fort-collins-co",
+    title: "How many inches can you gain from decompressing your spine?",
+    date: "March 24, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Spinal Decompression",
+    excerpt:
+      "If you've ever searched for torque release technique near me, chances are you're looking for a natural way to improve posture, reduce tension, and maybe even stand a little taller.",
+    image: fortCollinsInches,
+    imageAlt: "torque release technique near me",
+    content: [
+      { type: "p", text: "If you've ever searched for torque release technique near me, chances are you're looking for a natural way to improve posture, reduce tension, and maybe even stand a little taller." },
+      { type: "p", text: "One of the most common questions people ask is:" },
+      { type: "p", text: "How many inches can you gain from decompressing your spine?" },
+      { type: "p", text: "Let's break down what actually happens when your spine is decompressed – and what kind of height changes are realistic." },
+
+      { type: "h2", text: "Can Spinal Decompression Make You Taller?" },
+      { type: "p", text: "The short answer: Yes, but temporarily—and within a small range." },
+      { type: "p", text: "Most people can gain between 0.5 to 1.5 inches temporarily after spinal decompression or a chiropractic adjustment." },
+      { type: "p", text: "This is not because your bones are growing, but because your spine is returning to a more natural, elongated position." },
+
+      { type: "h2", text: "Why Your Height Changes Throughout the Day" },
+      { type: "p", text: "Your height naturally fluctuates during the day due to gravity and spinal compression." },
+      { type: "p", text: "Here's what happens:" },
+      { type: "ul", items: [
+        "Your spine is made of vertebrae and discs",
+        "The discs act like cushions between each vertebra",
+        "Throughout the day, gravity compresses these discs",
+        "This causes a slight loss in height",
+      ]},
+      { type: "p", text: "That's why you're usually taller in the morning and slightly shorter at night." },
+
+      { type: "h2", text: "What Spinal Decompression Actually Does" },
+      { type: "p", text: "Spinal decompression and chiropractic techniques – like the Torque Release Technique (TRT) – help:" },
+      { type: "ul", items: [
+        "Reduce pressure on spinal discs",
+        "Improve joint movement",
+        "Restore proper spinal alignment",
+        "Decrease tension in surrounding muscles",
+      ]},
+      { type: "p", text: "When your spine is properly aligned, it can regain some of its natural spacing, which is where that temporary height increase comes from." },
+
+      { type: "h2", text: "What Is the Torque Release Technique?" },
+      { type: "p", text: "If you've been searching for torque release technique near me, this is one of the most advanced chiropractic methods available today." },
+      { type: "p", text: "The Torque Release Technique (TRT) uses a specialized instrument to deliver precise, gentle adjustments to the spine." },
+      { type: "p", text: "It focuses on:" },
+      { type: "ul", items: [
+        "Nervous system balance",
+        "Spinal alignment",
+        "Reducing stress patterns in the body",
+      ]},
+      { type: "p", text: "Because it's so precise and gentle, many patients find it extremely effective for improving posture and overall function." },
+
+      { type: "h2", text: "Does Better Posture Make You Look Taller?" },
+      { type: "p", text: "Absolutely." },
+      { type: "p", text: "Even if the actual measurable height change is small, improved posture can make a big visual difference." },
+      { type: "p", text: "When your spine is aligned:" },
+      { type: "ul", items: [
+        "Your shoulders sit back naturally",
+        "Your head is positioned correctly",
+        "Your body appears more upright",
+      ]},
+      { type: "p", text: "This can easily make you look 1 – 2 inches taller without changing your actual bone structure." },
+
+      { type: "h2", text: "Long-Term Benefits of Spinal Decompression" },
+      { type: "p", text: "Beyond temporary height changes, the real benefits include:" },
+      { type: "ul", items: [
+        "Reduced back and neck tension",
+        "Improved mobility",
+        "Better posture",
+        "Less pressure on discs",
+        "Enhanced nervous system function",
+      ]},
+      { type: "p", text: "Over time, consistent chiropractic care helps your body maintain a healthier alignment, reducing the effects of daily compression." },
+
+      { type: "h2", text: "Searching for Torque Release Technique Near Me in Fort Collins CO?" },
+      { type: "p", text: "If you're looking for torque release technique near me, it's important to find a clinic that focuses on both precision and long-term results." },
+
+      { type: "h2", text: "The Bottom Line" },
+      { type: "p", text: "Spinal decompression can temporarily increase your height by up to about 1.5 inches, but the real value lies in improved posture, reduced tension, and better overall function." },
+      { type: "p", text: "Chiropractic care – especially techniques like TRT – helps your body move and function the way it was designed to." },
+
+      { type: "h2", text: "Looking for Chiropractic Care in Fort Collins CO?" },
+      { type: "p", text: "If you're in Fort Collins CO and curious about spinal decompression or the Torque Release Technique, the team at Well Adjusted Chiropractic is here to help." },
+      { type: "p", text: "Whether your goal is better posture, less discomfort, or improved overall movement, professional chiropractic care can make a real difference." },
+      { type: "p", text: "Schedule your visit with Well Adjusted Chiropractic in Fort Collins CO and start feeling the difference in how your body moves and functions." },
+    ],
+  },
+  {
+    slug: "can-chiropractic-help-with-infant-colic-erie-co",
+    title: "Can Chiropractic Help with Infant Colic?",
+    date: "March 17, 2026",
+    author: "Francio Sousa",
+    authorImage: imgFrancio,
+    authorBio: francioBio,
+    category: "Family Wellness",
+    excerpt:
+      "If you've been searching for massage and chiropractic options to help your baby, you're not alone. Explore how gentle chiropractic care may support your baby's comfort.",
+    image: erieInfantColic,
+    imageAlt: "massage and chiropractic",
+    content: [
+      { type: "p", text: "If you've been searching for massage and chiropractic options to help your baby, you're not alone." },
+      { type: "p", text: "Infant colic can be one of the most stressful experiences for parents. The constant crying, discomfort, and sleepless nights often leave families searching for safe, natural ways to help their baby feel better." },
+      { type: "p", text: "So the big question is:" },
+      { type: "p", text: "Can chiropractic help with infant colic?" },
+      { type: "p", text: "Let's explore what we know and how gentle chiropractic care may support your baby's comfort." },
+
+      { type: "h2", text: "What Is Infant Colic?" },
+      { type: "p", text: "Colic is typically defined as:" },
+      { type: "ul", items: [
+        "Crying for more than 3 hours a day",
+        "More than 3 days a week",
+        "Lasting for at least 3 weeks",
+      ]},
+      { type: "p", text: "It often appears in otherwise healthy babies and usually starts within the first few weeks of life." },
+      { type: "p", text: "While the exact cause isn't always clear, possible factors include:" },
+      { type: "ul", items: [
+        "Digestive discomfort",
+        "Gas buildup",
+        "Nervous system immaturity",
+        "Sensitivity to stimulation",
+      ]},
+
+      { type: "h2", text: "How Chiropractic Care May Help" },
+      { type: "p", text: "Chiropractic care for infants is very different from adult care." },
+      { type: "p", text: "It involves extremely gentle, precise pressure, often compared to the amount of pressure you'd use to check the ripeness of a tomato." },
+      { type: "p", text: "The goal is to:" },
+      { type: "ul", items: [
+        "Support proper spinal alignment",
+        "Reduce tension in the body",
+        "Improve nervous system function",
+      ]},
+      { type: "p", text: "Since the nervous system plays a role in digestion and comfort, improving communication between the brain and body may help babies feel more at ease." },
+
+      { type: "h2", text: "The Role of the Nervous System" },
+      { type: "p", text: "Your baby's nervous system controls many important functions, including:" },
+      { type: "ul", items: [
+        "Digestion",
+        "Muscle tone",
+        "Relaxation and stress response",
+      ]},
+      { type: "p", text: "During birth or early development, small physical stresses can sometimes affect how the body functions." },
+      { type: "p", text: "Gentle chiropractic adjustments aim to reduce these stresses and support normal function." },
+
+      { type: "h2", text: "What About Massage and Chiropractic Together?" },
+      { type: "p", text: "Many parents explore massage and chiropractic care together." },
+      { type: "p", text: "Infant massage can help:" },
+      { type: "ul", items: [
+        "Relax muscles",
+        "Reduce tension",
+        "Support digestion",
+        "Promote bonding",
+      ]},
+      { type: "p", text: "When combined with chiropractic care, this approach may support both:" },
+      { type: "ul", items: [
+        "Physical comfort",
+        "Nervous system balance",
+      ]},
+
+      { type: "h2", text: "Is Chiropractic Care Safe for Babies?" },
+      { type: "p", text: "When performed by a trained and experienced chiropractor, infant chiropractic care is generally considered safe." },
+      { type: "p", text: "However, it's important to:" },
+      { type: "ul", items: [
+        "Choose a provider experienced with pediatric care",
+        "Communicate openly about your baby's symptoms",
+        "Continue regular pediatric check-ups",
+      ]},
+      { type: "p", text: "Chiropractic care should be viewed as supportive care, not a replacement for medical evaluation when needed." },
+
+      { type: "h2", text: "What Results Can Parents Expect?" },
+      { type: "p", text: "Every baby is different." },
+      { type: "p", text: "Some parents report improvements such as:" },
+      { type: "ul", items: [
+        "Less crying",
+        "Better sleep patterns",
+        "Reduced tension",
+        "Easier digestion",
+      ]},
+      { type: "p", text: "While results can vary, many families seek chiropractic care as part of a natural, supportive approach." },
+
+      { type: "h2", text: "The Bottom Line" },
+      { type: "p", text: "Chiropractic care may help support babies with colic by promoting better nervous system function and reducing physical tension." },
+      { type: "p", text: "When combined with massage and chiropractic approaches, it can offer a gentle, holistic way to support your baby's comfort." },
+
+      { type: "h2", text: "Looking for Chiropractic Care in Erie CO?" },
+      { type: "p", text: "If you're in Erie CO and exploring natural ways to support your baby, the team at Well Adjusted Chiropractic offers gentle, personalized care for families." },
+      { type: "p", text: "If you've been searching for massage and chiropractic options, we're here to help guide you and support your baby's well-being." },
+      { type: "p", text: "Schedule a visit with Well Adjusted Chiropractic in Erie CO and learn how gentle care can support your child's comfort." },
+    ],
   },
 ];
 
 export const blogPosts: BlogPost[] = rawBlogPosts.map((post) => {
   const content = post.content?.filter((block) => block.type !== "image");
 
-  if (!francioPostSlugs.has(post.slug)) {
-    return content ? { ...post, content } : post;
+  if (francioPostSlugs.has(post.slug)) {
+    return {
+      ...post,
+      author: "Francio Sousa",
+      authorImage: imgFrancio,
+      authorBio: francioBio,
+      reviewer: "Dr. Nate Potter",
+      reviewerImage: imgNate,
+      reviewerBio: nateBio,
+      content,
+    };
   }
 
-  return {
-    ...post,
-    author: "Francio Sousa",
-    authorImage: imgFrancio,
-    authorBio: francioBio,
-    content,
-  };
+
+  if (post.author === "Dr. David Hughes") {
+    return {
+      ...post,
+      authorImage: post.authorImage ?? imgDavid,
+      authorBio: davidBio,
+      content,
+    };
+  }
+
+  return content ? { ...post, content } : post;
 });
 
 export const getRelatedPosts = (slug: string, count = 5): BlogPost[] => {

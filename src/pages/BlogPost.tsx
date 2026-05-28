@@ -117,15 +117,31 @@ const BlogPost = () => {
           <h1 className="font-heading text-3xl md:text-5xl text-secondary mb-6 leading-tight">
             {post.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-4 text-sm font-body text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-body text-muted-foreground">
             <span className="flex items-center gap-2">
               {post.authorImage ? (
                 <img src={post.authorImage} alt={post.author} className="w-8 h-8 rounded-full object-cover" />
               ) : (
                 <User className="w-4 h-4" />
               )}
-              <span className="text-foreground font-semibold">{post.author}</span>
+              <span>
+                <span className="text-xs uppercase tracking-wider text-muted-foreground/80 mr-1">Author:</span>
+                <span className="text-foreground font-semibold">{post.author}</span>
+              </span>
             </span>
+            {post.reviewer && (
+              <span className="flex items-center gap-2">
+                {post.reviewerImage ? (
+                  <img src={post.reviewerImage} alt={post.reviewer} className="w-8 h-8 rounded-full object-cover" />
+                ) : (
+                  <User className="w-4 h-4" />
+                )}
+                <span>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground/80 mr-1">Reviewed by:</span>
+                  <span className="text-foreground font-semibold">{post.reviewer}</span>
+                </span>
+              </span>
+            )}
             <span className="flex items-center gap-1">
               <Calendar className="w-4 h-4" /> {post.date}
             </span>
@@ -152,6 +168,20 @@ const BlogPost = () => {
                 <p className="text-xs uppercase tracking-wider text-primary font-body font-semibold mb-1">About the Author</p>
                 <h4 className="font-heading text-xl text-secondary mb-2">{post.author}</h4>
                 <p className="font-body text-sm text-muted-foreground leading-relaxed">{post.authorBio}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Reviewer bio card */}
+          {post.reviewer && post.reviewerBio && (
+            <div className="mt-6 p-6 bg-muted rounded-xl flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+              {post.reviewerImage && (
+                <img src={post.reviewerImage} alt={post.reviewer} className="w-24 h-24 rounded-full object-cover border-4 border-background shadow-md" />
+              )}
+              <div>
+                <p className="text-xs uppercase tracking-wider text-primary font-body font-semibold mb-1">Medically Reviewed By</p>
+                <h4 className="font-heading text-xl text-secondary mb-2">{post.reviewer}</h4>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">{post.reviewerBio}</p>
               </div>
             </div>
           )}
