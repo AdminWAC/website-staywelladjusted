@@ -12,16 +12,24 @@ const Blog = () => {
     document.title = "Blogs | Well Adjusted Chiropractic";
   }, []);
 
+  const sorted = useMemo(
+    () =>
+      [...blogPosts].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      ),
+    []
+  );
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return blogPosts;
-    return blogPosts.filter(
+    if (!q) return sorted;
+    return sorted.filter(
       (p) =>
         p.title.toLowerCase().includes(q) ||
         p.excerpt.toLowerCase().includes(q) ||
         (p.author || "").toLowerCase().includes(q)
     );
-  }, [query]);
+  }, [query, sorted]);
 
   return (
     <Layout>

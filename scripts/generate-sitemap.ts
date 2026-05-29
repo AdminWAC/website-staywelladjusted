@@ -54,6 +54,16 @@ const blogSlugs = [
   "what-is-the-most-common-side-effect-after-a-massage-greeley-co",
   "how-many-inches-can-you-gain-from-decompressing-your-spine-fort-collins-co",
   "can-chiropractic-help-with-infant-colic-erie-co",
+  "what-is-a-subluxation-can-a-chiropractor-help-arlington-tx",
+  "how-do-you-stretch-tight-neck-and-shoulders-loveland-co",
+  "what-makes-a-quality-chiropractor-greeley-co",
+  "how-many-sessions-of-spinal-decompression-are-needed-fort-collins-co",
+  "how-long-do-spinal-decompression-results-last-erie-co",
+  "can-a-chiropractor-do-spinal-decompression-arlington-tx",
+  "does-spinal-decompression-really-work-loveland-co",
+  "how-do-i-know-if-i-need-to-decompress-my-spine-greeley-co",
+  "what-does-it-feel-like-when-fascia-is-released-fort-collins-co",
+  "are-there-side-effects-of-chiropractic-care-for-newborns-erie-co",
 ];
 
 const entries: SitemapEntry[] = [
