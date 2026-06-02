@@ -37,7 +37,7 @@ const davidBio =
   "Dr. David Hughes knew at 14 that he wanted to be a chiropractor. He earned his B.S. in Anatomy from Parker College of Chiropractic. He actively contributes to research, mentorship, and chiropractic advocacy. He co-founded the Formerly \"Gateway to Wellness Foundation\", supporting those in need. Working alongside family, he brings a personal touch to patient care.";
 
 const nateBio =
-  "Dr. Nate Potter is a chiropractor at Well Adjusted Chiropractic in Greeley, CO. He earned his Doctor of Chiropractic from Life University in 2012 after undergraduate studies at Oklahoma State, with a major in English. Drawing on his clinical expertise and advanced training in neurologically focused techniques, Dr. Nate reviews each article for accuracy before publication.";
+  "Dr. Nate Potter is a chiropractor at Well Adjusted Chiropractic in Greeley, CO. He earned his Doctor of Chiropractic degree from Life University in 2012 after undergraduate studies at Oklahoma State, majoring first in film and later zoology. Drawing from his clinical expertise in vitalistic care for the whole family, Dr. Nate reviews each article for accuracy before publication.";
 
 
 const francioPostSlugs = new Set([
