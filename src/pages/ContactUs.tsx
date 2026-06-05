@@ -23,7 +23,7 @@ const ContactUs = () => {
             {/* Google Map */}
             <div className="rounded-lg overflow-hidden h-[500px]">
               <iframe
-                src="https://www.google.com/maps/d/embed?mid=1bZQz8kBXmzL_6rB_vJqKQz3bZ-E&ehbc=2E312F"
+                src="https://www.google.com/maps/d/embed?mid=1Vt5ZIB_N1gZRDWw3G1yc4AdlSksbq2k&ehbc=2E312F&ll=36.705912089674364%2C-101.1439669&z=6"
                 className="w-full h-full border-0"
                 title="Well Adjusted Chiropractic Locations"
                 allowFullScreen
