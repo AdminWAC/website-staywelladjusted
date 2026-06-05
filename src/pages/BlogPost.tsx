@@ -35,6 +35,25 @@ const renderBlock = (block: BlogContent, i: number) => {
       );
     case "image":
       return null;
+    case "pLink": {
+      const isExternal = /^https?:\/\//i.test(block.href);
+      const linkClass = "text-primary font-semibold underline underline-offset-2 hover:text-primary/80";
+      return (
+        <p key={i} className="font-body text-base leading-relaxed text-foreground/85 mb-5">
+          {block.before}
+          {isExternal ? (
+            <a href={block.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+              {block.linkText}
+            </a>
+          ) : (
+            <Link to={block.href} className={linkClass}>
+              {block.linkText}
+            </Link>
+          )}
+          {block.after}
+        </p>
+      );
+    }
   }
 };
 

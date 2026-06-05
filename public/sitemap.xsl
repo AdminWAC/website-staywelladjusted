@@ -31,13 +31,14 @@
           </header>
           <table>
             <thead>
-              <tr><th>#</th><th>URL</th><th>Change frequency</th><th>Priority</th></tr>
+              <tr><th>#</th><th>URL</th><th>Last modified</th><th>Change frequency</th><th>Priority</th></tr>
             </thead>
             <tbody>
               <xsl:for-each select="s:urlset/s:url">
                 <tr>
                   <td class="count"><xsl:value-of select="position()"/></td>
                   <td><a href="{s:loc}"><xsl:value-of select="s:loc"/></a></td>
+                  <td><xsl:value-of select="s:lastmod"/></td>
                   <td><xsl:value-of select="s:changefreq"/></td>
                   <td><xsl:value-of select="s:priority"/></td>
                 </tr>
