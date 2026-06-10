@@ -25,6 +25,7 @@ import ChiropractorGreeleyCO from "./pages/ChiropractorGreeleyCO.tsx";
 import ChiropractorFortCollinsCO from "./pages/ChiropractorFortCollinsCO.tsx";
 import ChiropractorErieCO from "./pages/ChiropractorErieCO.tsx";
 import ScheduleAppointment from "./pages/ScheduleAppointment.tsx";
+import VoteRedirect from "./pages/VoteRedirect.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -61,6 +62,7 @@ const App = () => (
           <Route path="/chiropractor-fort-collins-co" element={<ChiropractorFortCollinsCO />} />
           <Route path="/chiropractor-erie-co" element={<ChiropractorErieCO />} />
           <Route path="/schedule-an-appointment-new-patient-special-offer" element={<ScheduleAppointment />} />
+          <Route path="/vote-noco-best-chiro" element={<VoteRedirect />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
