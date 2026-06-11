@@ -5,6 +5,11 @@ const logo = "http://staywelladjusted.com/favicon.ico";
 
 const links = [
   {
+    label: "Best of NoCo 2026",
+    url: "https://staywelladjusted.com/vote-noco-best-chiro",
+    highlight: true,
+  },
+  {
     label: "Well Adjusted Chiropractic | $79 New Patient Special",
     url: "https://staywelladjusted.com/chiropractic-colorado",
     highlight: false,
@@ -13,11 +18,6 @@ const links = [
     label: "Dual-Wave Regenerative Therapy | Well Adjusted Chiropractic (Colorado Only)",
     url: "https://staywelladjusted.com/shockwave-colorado",
     highlight: false,
-  },
-  {
-    label: "Best of NoCo 2026",
-    url: "https://staywelladjusted.com/vote-noco-best-chiro",
-    highlight: true,
   },
   { label: "Website", url: "https://staywelladjusted.com/", highlight: false },
   { label: "Facebook", url: "https://www.facebook.com/welladjustedloveland", highlight: false },
