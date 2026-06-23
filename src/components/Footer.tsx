@@ -179,7 +179,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="border-t border-primary-foreground/20 mt-8 pt-6 text-center text-primary-foreground text-xs font-body space-x-3">
-            <span>Copyright © 2025 <strong>WELL ADJUSTED CHIROPRACTIC</strong> All rights reserved.</span>
+            <span>Copyright © 2022 <strong>WELL ADJUSTED CHIROPRACTIC</strong> All rights reserved.</span>
             <br className="md:hidden" />
             <Link to="/anti-discrimination" className="hover:underline">Anti-Discrimination</Link>
             <span>|</span>

@@ -38,6 +38,7 @@ const allServices: ServiceItem[] = [
   { label: "Dual Shockwave", path: "/dual-shockwave" },
   { label: "Weight Loss", path: "/weight-loss" },
   { label: "Saatva Mattress Partner", path: "/saatva-mattress-partner" },
+  { label: "Workplace Wellness", path: "/workplace-wellness" },
 ];
 
 // Active services per location (based on the reference images)
@@ -46,30 +47,35 @@ const locationActiveServices: Record<string, string[]> = {
     "Chiropractic Care", "Spinal Decompression", "Massage Therapy", "PEMF Therapy",
     "Sports Physicals", "Nutrition", "Custom Foot Orthotics", "Intersegmental Traction",
     "Spinal Orthotics", "Wobble Discs", "Dual Shockwave", "Weight Loss", "Saatva Mattress Partner",
+    "Workplace Wellness",
   ],
   "Greeley": [
     "Chiropractic Care", "Spinal Decompression",
     "Sports Physicals", "Nutrition", "Diagnostic Ultra Sound",
     "Custom Foot Orthotics", "Spinal Orthotics", "Wobble Discs",
     "Dual Shockwave", "Weight Loss", "Saatva Mattress Partner",
+    "Workplace Wellness",
   ],
   "Fort Collins": [
     "Chiropractic Care", "Spinal Decompression", "Massage Therapy",
     "Sports Physicals", "Nutrition", "DOT Exam",
     "Custom Foot Orthotics", "Spinal Orthotics", "Wobble Discs",
     "Dual Shockwave", "Weight Loss", "Saatva Mattress Partner",
+    "Workplace Wellness",
   ],
   "Arlington": [
     "Chiropractic Care", "Spinal Decompression",
     "Sports Physicals", "Nutrition",
     "Custom Foot Orthotics", "Spinal Orthotics", "Vibe Plate",
     "Wobble Discs", "Weight Loss", "Saatva Mattress Partner",
+    "Workplace Wellness",
   ],
   "Erie": [
     "Chiropractic Care", "Spinal Decompression", "Massage Therapy",
     "Sports Physicals", "Nutrition",
     "Custom Foot Orthotics", "Spinal Orthotics",
     "Wobble Discs", "Dual Shockwave", "Weight Loss", "Saatva Mattress Partner",
+    "Workplace Wellness",
   ],
 };
 

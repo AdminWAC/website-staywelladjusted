@@ -25,8 +25,12 @@ import ChiropractorGreeleyCO from "./pages/ChiropractorGreeleyCO.tsx";
 import ChiropractorFortCollinsCO from "./pages/ChiropractorFortCollinsCO.tsx";
 import ChiropractorErieCO from "./pages/ChiropractorErieCO.tsx";
 import ScheduleAppointment from "./pages/ScheduleAppointment.tsx";
+import ScheduleErieCO from "./pages/ScheduleErieCO.tsx";
 import VoteRedirect from "./pages/VoteRedirect.tsx";
 import Links from "./pages/Links.tsx";
+import Start from "./pages/Start.tsx";
+import WorkplaceWellness from "./pages/WorkplaceWellness.tsx";
+import History from "./pages/History.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -63,8 +67,12 @@ const App = () => (
           <Route path="/chiropractor-fort-collins-co" element={<ChiropractorFortCollinsCO />} />
           <Route path="/chiropractor-erie-co" element={<ChiropractorErieCO />} />
           <Route path="/schedule-an-appointment-new-patient-special-offer" element={<ScheduleAppointment />} />
+          <Route path="/schedule-existing-patients-erie-co" element={<ScheduleErieCO />} />
           <Route path="/vote-noco-best-chiro" element={<VoteRedirect />} />
           <Route path="/links" element={<Links />} />
+          <Route path="/start" element={<Start />} />
+          <Route path="/workplace-wellness" element={<WorkplaceWellness />} />
+          <Route path="/history" element={<History />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
