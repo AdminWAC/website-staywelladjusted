@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
-import img1 from "@/assets/workplace-wellness-1.jpg";
-import img2 from "@/assets/workplace-wellness-2.jpg";
-import img3 from "@/assets/workplace-wellness-3.jpg";
-import img4 from "@/assets/workplace-wellness-4.jpg";
-import img5 from "@/assets/workplace-wellness-5.jpg";
-import img6 from "@/assets/workplace-wellness-6.jpg";
+import img1 from "@/assets/ww-1.jpeg.asset.json";
+import img2 from "@/assets/ww-2.jpeg.asset.json";
+import img3 from "@/assets/ww-3.jpeg.asset.json";
+import img4 from "@/assets/ww-4.jpeg.asset.json";
+import img5 from "@/assets/ww-5.jpg.asset.json";
 
 const locations = [
   { name: "Arlington, TX", phone: "(682) 277-1966" },
@@ -41,7 +40,7 @@ const WorkplaceWellness = () => {
       {/* Hero */}
       <section className="relative bg-[#0f1c2e] text-white">
         <div className="absolute inset-0 opacity-30">
-          <img src={img1} alt="" className="w-full h-full object-cover" />
+          <img src={img1.url} alt="" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-[1200px] mx-auto px-4 py-20 md:py-28 text-center">
           <p className="uppercase tracking-[0.25em] text-[#d4af37] text-sm mb-4">
@@ -70,7 +69,7 @@ const WorkplaceWellness = () => {
       <section className="py-16 md:py-20">
         <div className="max-w-[1100px] mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0f1c2e] mb-5">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#1e3a5f] mb-5">
               Wellness That Meets Your Team Where They Work
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
@@ -88,7 +87,7 @@ const WorkplaceWellness = () => {
             </p>
           </div>
           <img
-            src={img2}
+            src={img2.url}
             alt="Well Adjusted Chiropractic team presenting to local employees"
             className="rounded-lg shadow-lg w-full object-cover"
           />
@@ -99,7 +98,7 @@ const WorkplaceWellness = () => {
       <section className="bg-gray-50 py-16 md:py-20">
         <div className="max-w-[1100px] mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0f1c2e] mb-3">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#1e3a5f] mb-3">
               Why Employers Invest in On-Site Wellness
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -119,9 +118,9 @@ const WorkplaceWellness = () => {
             ))}
           </div>
           <div className="mt-12 grid md:grid-cols-3 gap-4">
-            <img src={img3} alt="On-site wellness talk" className="rounded-lg object-cover h-56 w-full" />
-            <img src={img4} alt="Relaxed consultation lounge" className="rounded-lg object-cover h-56 w-full" />
-            <img src={img5} alt="Community partnership award" className="rounded-lg object-cover h-56 w-full" />
+            <img src={img3.url} alt="On-site wellness talk" className="rounded-lg object-cover h-56 w-full" />
+            <img src={img4.url} alt="Relaxed consultation lounge" className="rounded-lg object-cover h-56 w-full" />
+            <img src={img5.url} alt="Community partnership award" className="rounded-lg object-cover h-56 w-full" />
           </div>
         </div>
       </section>
@@ -130,12 +129,12 @@ const WorkplaceWellness = () => {
       <section className="py-16 md:py-20">
         <div className="max-w-[1100px] mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
           <img
-            src={img6}
+            src={img1.url}
             alt="Well Adjusted community wellness event"
             className="rounded-lg shadow-lg w-full object-cover order-2 md:order-1"
           />
           <div className="order-1 md:order-2">
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0f1c2e] mb-5">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#1e3a5f] mb-5">
               What a Visit Looks Like
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
@@ -188,7 +187,7 @@ const WorkplaceWellness = () => {
       {/* Contact / Schedule */}
       <section id="contact" className="py-16 md:py-20">
         <div className="max-w-[1100px] mx-auto px-4 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl text-[#0f1c2e] mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl text-[#1e3a5f] mb-4">
             Let's Plan Something for Your Team
           </h2>
           <p className="text-gray-700 max-w-2xl mx-auto mb-10">

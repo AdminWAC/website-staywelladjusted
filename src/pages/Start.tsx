@@ -146,9 +146,19 @@ const VideoBlock = () => {
       controls
       playsInline
       preload="metadata"
+      poster="/images-lp-francio/kylee-poster.jpg"
+      crossOrigin="anonymous"
       className="w-full h-full rounded-lg shadow-lg bg-black"
-      src="/images-lp-francio/welladjustedchiropracticvideo.mp4"
-    />
+      src="/images-lp-francio/Kylee_Testimonal_14mb.mp4"
+    >
+      <track
+        kind="captions"
+        label="English"
+        srcLang="en"
+        src="/images-lp-francio/kylee-captions.vtt"
+        default
+      />
+    </video>
   );
 };
 
@@ -194,7 +204,7 @@ const Start = () => {
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-[900px] mx-auto px-4 text-center">
           <h1 className="font-heading text-3xl md:text-5xl text-secondary leading-tight mb-6">
-            "She hadn't gone a day without a migraine since she was ten."
+            She hadn't gone a day without a migraine since she was ten.
           </h1>
           <p className="font-body text-lg md:text-xl text-muted-foreground mb-4 max-w-[700px] mx-auto">
             After trying everything, she found us. She has not had a migraine since
@@ -285,7 +295,7 @@ const Start = () => {
               className="h-14 brightness-0 invert"
             />
             <p className="font-body italic text-sm md:text-base opacity-90">
-              Helping families live well — naturally.
+              Soft Touch. Remarkable Results.
             </p>
             <a
               href="https://staywelladjusted.com"
