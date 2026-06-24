@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
-import img1 from "@/assets/ww-1.jpeg.asset.json";
-import img2 from "@/assets/ww-2.jpeg.asset.json";
-import img3 from "@/assets/ww-3.jpeg.asset.json";
-import img4 from "@/assets/ww-4.jpeg.asset.json";
-import img5 from "@/assets/ww-5.jpg.asset.json";
+const img1 = { url: "/images-lp-francio/ww-1.jpeg" };
+const img2 = { url: "/images-lp-francio/ww-2.jpeg" };
+const img3 = { url: "/images-lp-francio/ww-3.jpeg" };
+const img4 = { url: "/images-lp-francio/ww-4.jpeg" };
+const img5 = { url: "/images-lp-francio/ww-5.jpg" };
 
 const locations = [
   { name: "Arlington, TX", phone: "(682) 277-1966" },
