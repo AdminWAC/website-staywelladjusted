@@ -19,11 +19,20 @@ import img15 from "@/assets/history/img15.png";
 import img16 from "@/assets/history/img16.png";
 import img17 from "@/assets/history/img17.png";
 import img18 from "@/assets/history/img18.png";
-import img19 from "@/assets/history/img19.png";
-import img20 from "@/assets/history/img20.png";
-import img21 from "@/assets/history/img21.png";
-import img22 from "@/assets/history/img22.png";
-import img23 from "@/assets/history/img23.png";
+import wac117 from "@/assets/history/2023-june/wac117.jpg";
+import wac118 from "@/assets/history/2023-june/wac118.jpg";
+import img19 from "@/assets/history/2023-september/wac116.png";
+import img20 from "@/assets/history/2023-november/wac120.jpg";
+import img21 from "@/assets/history/2024-january/wac121.jpg";
+import img22 from "@/assets/history/2024-june/wac129.jpg";
+import wac122 from "@/assets/history/2024-november/wac122.jpg";
+import wac123 from "@/assets/history/2024-november/wac123.jpg";
+import wac124 from "@/assets/history/2024-november/wac124.jpg";
+import wac125 from "@/assets/history/2024-november/wac125.jpg";
+import wac126 from "@/assets/history/2024-november/wac126.jpg";
+import wac127 from "@/assets/history/2024-november/wac127.jpg";
+import wac128 from "@/assets/history/2024-november/wac128.jpg";
+import wac130 from "@/assets/history/2025-march/wac130.png";
 
 import wac003 from "@/assets/history/2002/wac003.jpg";
 import wac004 from "@/assets/history/2002/wac004.jpg";
@@ -234,7 +243,7 @@ const events: Event[] = [
     title: "Acquired Keeney Chiropractic, Continuing a Legacy",
     body:
       "Expanded again with the acquisition of Keeney Chiropractic in Greeley, Colorado. After 38 years of building an outstanding reputation, Dr. Keeney entrusted Well Adjusted Chiropractic to continue his legacy of exceptional care — ensuring the high standards he established live on.",
-    image: img18,
+    images: [wac117, wac118],
   },
   {
     year: "2023",
@@ -274,7 +283,7 @@ const events: Event[] = [
     title: "Acquired Fort Collins Chiropractic",
     body:
       "Well Adjusted Chiropractic proudly expanded into the Fort Collins market through the acquisition of Fort Collins Chiropractic. After more than three decades in practice, Dr. Kenna Venekamp selected our team to carry on his legacy of patient care — confident that no one else could serve his patients better.",
-    image: img23,
+    images: [wac122, wac123, wac124, wac125, wac126, wac127, wac128],
   },
   {
     year: "2025",
@@ -282,6 +291,7 @@ const events: Event[] = [
     title: "Dr. Lee Whittemore Retires — Care Continues with Us",
     body:
       "Dr. Lee Whittemore officially retired from practice after many years serving the Loveland community. As part of his transition, he entrusted Well Adjusted Chiropractic with the responsibility of storing patient records and ensuring continuity of care. Many of his patients have since reconnected through our office, experiencing our signature soft-touch technique and personalized, results-driven chiropractic.",
+    image: wac130,
   },
 ];
 
