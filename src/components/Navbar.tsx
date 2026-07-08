@@ -109,8 +109,8 @@ const navItems: NavItem[] = [
     path: "/contact-us",
     children: [
       { label: "Workplace Wellness", path: "/workplace-wellness" },
-      { label: "Book an Event", path: "https://staywelladjusted.com/book-an-event/", external: true },
-      { label: "Careers", path: "https://staywelladjusted.com/careers/", external: true },
+      { label: "Book an Event", path: "/book-an-event" },
+      { label: "Careers", path: "/careers" },
       {
         label: "Internship",
         path: "#",

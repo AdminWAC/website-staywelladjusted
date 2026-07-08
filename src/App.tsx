@@ -31,6 +31,9 @@ import Links from "./pages/Links.tsx";
 import Start from "./pages/Start.tsx";
 import WorkplaceWellness from "./pages/WorkplaceWellness.tsx";
 import History from "./pages/History.tsx";
+import OurTechnique from "./pages/OurTechnique.tsx";
+import Careers from "./pages/Careers.tsx";
+import BookAnEvent from "./pages/BookAnEvent.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -73,6 +76,9 @@ const App = () => (
           <Route path="/start" element={<Start />} />
           <Route path="/workplace-wellness" element={<WorkplaceWellness />} />
           <Route path="/history" element={<History />} />
+          <Route path="/our-technique" element={<OurTechnique />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/book-an-event" element={<BookAnEvent />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

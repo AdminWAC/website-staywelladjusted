@@ -316,7 +316,7 @@ const ImageCarousel = ({ images, alt }: { images: string[]; alt: string }) => {
   const next = () => setIdx((i) => (i + 1) % total);
 
   return (
-    <div className="relative aspect-[16/10] overflow-hidden bg-stone-100 group">
+    <div className="relative aspect-square overflow-hidden bg-stone-100 group">
       <div
         className="flex h-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${idx * 100}%)` }}
@@ -438,7 +438,7 @@ const History = () => {
                           <ImageCarousel images={e.images} alt={e.title} />
                         ) : (
                           (e.image || e.images?.[0]) && (
-                            <div className="aspect-[16/10] overflow-hidden bg-stone-100">
+                            <div className="aspect-square overflow-hidden bg-stone-100">
                               <img
                                 src={e.image || e.images?.[0]}
                                 alt={e.title}
