@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
-import heroTeam from "@/assets/careers/hero-team.jpg.asset.json";
-import checkInImg from "@/assets/careers/check-in.png.asset.json";
-import eliteImg from "@/assets/careers/elite.jpg.asset.json";
-import nowHiringImg from "@/assets/careers/now-hiring.jpg.asset.json";
-import rightFitImg from "@/assets/careers/right-fit.png.asset.json";
+const heroTeam = { url: "/images-uploaded/careers/hero-team.jpg" };
+const checkInImg = { url: "/images-uploaded/careers/check-in.png" };
+const eliteImg = { url: "/images-uploaded/careers/elite.jpg" };
+const nowHiringImg = { url: "/images-uploaded/careers/now-hiring.jpg" };
+const rightFitImg = { url: "/images-uploaded/careers/right-fit.png" };
 
 const MAPS_URL =
   "https://www.google.com/maps/d/u/0/embed?mid=1Vt5ZIB_N1gZRDWw3G1yc4AdlSksbq2k&femb=1&ll=36.705912089674364%2C-101.1439669&z=6";

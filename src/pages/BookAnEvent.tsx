@@ -3,9 +3,9 @@ import { MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import heroImg from "@/assets/book-event/hero.png.asset.json";
-import speakingImg from "@/assets/book-event/speaking.png.asset.json";
-import whyImg from "@/assets/book-event/why.png.asset.json";
+const heroImg = { url: "/images-uploaded/book-event/hero.png" };
+const speakingImg = { url: "/images-uploaded/book-event/speaking.png" };
+const whyImg = { url: "/images-uploaded/book-event/why.png" };
 
 const MAPS_URL =
   "https://www.google.com/maps/d/u/0/embed?mid=1Vt5ZIB_N1gZRDWw3G1yc4AdlSksbq2k&femb=1&ll=36.705912089674364%2C-101.1439669&z=6";

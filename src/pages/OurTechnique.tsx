@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
-import thompsonAsset from "@/assets/our-technique/thompson.png.asset.json";
-import sotAsset from "@/assets/our-technique/sot.png.asset.json";
-import akAsset from "@/assets/our-technique/applied-kinesiology.png.asset.json";
-import manualAsset from "@/assets/our-technique/manual-diversified.png.asset.json";
-import cranialAsset from "@/assets/our-technique/cranial.png.asset.json";
-import videoPoster from "@/assets/our-technique/video-poster.png.asset.json";
+const thompsonAsset = { url: "/images-uploaded/our-technique/thompson.png" };
+const sotAsset = { url: "/images-uploaded/our-technique/sot.png" };
+const akAsset = { url: "/images-uploaded/our-technique/applied-kinesiology.png" };
+const manualAsset = { url: "/images-uploaded/our-technique/manual-diversified.png" };
+const cranialAsset = { url: "/images-uploaded/our-technique/cranial.png" };
+const videoPoster = { url: "/images-uploaded/our-technique/video-poster.png" };
 
 const MAPS_URL =
   "https://www.google.com/maps/d/u/0/embed?mid=1Vt5ZIB_N1gZRDWw3G1yc4AdlSksbq2k&femb=1&ll=36.705912089674364%2C-101.1439669&z=6";
