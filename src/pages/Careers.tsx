@@ -67,16 +67,18 @@ const rightFitPoints = [
   "Want to be part of an elite, rapidly expanding chiropractic organization",
 ];
 
-const JOIN_FORM_ID = "F2RPZItWtK9FkU99l0d1";
+const JOIN_FORM_ID = "b91lxSlufRfEo8BTpARK";
+const JOIN_FORM_NAME = "FRM | Contact | Careers Application";
+const JOIN_FORM_HEIGHT = "1230";
 
 const Careers = () => {
   const [active, setActive] = useState(positions[0].key);
   const current = positions.find((p) => p.key === active) ?? positions[0];
 
   useEffect(() => {
-    if (document.querySelector('script[src="https://link.growrichllc.com/js/form_embed.js"]')) return;
+    if (document.querySelector('script[src="https://link.ngynai.com/js/form_embed.js"]')) return;
     const s = document.createElement("script");
-    s.src = "https://link.growrichllc.com/js/form_embed.js";
+    s.src = "https://link.ngynai.com/js/form_embed.js";
     s.async = true;
     document.body.appendChild(s);
   }, []);
@@ -158,8 +160,8 @@ const Careers = () => {
           </p>
           <div className="bg-background rounded-2xl shadow-sm p-4 md:p-6">
             <iframe
-              src={`https://link.growrichllc.com/widget/form/${JOIN_FORM_ID}`}
-              style={{ width: "100%", height: "690px", border: "none", borderRadius: 0 }}
+              src={`https://link.ngynai.com/widget/form/${JOIN_FORM_ID}`}
+              style={{ width: "100%", height: `${JOIN_FORM_HEIGHT}px`, border: "none", borderRadius: 0 }}
               id={`inline-${JOIN_FORM_ID}`}
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
@@ -168,11 +170,11 @@ const Careers = () => {
               data-activation-value=""
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
-              data-form-name="(WA) Contact Us - Join Our Team"
-              data-height="490"
+              data-form-name={JOIN_FORM_NAME}
+              data-height={JOIN_FORM_HEIGHT}
               data-layout-iframe-id={`inline-${JOIN_FORM_ID}`}
               data-form-id={JOIN_FORM_ID}
-              title="(WA) Contact Us - Join Our Team"
+              title={JOIN_FORM_NAME}
             />
           </div>
         </div>
