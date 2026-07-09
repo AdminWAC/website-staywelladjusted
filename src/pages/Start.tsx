@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
 
-const SCHEDULE_PATH = "/schedule-an-appointment-new-patient-special-offer";
+const SCHEDULE_PATH = "/special";
 
 const locations = [
   { name: "Arlington TX", phone: "(682) 277-1966", tel: "6822771966" },
