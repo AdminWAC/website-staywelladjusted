@@ -5,8 +5,8 @@ import { ArrowRight, ChevronLeft, ChevronRight, Phone, MapPin } from "lucide-rea
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 import img1 from "@/assets/massage-therapy/WAC-massage-therapy-photos1.png";
-import img2 from "@/assets/massage-therapy/WAC-massage-therapy-photos2.png";
-import img3 from "@/assets/massage-therapy/WAC-massage-therapy-photos3.png";
+import img2 from "@/assets/massage-therapy/WAC-massage-therapy-photos2.jpg";
+import img3 from "@/assets/massage-therapy/WAC-massage-therapy-photos3.jpg";
 
 const carouselImages = [img1.url, img2.url, img3.url];
 
