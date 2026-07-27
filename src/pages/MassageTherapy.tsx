@@ -8,7 +8,7 @@ import img1 from "@/assets/massage-therapy/WAC-massage-therapy-photos1.png";
 import img2 from "@/assets/massage-therapy/WAC-massage-therapy-photos2.jpg";
 import img3 from "@/assets/massage-therapy/WAC-massage-therapy-photos3.jpg";
 
-const carouselImages = [img1.url, img2.url, img3.url];
+const carouselImages = [img1, img2, img3];
 
 const massageTypes = [
   {
