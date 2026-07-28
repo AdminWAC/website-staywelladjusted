@@ -112,13 +112,13 @@ const MassageTherapy = () => {
                   At Well Adjusted Chiropractic, we provide professional massage therapy in Loveland CO, Fort Collins CO and Erie CO, designed to relieve pain, accelerate healing, and restore balance to your body. Whether you need deep tissue work, relaxation, or injury recovery, our expert massage therapist works alongside our top-rated chiropractors to ensure you get the best possible care.
                 </p>
               </div>
-              <button
-                onClick={() => setCallOpen(true)}
+              <Link
+                to="/massage-therapy-schedule-erie"
                 className="mt-8 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-sm uppercase tracking-wider hover:bg-primary/90 transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                Call to Schedule!
-              </button>
+                Schedule Your Session
+              </Link>
             </div>
 
             <div className="relative rounded-lg overflow-hidden">

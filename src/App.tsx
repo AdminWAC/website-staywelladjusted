@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import SpinalDecompression from "./pages/SpinalDecompression.tsx";
 import MassageTherapy from "./pages/MassageTherapy.tsx";
+import MassageTherapyScheduleErie from "./pages/MassageTherapyScheduleErie.tsx";
 import DualShockwave from "./pages/DualShockwave.tsx";
 import SaatvaMattressPartner from "./pages/SaatvaMattressPartner.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/chiropractic-care" element={<ChiropracticCare />} />
           <Route path="/spinal-decompression" element={<SpinalDecompression />} />
           <Route path="/massage-therapy" element={<MassageTherapy />} />
+          <Route path="/massage-therapy-schedule-erie" element={<MassageTherapyScheduleErie />} />
           <Route path="/dual-shockwave" element={<DualShockwave />} />
           <Route path="/saatva-mattress-partner" element={<SaatvaMattressPartner />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

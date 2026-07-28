@@ -43,7 +43,7 @@ const allServices: ServiceItem[] = [
 // Active services per location (based on the reference images)
 const locationActiveServices: Record<string, string[]> = {
   "Loveland": [
-    "Chiropractic Care", "Spinal Decompression", "Massage Therapy", "PEMF Therapy",
+    "Chiropractic Care", "Spinal Decompression", "PEMF Therapy",
     "Sports Physicals", "Nutrition", "Custom Foot Orthotics", "Intersegmental Traction",
     "Spinal Orthotics", "Wobble Discs", "Dual Shockwave", "Weight Loss", "Saatva Mattress Partner",
   ],
@@ -54,7 +54,7 @@ const locationActiveServices: Record<string, string[]> = {
     "Dual Shockwave", "Weight Loss", "Saatva Mattress Partner",
   ],
   "Fort Collins": [
-    "Chiropractic Care", "Spinal Decompression", "Massage Therapy",
+    "Chiropractic Care", "Spinal Decompression",
     "Sports Physicals", "Nutrition", "DOT Exam",
     "Custom Foot Orthotics", "Spinal Orthotics", "Wobble Discs",
     "Dual Shockwave", "Weight Loss", "Saatva Mattress Partner",
