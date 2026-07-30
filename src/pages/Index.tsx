@@ -11,6 +11,10 @@ import BlogSection from "@/components/BlogSection";
 import { MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 
+
+
+
+
 const locations = [
   { name: "WELL ADJUSTED CHIROPRACTIC - ARLINGTON TX", address: "5717 SW Green Oaks Blvd Arlington, TX 76017", phone: "(682) 277-1966", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday , Saturday & Sunday : Closed"] },
   { name: "WELL ADJUSTED CHIROPRACTIC - LOVELAND CO", address: "3850 N Grant Ave STE 100 Loveland, CO 80538", phone: "(970) 427-2543", hours: ["Monday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Tuesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Wednesday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Thursday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Friday : 8:00 am–12:00 pm | 3:00 pm–6:00 pm", "Saturday & Sunday : Closed"] },

@@ -78,6 +78,7 @@ const teamByTab: Record<string, TeamMember[]> = {
       name: "Cody Eischeid, D.C",
       title: "Clinic Director, Chiropractor",
       image: imgCody,
+      bio: "Dr. Cody Eischeid earned his Doctorate of Chiropractic and Master of Business Administration from Parker University. Raised on a farm in the Midwest, he developed a strong work ethic and a passion for serving others. Having received chiropractic care since childhood, he experienced firsthand the impact it can have on health and performance, inspiring him to pursue a career helping others. Dr. Cody has experience caring for patients of all ages, from infants and toddlers to competitive athletes. He has worked with professional UFC fighters, former NFL players, and active individuals looking to recover from injury, improve performance, and maintain a healthy lifestyle. Dedicated to providing personalized, evidence-informed care, Dr. Cody is committed to helping patients move better, feel better, and live healthier lives. Outside of the office, he enjoys wake surfing, working out, and continually expanding his knowledge to provide the highest level of care for every patient.",
     },
     {
       name: "Tatiana Gottlieb",
