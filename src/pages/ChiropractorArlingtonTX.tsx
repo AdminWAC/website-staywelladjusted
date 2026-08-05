@@ -9,6 +9,10 @@ import tatianaBoyd from "@/assets/team/tatiana-boyd.png";
 
 import officeImg from "@/assets/locations/arlington-office.png";
 
+import botDesktop from "@/assets/banners/best-of-texas-desktop.png";
+import botTablet from "@/assets/banners/best-of-texas-tablet.png";
+import botMobile from "@/assets/banners/best-of-texas-mobile.png";
+
 import svcChiro from "@/assets/services-arlington/chiropractic-care.jpg";
 import svcSpinalDecomp from "@/assets/services-arlington/spinal-decompression.jpg";
 import svcSports from "@/assets/services-arlington/sports-physicals.jpg";
@@ -159,6 +163,30 @@ const ChiropractorArlingtonTX = () => {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* BEST OF TEXAS BANNER */}
+      <section className="py-6 bg-background">
+        <div className="max-w-[1100px] mx-auto px-4">
+          <a
+            href="https://www.guidetotx.com/united-states/arlington/health-medical/well-adjusted-chiropractic-arlington"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-lg overflow-hidden shadow-md hover:opacity-95 transition-opacity"
+            aria-label="Vote for Well Adjusted Chiropractic - Best of Texas Nominee"
+          >
+            <picture>
+              <source media="(min-width: 1024px)" srcSet={botDesktop} />
+              <source media="(min-width: 640px)" srcSet={botTablet} />
+              <img
+                src={botMobile}
+                alt="We're a Best of Texas Nominee — vote now at GuideToTX.com"
+                className="w-full h-auto"
+                loading="lazy"
+              />
+            </picture>
+          </a>
         </div>
       </section>
 
