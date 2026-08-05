@@ -23,6 +23,7 @@ import imgJennifer from "@/assets/team/jennifer-savage.png";
 import imgKody from "@/assets/team/kody-windecker.png";
 import imgElliott from "@/assets/team/elliott-alexander.png";
 import imgKatie from "@/assets/team/katie-lena.jpg";
+import imgAmber from "@/assets/team/amber-lyons.png";
 
 const tabs = ["Management", "Arlington, TX", "Loveland, CO", "Greeley, CO", "Fort Collins, CO", "Erie, CO"];
 
@@ -160,6 +161,13 @@ const teamByTab: Record<string, TeamMember[]> = {
       name: "Elliot Alexander, D.C",
       title: "Clinic Director, Chiropractor",
       image: imgElliott,
+    },
+    {
+      name: "Amber",
+      title: "Chiropractic Assistant",
+      image: imgAmber,
+      overlayName: true,
+      bio: "Amber is a dedicated Chiropractic Assistant who enjoys being part of each patient’s health journey. She values the welcoming, family-like atmosphere at Well Adjusted Chiropractic and loves building genuine relationships with the people the team serves. Her warmth and enthusiasm help patients feel comfortable and supported throughout their experience in the office. Outside of work, Amber enjoys spending quality time with her family, whether they are paddleboarding, visiting arcades, or relaxing together with a movie. She is also an avid reader who is rarely without a good book nearby. Amber is grateful to be part of a passionate team committed to helping the community live healthier, happier lives.",
     },
   ],
 };
