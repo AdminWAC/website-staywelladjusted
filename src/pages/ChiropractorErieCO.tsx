@@ -6,6 +6,7 @@ import Layout from "@/components/Layout";
 import davidHughes from "@/assets/team/david-hughes.png";
 import michaelHughes from "@/assets/team/michael-hughes.png";
 import elliottAlexander from "@/assets/team/elliott-alexander.png";
+import amberLyons from "@/assets/team/amber-lyons.png";
 
 import officeImg from "@/assets/locations/erie-office.png";
 
@@ -34,6 +35,7 @@ const doctors = [
   { name: "David Hughes, D.C.", photo: davidHughes },
   { name: "Michael Hughes, D.C.", photo: michaelHughes },
   { name: "Elliott Alexander, D.C.", photo: elliottAlexander },
+  { name: "Amber Lyons", photo: amberLyons },
 ];
 
 const reviews = [
