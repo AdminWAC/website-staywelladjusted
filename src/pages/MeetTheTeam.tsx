@@ -9,6 +9,7 @@ import imgJordan from "@/assets/team/jordan-hughes.png";
 import imgChloe from "@/assets/team/chloe-ragatz.png";
 
 import imgAngel from "@/assets/team/angel-vega.png";
+import imgAntonio from "@/assets/team/antonio-sarinana.png";
 import imgCody from "@/assets/team/cody-eischeid.png";
 import imgTatiana from "@/assets/team/tatiana-boyd.jpg";
 import imgAveri from "@/assets/team/averi-hughes.png";
@@ -72,6 +73,12 @@ const teamByTab: Record<string, TeamMember[]> = {
       title: "Patient Relations & Customer Service Specialist",
       image: imgAngel,
       bio: "Angel is the backbone of patient communication, ensuring seamless scheduling, fast responses, and exceptional service. With 15 years of experience in customer support, she expertly manages calls, texts, emails, and scheduling to keep our practice running smoothly. A nursing graduate, Angel combines compassion and efficiency to enhance every patient's experience. Dedicated, adaptable, and highly skilled, Angel plays a vital role in delivering the exceptional service our patients deserve.",
+    },
+    {
+      name: "Antonio Sariñana",
+      title: "Patient Relations & Customer Service Specialist",
+      image: imgAntonio,
+      bio: "Antonio brings more than 16 years of combined experience across media, nonprofit organizations, government, education, and real estate. Known for his strong public speaking and networking skills, he enjoys connecting with people and building meaningful relationships. During his bachelor’s degree, Antonio lived in Buenos Aires, Argentina, where he studied marketing and history. Outside of work, he enjoys playing tennis, traveling, and writing. He has also published a short novel on Wattpad.",
     },
   ],
   "Arlington, TX": [
