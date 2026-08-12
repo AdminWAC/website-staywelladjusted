@@ -8,6 +8,7 @@ import williamStults from "@/assets/team/william-stults.png";
 import brittnyePotter from "@/assets/team/brittnye-potter.png";
 import dorothyRichter from "@/assets/team/dorothy-richter.png";
 import mirandaEvans from "@/assets/team/miranda-evans.png";
+import kylerThompson from "@/assets/team/kyler-thompson.png";
 
 import officeImg from "@/assets/locations/loveland-office.png";
 
@@ -41,6 +42,7 @@ const doctors = [
   { name: "Brittnye Potter", photo: brittnyePotter },
   { name: "Dorothy Richter", photo: dorothyRichter },
   { name: "Miranda Evans", photo: mirandaEvans },
+  { name: "Kyler Thompson, D.C.", photo: kylerThompson },
 ];
 
 const reviews = [
