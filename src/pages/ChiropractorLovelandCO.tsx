@@ -5,10 +5,10 @@ import Layout from "@/components/Layout";
 
 import davidHughes from "@/assets/team/david-hughes.png";
 import williamStults from "@/assets/team/william-stults.png";
+import kylerThompson from "@/assets/team/kyler-thompson.png";
 import brittnyePotter from "@/assets/team/brittnye-potter.png";
 import dorothyRichter from "@/assets/team/dorothy-richter.png";
 import mirandaEvans from "@/assets/team/miranda-evans.png";
-import kylerThompson from "@/assets/team/kyler-thompson.png";
 
 import officeImg from "@/assets/locations/loveland-office.png";
 
@@ -39,10 +39,10 @@ const PALETTE = {
 const doctors = [
   { name: "David Hughes, D.C.", photo: davidHughes },
   { name: "William Stults, D.C.", photo: williamStults },
+  { name: "Kyler Thompson, D.C.", photo: kylerThompson },
   { name: "Brittnye Potter", photo: brittnyePotter },
   { name: "Dorothy Richter", photo: dorothyRichter },
-  { name: "Miranda Evans", photo: mirandaEvans },
-  { name: "Kyler Thompson, D.C.", photo: kylerThompson },
+  { name: "Miranda Evans", photo: mirandaEvans },  
 ];
 
 const reviews = [

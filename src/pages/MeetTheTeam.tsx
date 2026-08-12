@@ -111,6 +111,12 @@ const teamByTab: Record<string, TeamMember[]> = {
       bio: "With 20+ years of experience, Dr. Billy is a renowned expert in advanced chiropractic care, specializing in Thompson Drop, Diversified Pediatric, Pettibon Techniques, and Animal Chiropractic. A former Life University rugby player, he understands peak performance and whole-body health. He has led multiple top-performing clinics in Colorado, treating athletes, infants, and complex cases like infertility. Known for his exceptional results and deep patient trust, Dr. Billy is a pillar of expertise at Well Adjusted Chiropractic.",
     },
     {
+      name: "Kyler-Thompson",
+      title: "Chiropractic Doctor",
+      image: imgKyler,
+      bio: "Dr. Kyler grew up in Liberal, Kansas, and earned his Doctor of Chiropractic degree from Parker University in Dallas, Texas. After graduation, he made Northern Colorado home and joined the Well Adjusted Chiropractic team. He enjoys helping patients get back to the things they love, from the gym and family time to outdoor activities and feeling their best. Dr. Kyler takes time to understand each patient’s goals and create care that fits their lifestyle. Outside the office, he enjoys CrossFit, fishing, camping, and exploring the Colorado mountains. He looks forward to serving Northern Colorado and building lasting relationships with patients.",
+    },    
+    {
       name: "Brittnye Potter, D.C",
       title: "Chiropractor",
       image: imgBrittnye,
@@ -127,12 +133,6 @@ const teamByTab: Record<string, TeamMember[]> = {
       title: "Lead Front Desk & Chiropractic Assistant",
       image: imgMiranda,
       bio: "Originally from Minnesota, Miranda has proudly called Colorado home for the past nine years. As one of our Chiropractic Assistants, she's the first friendly face you'll see when you walk through our doors. Her warm energy and genuine care help create the welcoming environment our patients love. Life got even sweeter with the arrival of her daughter, Charlotte, who brings endless joy to her family. Outside the office, Miranda is an outdoor enthusiast who loves being on the water, hiking, and spending time with friends and family. Her home is a lively one—shared with three cats, a dog, and two guinea pigs—making every day a little more fun (and furry!). Whether she's supporting our patients or soaking in life's little moments, Miranda brings kindness, balance, and heart to everything she does.",
-    },
-    {
-      name: "Kyler-Thompson",
-      title: "Chiropractic Doctor",
-      image: imgKyler,
-      bio: "Dr. Kyler grew up in Liberal, Kansas, and earned his Doctor of Chiropractic degree from Parker University in Dallas, Texas. After graduation, he made Northern Colorado home and joined the Well Adjusted Chiropractic team. He enjoys helping patients get back to the things they love, from the gym and family time to outdoor activities and feeling their best. Dr. Kyler takes time to understand each patient’s goals and create care that fits their lifestyle. Outside the office, he enjoys CrossFit, fishing, camping, and exploring the Colorado mountains. He looks forward to serving Northern Colorado and building lasting relationships with patients.",
     },
   ],
   "Greeley, CO": [
