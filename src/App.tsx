@@ -37,6 +37,7 @@ import OurTechnique from "./pages/OurTechnique.tsx";
 import Careers from "./pages/Careers.tsx";
 import BookAnEvent from "./pages/BookAnEvent.tsx";
 import CustomFootOrthotics from "./pages/CustomFootOrthotics.tsx";
+import SportsPhysicals from "./pages/SportsPhysicals.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -85,6 +86,7 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           <Route path="/book-an-event" element={<BookAnEvent />} />
           <Route path="/custom-foot-orthotics" element={<CustomFootOrthotics />} />
+          <Route path="/sports-physicals" element={<SportsPhysicals />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

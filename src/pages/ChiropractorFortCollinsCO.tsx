@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Facebook, Youtube, Quote } from "lucide-react";
 import Layout from "@/components/Layout";
 
 import kodyWindecker from "@/assets/team/kody-windecker.png";
+import katieLena from "@/assets/team/katie-lena.jpg";
 import officeImg from "@/assets/locations/fort-collins-office.png";
 
 import svcChiro from "@/assets/services-loveland/chiropractic-care.png";
@@ -27,6 +28,11 @@ const PALETTE = {
   lightGray: "#f1f3f5",
   textDark: "#3d3d3d",
 };
+
+const members = [
+  { name: "Kody Windecker, D.C.", photo: kodyWindecker },
+  { name: "Katie Lena", photo: katieLena },
+];
 
 const reviews = [
   {
@@ -80,6 +86,22 @@ const Star = () => (
 );
 
 const ChiropractorFortCollinsCO = () => {
+  const memberScrollRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = memberScrollRef.current;
+    if (!el) return;
+    let pos = 0;
+    let raf: number;
+    const step = () => {
+      pos += 0.4;
+      if (pos >= el.scrollWidth / 2) pos = 0;
+      el.scrollLeft = pos;
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   const [reviewIdx, setReviewIdx] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setReviewIdx((i) => (i + 1) % reviews.length), 6000);
@@ -92,17 +114,21 @@ const ChiropractorFortCollinsCO = () => {
       <section style={{ background: PALETTE.cream }} className="py-10">
         <div className="max-w-[1100px] mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="flex justify-center">
-              <div className="w-[260px]">
-                <div className="rounded-md overflow-hidden bg-white shadow-sm h-[290px]">
-                  <img src={kodyWindecker} alt="Kody Windecker, D.C." className="w-full h-[380px] object-cover object-top" loading="lazy" />
-                </div>
-                <div
-                  className="text-center text-white text-sm font-body py-2 mt-2 rounded-full"
-                  style={{ background: PALETTE.gold }}
-                >
-                  Kody Windecker, D.C.
-                </div>
+            <div className="overflow-hidden">
+              <div ref={memberScrollRef} className="flex gap-4 overflow-hidden" style={{ whiteSpace: "nowrap" }}>
+                {[...members, ...members, ...members].map((m, i) => (
+                  <div key={i} className="flex-shrink-0 w-[180px]">
+                    <div className="rounded-md overflow-hidden bg-white shadow-sm h-[200px]">
+                      <img src={m.photo} alt={m.name} className="w-full h-[270px] object-cover object-top" loading="lazy" />
+                    </div>
+                    <div
+                      className="text-center text-white text-xs font-body py-1.5 mt-2 rounded-full"
+                      style={{ background: PALETTE.gold }}
+                    >
+                      {m.name}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
