@@ -14,3 +14,8 @@ User-agent: *
 Allow: /
 
 Sitemap: https://staywelladjusted.com/sitemap.xml
+
+# Agent resources
+# LLM guide: https://staywelladjusted.com/llms.txt
+# Agent skills: https://staywelladjusted.com/.well-known/agent-skills/index.json
+# API catalog: https://staywelladjusted.com/.well-known/api-catalog
