@@ -1,0 +1,19 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://staywelladjusted.com/",
+      "service-doc": [
+        { "href": "https://staywelladjusted.com/llms.txt", "type": "text/plain", "title": "LLM-friendly site guide" }
+      ],
+      "service-meta": [
+        { "href": "https://staywelladjusted.com/.well-known/agent-skills/index.json", "type": "application/json", "title": "Agent Skills index" }
+      ],
+      "describedby": [
+        { "href": "https://staywelladjusted.com/sitemap.xml", "type": "application/xml", "title": "Sitemap" }
+      ],
+      "author": [
+        { "href": "https://staywelladjusted.com/contact-us", "type": "text/html", "title": "Contact Well Adjusted Chiropractic" }
+      ]
+    }
+  ]
+}
