@@ -102,6 +102,7 @@ const navItems: NavItem[] = [
       { label: "Health Starts Here", path: "/health-starts-here" },
       { label: "Our Blog", path: "/blog" },
       { label: "Our Technique", path: "/our-technique" },
+      { label: "Workshops", path: "/workshops" },
     ],
   },
   {

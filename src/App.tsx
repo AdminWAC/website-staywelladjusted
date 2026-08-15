@@ -38,7 +38,10 @@ import Careers from "./pages/Careers.tsx";
 import BookAnEvent from "./pages/BookAnEvent.tsx";
 import CustomFootOrthotics from "./pages/CustomFootOrthotics.tsx";
 import SportsPhysicals from "./pages/SportsPhysicals.tsx";
+import Workshops from "./pages/Workshops.tsx";
+import LiveStream from "./pages/LiveStream.tsx";
 import NotFound from "./pages/NotFound.tsx";
+
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -87,6 +90,9 @@ const App = () => (
           <Route path="/book-an-event" element={<BookAnEvent />} />
           <Route path="/custom-foot-orthotics" element={<CustomFootOrthotics />} />
           <Route path="/sports-physicals" element={<SportsPhysicals />} />
+          <Route path="/workshops" element={<Workshops />} />
+          <Route path="/live-stream" element={<LiveStream />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
