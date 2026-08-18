@@ -43,6 +43,7 @@ import LiveStream from "./pages/LiveStream.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import ScrollToTop from "./components/ScrollToTop";
+import SnippetInjector from "./components/SnippetInjector";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <SnippetInjector />
         <Routes>
           <Route path="/" element={<Index />} />
           
