@@ -76,9 +76,12 @@ export const SITE_PATHS: string[] = [
 
 export const snippets: Snippet[] = [
   {
+    // NOTE: this GTM tag is now hard-coded in index.html so it is present in the
+    // raw HTML source (view-source) of every page, exactly like WordPress HFCM.
+    // Kept here (disabled) only as reference — do NOT re-enable, it would duplicate.
     id: "gtm-mrm6p7sw",
-    label: "Google Tag Manager (GTM-MRM6P7SW)",
-    enabled: true,
+    label: "Google Tag Manager (GTM-MRM6P7SW) — served from index.html",
+    enabled: false,
     scope: { type: "all" },
     head: `<!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MRM6P7SW');</script><!-- End Google Tag Manager -->`,
     bodyStart: `<!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRM6P7SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->`,
