@@ -191,6 +191,7 @@ const teamByTab: Record<string, TeamMember[]> = {
       name: "Elliot Alexander, DC",
       title: "Clinic Director, Chiropractor",
       image: imgElliott,
+      bio: "Dr. Elliott Alexander is a third-generation chiropractor passionate about helping people achieve better health through natural, patient-centered care. Growing up in a chiropractic family, he witnessed the impact of holistic care and committed to helping others live healthier, more active lives. He earned his Doctor of Chiropractic degree and a Master's in Clinical Neuroscience, with advanced training in complex neurological conditions. He combines evidence-based chiropractic care with a personalized approach. Outside the office, he enjoys guitar, golf, and time outdoors with his wife, Elizabeth. They are proud to call the Denver area home."
     },
     {
       name: "Amber Lyons",
