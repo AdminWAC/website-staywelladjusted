@@ -9,7 +9,6 @@ import imgJordan from "@/assets/team/jordan-hughes.png";
 import imgChloe from "@/assets/team/chloe-ragatz.png";
 
 import imgAngel from "@/assets/team/angel-vega.png";
-import imgAntonio from "@/assets/team/antonio-sarinana.png";
 import imgCody from "@/assets/team/cody-eischeid.png";
 import imgTatiana from "@/assets/team/tatiana-boyd.jpg";
 import imgAveri from "@/assets/team/averi-hughes.png";
@@ -24,10 +23,12 @@ import imgJennifer from "@/assets/team/jennifer-savage.png";
 import imgKody from "@/assets/team/kody-windecker.png";
 import imgElliott from "@/assets/team/elliott-alexander.png";
 import imgKatie from "@/assets/team/katie-lena.jpg";
-import imgAmber from "@/assets/team/amber-lyons.png";
-import imgKyler from "@/assets/team/kyler-thompson.png";
+import imgElla from "@/assets/team/ella-bortolini.png";
+import imgFrancio from "@/assets/team/francio-sousa.png";
+import imgAntonio from "@/assets/team/antonio-sarinana.png";
+import imgSteven from "@/assets/team/steven-veloso.png";
 
-const tabs = ["Management", "Arlington, TX", "Loveland, CO", "Greeley, CO", "Fort Collins, CO", "Erie, CO"];
+const tabs = ["Management", "Central Support Team", "Arlington, TX", "Loveland, CO", "Greeley, CO", "Fort Collins, CO", "Erie, CO"];
 
 interface TeamMember {
   name: string;
@@ -40,13 +41,13 @@ interface TeamMember {
 const teamByTab: Record<string, TeamMember[]> = {
   Management: [
     {
-      name: "Michael Hughes, D.C",
+      name: "Dr. Michael Hughes, DC",
       title: "Co-CEO, Director of Acquisitions & Expansion, Chiropractor",
       image: imgMichael,
       bio: "Dr. Michael Hughes, personally recruited by Dr. Jim Parker, leads thriving practices in Texas and Colorado. He specializes in neurological family care, pediatrics, and spinal decompression while mentoring interns from multiple chiropractic universities. Currently Vice President of the Colorado Chiropractic Association, he is on the path to becoming President. A dedicated educator and leader, he advocates for expanding chiropractic care. His nonprofit, Gateway to Wellness Foundation, supports those in need, furthering his mission to make high-quality chiropractic care accessible to more communities.",
     },
     {
-      name: "David Hughes, D.C",
+      name: "Dr. David Hughes, DC",
       title: "Co-CEO, Director of Systems & Strategy, Chiropractor",
       image: imgDavid,
       bio: "Dr. David Hughes knew at 14 that he wanted to be a chiropractor. He earned his B.S. in Anatomy from Parker College of Chiropractic and has since specialized in neurological family care, pediatrics, and pre- and post-natal chiropractic. As Co-CEO and Clinical Director, he prioritizes patient education and advancing the profession. A CCA Champion of the Year nominee, he actively contributes to research, mentorship, and chiropractic advocacy. He co-founded the Gateway to Wellness Foundation, supporting those in need. Working alongside family, he brings a personal touch to patient care.",
@@ -58,7 +59,7 @@ const teamByTab: Record<string, TeamMember[]> = {
       bio: "As COO of Well Adjusted Chiropractic, Shari Hughes is the driving force behind operations, patient care, and team growth across multiple locations. With 30+ years in business leadership, she has managed a major retail chain, Texas's largest staffing agency, and an international shipping company. She ensures exceptional patient experiences, regulatory compliance, and operational efficiency while optimizing budgets and vendor relationships. A dedicated mother of five, she also leads the Gateway to Wellness Foundation, helping those in need. Shari is the backbone of our success.",
     },
     {
-      name: "Jordan Hughes",
+      name: "Jordan",
       title: "Operations Manager",
       image: imgJordan,
       bio: "Raised in Fort Collins, Colorado, Jordan is a proud Texan at heart and now leads Well Adjusted Chiropractic as Operations Manager. She started as a Chiropractic Assistant in high school, working through college while studying Music. As the daughter of Dr. Michael and Shari Hughes, she grew up immersed in chiropractic care and wellness advocacy. Passionate about helping others achieve optimal health, Jordan is dedicated to creating a welcoming, efficient patient experience. Outside of work, she enjoys family, friends, reading, singing, and boating.",
@@ -69,6 +70,8 @@ const teamByTab: Record<string, TeamMember[]> = {
       image: imgChloe,
       bio: "Chloe Horrocks is the powerhouse behind both the strategy and heart of Well Adjusted Chiropractic. As Marketing Director, she ensures that everything from patient outreach to day-to-day office flow runs seamlessly. With hands-on experience in nearly every chiropractic assistant role, Chloe understands the patient journey inside and out—making her uniquely equipped to connect people with the life-changing care they deserve. A former athlete who experienced the benefits of chiropractic firsthand, Chloe is deeply passionate about helping others rediscover their health through natural, holistic care. Whether she's overseeing operations, refining patient education, or leading marketing initiatives, Chloe is committed to creating meaningful, positive experiences at every touchpoint. When she's not in the office, you'll find her soaking up the sunshine, out on the water, or adventuring with her husband, Ethan, and their beloved pets—Penny, Pretzel, and Jax.",
     },
+  ],
+  "Central Support Team": [
     {
       name: "Angel Vega",
       title: "Patient Relations & Customer Service Specialist",
@@ -76,18 +79,35 @@ const teamByTab: Record<string, TeamMember[]> = {
       bio: "Angel is the backbone of patient communication, ensuring seamless scheduling, fast responses, and exceptional service. With 15 years of experience in customer support, she expertly manages calls, texts, emails, and scheduling to keep our practice running smoothly. A nursing graduate, Angel combines compassion and efficiency to enhance every patient's experience. Dedicated, adaptable, and highly skilled, Angel plays a vital role in delivering the exceptional service our patients deserve.",
     },
     {
+      name: "Ella Bortolini",
+      title: "GHL System Owner | Automation Lead",
+      image: imgElla,
+      bio: "soon",
+    },
+    {
+      name: "Francio Sousa",
+      title: "Digital Dominance Lead",
+      image: imgFrancio,
+      bio: "Francio serves as Digital Dominance Lead for Well Adjusted Chiropractic, overseeing the digital strategy and online growth of its locations. His work spans SEO, paid advertising, website strategy, local search, analytics, content, and digital campaigns designed to strengthen visibility and connect more people with the care they are looking for. With a hands-on, data-driven approach, Francio focuses on turning digital opportunities into measurable growth while keeping each location aligned under a consistent brand and marketing strategy.",
+    },
+    {
       name: "Antonio Sariñana",
       title: "Patient Relations & Customer Service Specialist",
       image: imgAntonio,
-      bio: "Antonio brings more than 16 years of combined experience across media, nonprofit organizations, government, education, and real estate. Known for his strong public speaking and networking skills, he enjoys connecting with people and building meaningful relationships. During his bachelor’s degree, Antonio lived in Buenos Aires, Argentina, where he studied marketing and history. Outside of work, he enjoys playing tennis, traveling, and writing. He has also published a short novel on Wattpad.",
+      bio: "Antonio brings more than 16 years of combined experience across media, nonprofit organizations, government, education, and real estate. Known for his strong public speaking and networking skills, he enjoys connecting with people and building meaningful relationships. During his bachelor's degree, Antonio lived in Buenos Aires, Argentina, where he studied marketing and history. Outside of work, he enjoys playing tennis, traveling, and writing. He has also published a short novel on Wattpad.",
+    },
+    {
+      name: "Steven Veloso",
+      title: "Patient Relations & Customer Service Specialist",
+      image: imgSteven,
+      bio: "With more than 15 years of experience in healthcare administration, customer service, and bilingual communication, Steven is dedicated to making every patient feel heard and supported. At Well Adjusted Chiropractic, he assists patients with scheduling and communication while coordinating personal injury cases with attorneys, insurance representatives, and the clinical team. Fluent in English and Spanish, Steven brings compassion, attention to detail, and a calm, helpful approach to every interaction. He also volunteers with the 988 Suicide & Crisis Lifeline. Outside of work, Steven enjoys spending time in nature with his children.",
     },
   ],
   "Arlington, TX": [
     {
-      name: "Cody Eischeid, D.C",
+      name: "Dr. Cody Ashad, DC",
       title: "Clinic Director, Chiropractor",
       image: imgCody,
-      bio: "Dr. Cody Eischeid holds a Doctorate of Chiropractic and MBA from Parker University. Raised on a Midwest farm, he developed a strong work ethic and passion for serving others. Inspired by his own childhood chiropractic care, he dedicated his career to helping patients move better, feel better, and live healthier lives. Dr. Cody treats patients of all ages—from infants to competitive athletes and professional UFC fighters—with personalized, evidence-informed care. A believer in continuous learning, he stays current on best practices to deliver exceptional results. Outside the office, he’s passionate about wake surfing and fitness.",
     },
     {
       name: "Tatiana Gottlieb",
@@ -97,7 +117,7 @@ const teamByTab: Record<string, TeamMember[]> = {
       bio: "A DFW native, Tatiana Gottlieb is passionate about holistic healthcare after chiropractic care helped her overcome chronic migraines from a car accident. Formerly working with special education students, she brings empathy, dedication, and firsthand experience to Well Adjusted Chiropractic. Tatiana is committed to helping patients reclaim their health and feel supported on their wellness journeys. Outside of work, she enjoys hiking, spending quality time with her family, and staying active through workouts and running with her dog. She also loves getting lost in a good book and making the most of time with her husband.",
     },
     {
-      name: "Averi Hughes",
+      name: "Averi",
       title: "New Patient Concierge & Chiropractic Assistant",
       image: imgAveri,
       bio: "Averi is the New Patient Concierge at Well Adjusted Chiropractic, bringing a deep-rooted understanding of chiropractic care from growing up in the family business. Her esthiology studies further enriched her passion for holistic health. Outgoing and sociable, she loves meeting new people, addressing their health concerns, and sharing the miracles of chiropractic care. Originally part of the Loveland, CO, office, Averi now brings her expertise to Texas. Outside of work, she enjoys pilates, boating, church activities, and making lasting memories with family and friends.",
@@ -105,19 +125,13 @@ const teamByTab: Record<string, TeamMember[]> = {
   ],
   "Loveland, CO": [
     {
-      name: "William Thomas Stults, D.C",
+      name: "Dr. William Stoltz, DC",
       title: "Clinic Director, Chiropractor",
       image: imgWilliam,
       bio: "With 20+ years of experience, Dr. Billy is a renowned expert in advanced chiropractic care, specializing in Thompson Drop, Diversified Pediatric, Pettibon Techniques, and Animal Chiropractic. A former Life University rugby player, he understands peak performance and whole-body health. He has led multiple top-performing clinics in Colorado, treating athletes, infants, and complex cases like infertility. Known for his exceptional results and deep patient trust, Dr. Billy is a pillar of expertise at Well Adjusted Chiropractic.",
     },
     {
-      name: "Kyler-Thompson",
-      title: "Chiropractic Doctor",
-      image: imgKyler,
-      bio: "Dr. Kyler grew up in Liberal, Kansas, and earned his Doctor of Chiropractic degree from Parker University in Dallas, Texas. After graduation, he made Northern Colorado home and joined the Well Adjusted Chiropractic team. He enjoys helping patients get back to the things they love, from the gym and family time to outdoor activities and feeling their best. Dr. Kyler takes time to understand each patient’s goals and create care that fits their lifestyle. Outside the office, he enjoys CrossFit, fishing, camping, and exploring the Colorado mountains. He looks forward to serving Northern Colorado and building lasting relationships with patients.",
-    },    
-    {
-      name: "Brittnye Potter, D.C",
+      name: "Dr. Brittany Potter, DC",
       title: "Chiropractor",
       image: imgBrittnye,
       bio: "Originally from North Georgia, she began her academic journey in Alabama and later earned her Doctor of Chiropractic degree from Life University, where she also met her husband Dr. Nate (who now practices in our Greeley office). Together, they operated a successful private practice in the suburbs of Chicago for nearly nine years. They eventually relocated to Colorado to embrace its natural beauty and active lifestyle. She has a deep passion for serving individuals of all ages, with a special focus on prenatal and pediatric care. In addition, she is dedicated to supporting and educating women on hormone health and the vital role it plays in overall wellness. She is committed to helping patients understand how their health practices are designed to heal naturally and guiding them through their unique healing process. When she's not in the office, she enjoys spending time outdoors, hiking, and continuing to learn, both professionally and personally.",
@@ -137,13 +151,13 @@ const teamByTab: Record<string, TeamMember[]> = {
   ],
   "Greeley, CO": [
     {
-      name: "Shane Countryman, D.C",
+      name: "Dr. Shane Countryman, DC",
       title: "Clinic Director, Chiropractor",
       image: imgShane,
       bio: "Dr. Shane Countryman holds a Doctorate in Chiropractic from Parker University along with a Master's in Neuroscience and multiple degrees in Anatomy, Health & Wellness, and Economics. He has treated U.S. veterans, first responders, and elite athletes, training alongside a former U.S. Olympic Team doctor and the New England Patriots' chiropractor. Before joining Well Adjusted Chiropractic, he ran a highly successful practice in Loveland, Colorado. Known for his expertise and personalized care, he is dedicated to helping patients reclaim active, pain-free lives.",
     },
     {
-      name: "Nathan Potter, D.C",
+      name: "Dr. Nathan Potter, DC",
       title: "Chiropractor",
       image: imgNathan,
       bio: "Dr. Nate Potter discovered chiropractic after a failed leg surgery left him with nerve damage and chronic pain. Through chiropractic care, he experienced profound healing—regaining pain-free movement and improvements in sleep, digestion, and anxiety. Inspired by this transformation, he committed his life to helping others unlock their body's natural healing potential. Dr. Nate earned his Doctor of Chiropractic from Life University in 2012 after completing his undergraduate studies at Oklahoma State. He has advanced training in neurologically focused techniques, including Mastery Love & Service (MLS) and Bio-Geometric Integration (BGI). He and his wife, Dr. Brittnye Potter, also a chiropractor, practiced in Chicago before relocating to Northern Colorado to embrace a wellness-centered lifestyle. Dr. Nate now serves the Greeley community with passion, helping individuals and families live healthier, more vibrant lives.",
@@ -157,7 +171,7 @@ const teamByTab: Record<string, TeamMember[]> = {
   ],
   "Fort Collins, CO": [
     {
-      name: "Dr. Kody Windecker, D.C",
+      name: "Dr. Cody Wendecker, DC",
       title: "Clinic Director, Chiropractor",
       image: imgKody,
       bio: "Dr. Kody Windecker's journey into chiropractic began with his own battle against congenital back issues. A Texas Lutheran University graduate (Cum Laude), he discovered the power of chiropractic care firsthand, leading him to earn his Doctorate from Parker University. Dedicated to restoring health through holistic, patient-centered care, he is known for his compassionate approach and expertise. Passionate about helping others overcome pain, Dr. Kody continues to impact his community with unwavering commitment. Outside the clinic, he enjoys hiking, fishing, and playing music with his wife, Madison.",
@@ -172,18 +186,9 @@ const teamByTab: Record<string, TeamMember[]> = {
   ],
   "Erie, CO": [
     {
-      name: "Elliot Alexander, D.C",
+      name: "Dr. Elliot Alexander, DC",
       title: "Clinic Director, Chiropractor",
       image: imgElliott,
-      overlayName: true,
-      bio: "Dr. Elliott Alexander is a third-generation chiropractor passionate about helping people achieve better health through natural, patient-centered care. Growing up in a chiropractic family, he witnessed the impact of holistic care and committed to helping others live healthier, more active lives. He earned his Doctor of Chiropractic degree and a Master's in Clinical Neuroscience, with advanced training in complex neurological conditions. He combines evidence-based chiropractic care with a personalized approach. Outside the office, he enjoys guitar, golf, and time outdoors with his wife, Elizabeth. They are proud to call the Denver area home.",
-    },
-    {
-      name: "Amber Lyons",
-      title: "Chiropractic Assistant",
-      image: imgAmber,
-      overlayName: true,
-      bio: "Amber is a dedicated Chiropractic Assistant who enjoys being part of each patient’s health journey. She values the welcoming, family-like atmosphere at Well Adjusted Chiropractic and loves building genuine relationships with the people the team serves. Her warmth and enthusiasm help patients feel comfortable and supported throughout their experience in the office. Outside of work, Amber enjoys spending quality time with her family, whether they are paddleboarding, visiting arcades, or relaxing together with a movie. She is also an avid reader who is rarely without a good book nearby. Amber is grateful to be part of a passionate team committed to helping the community live healthier, happier lives.",
     },
   ],
 };
