@@ -23,6 +23,7 @@ import imgJennifer from "@/assets/team/jennifer-savage.png";
 import imgKody from "@/assets/team/kody-windecker.png";
 import imgElliott from "@/assets/team/elliott-alexander.png";
 import imgKatie from "@/assets/team/katie-lena.jpg";
+import imgAmber from "@/assets/team/amber-lyons.png";
 import imgElla from "@/assets/team/ella-bortolini.png";
 import imgFrancio from "@/assets/team/francio-sousa.png";
 import imgAntonio from "@/assets/team/antonio-sarinana.png";
@@ -108,6 +109,7 @@ const teamByTab: Record<string, TeamMember[]> = {
       name: "Cody Eischeid, DC",
       title: "Clinic Director, Chiropractor",
       image: imgCody,
+      bio: "Dr. Cody Eischeid holds a Doctorate of Chiropractic and MBA from Parker University. Raised on a Midwest farm, he developed a strong work ethic and passion for serving others. Inspired by his own childhood chiropractic care, he dedicated his career to helping patients move better, feel better, and live healthier lives. Dr. Cody treats patients of all ages—from infants to competitive athletes and professional UFC fighters—with personalized, evidence-informed care. A believer in continuous learning, he stays current on best practices to deliver exceptional results. Outside the office, he’s passionate about wake surfing and fitness."
     },
     {
       name: "Tatiana Gottlieb",
@@ -189,6 +191,12 @@ const teamByTab: Record<string, TeamMember[]> = {
       name: "Elliot Alexander, DC",
       title: "Clinic Director, Chiropractor",
       image: imgElliott,
+    },
+    {
+      name: "Amber Lyons",
+      title: "Chiropractic Assistant",
+      image: imgAmber,
+      bio: "Amber is a dedicated Chiropractic Assistant who enjoys being part of each patient’s health journey. She values the welcoming, family-like atmosphere at Well Adjusted Chiropractic and loves building genuine relationships with the people the team serves. Her warmth and enthusiasm help patients feel comfortable and supported throughout their experience in the office. Outside of work, Amber enjoys spending quality time with her family, whether they are paddleboarding, visiting arcades, or relaxing together with a movie. She is also an avid reader who is rarely without a good book nearby. Amber is grateful to be part of a passionate team committed to helping the community live healthier, happier lives."
     },
   ],
 };
