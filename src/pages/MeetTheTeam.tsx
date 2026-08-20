@@ -81,9 +81,9 @@ const teamByTab: Record<string, TeamMember[]> = {
     },
     {
       name: "Ella Bortolini",
-      title: "GHL System Owner | Automation Lead",
+      title: "Systems & Automation Lead",
       image: imgElla,
-      bio: "soon",
+      bio: "Ella built her career in sales, but what stuck with her was the system behind it—the workflows, the follow-up, the process that turned good conversations into consistent results. That hands-on instinct became her full-time focus, and it's what she now brings to Well Adjusted Chiropractic. As Systems & Automation Lead, Ella builds and maintains the systems, automations, and marketing projects that shape a smoother, more personal experience for patients at every WAC location. A twin mom working for twin CEOs, she brings the same organization and energy home as she does to the office. Outside of work, she's spending time with her kids, singing along to a musical, playing guitar, watching a movie, or hanging out with her dog, Jade Maria.",
     },
     {
       name: "Francio Sousa",
