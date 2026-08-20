@@ -148,6 +148,8 @@ const SCHEDULE_URL = "/schedule-an-appointment-new-patient-special-offer";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<string | null>(null);
+  const [mobileSub, setMobileSub] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openSubDropdown, setOpenSubDropdown] = useState<string | null>(null);
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
@@ -404,18 +406,141 @@ const Navbar = () => {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="lg:hidden bg-background border-t border-border px-4 pb-4">
-          {navItems.map((item) => (
-            <div key={item.label}>
-              <Link
-                to={item.path}
-                className="block py-3 text-sm font-body font-semibold text-foreground border-b border-border"
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
-            </div>
-          ))}
+        <div className="lg:hidden bg-background border-t border-border px-4 pb-4 max-h-[80vh] overflow-y-auto">
+          {navItems.map((item) => {
+            const isServices = item.label === "SERVICES";
+            const hasChildren = isServices || (item.children && item.children.length > 0);
+            const expanded = mobileSection === item.label;
+
+            if (!hasChildren) {
+              return (
+                <Link
+                  key={item.label}
+                  to={item.path}
+                  className="block py-3 text-sm font-body font-semibold text-foreground border-b border-border"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
+            return (
+              <div key={item.label} className="border-b border-border">
+                <button
+                  type="button"
+                  className="w-full flex items-center justify-between py-3 text-sm font-body font-semibold text-foreground"
+                  onClick={() => {
+                    setMobileSection(expanded ? null : item.label);
+                    setMobileSub(null);
+                  }}
+                  aria-expanded={expanded}
+                >
+                  {item.label}
+                  {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+
+                {expanded && isServices && (
+                  <div className="pb-2">
+                    {serviceLocations.map((loc) => {
+                      const subOpen = mobileSub === loc.label;
+                      const services = allServices.filter((s) =>
+                        locationActiveServices[loc.label]?.includes(s.label)
+                      );
+                      return (
+                        <div key={loc.label} className="pl-3">
+                          <button
+                            type="button"
+                            className="w-full flex items-center justify-between py-2.5 text-sm font-body text-foreground"
+                            onClick={() => setMobileSub(subOpen ? null : loc.label)}
+                            aria-expanded={subOpen}
+                          >
+                            {loc.label}
+                            {subOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                          </button>
+                          {subOpen && (
+                            <div className="pl-3 pb-2">
+                              <Link
+                                to={loc.path}
+                                className="block py-2 text-sm font-body font-semibold text-primary"
+                                onClick={() => setMobileOpen(false)}
+                              >
+                                View {loc.label} Location
+                              </Link>
+                              {services.map((svc) =>
+                                svc.path === "#" ? (
+                                  <span
+                                    key={svc.label}
+                                    className="block py-2 text-sm font-body text-muted-foreground"
+                                  >
+                                    {svc.label}
+                                  </span>
+                                ) : (
+                                  <Link
+                                    key={svc.label}
+                                    to={svc.path}
+                                    className="block py-2 text-sm font-body text-muted-foreground hover:text-primary"
+                                    onClick={() => setMobileOpen(false)}
+                                  >
+                                    {svc.label}
+                                  </Link>
+                                )
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {expanded && !isServices && (
+                  <div className="pb-2">
+                    {item.path !== "#" &&
+                      renderLink(
+                        { label: item.label, path: item.path, external: item.external },
+                        "block pl-3 py-2 text-sm font-body font-semibold text-primary",
+                        () => setMobileOpen(false)
+                      )}
+                    {item.children?.map((child) => {
+                      if (child.children?.length) {
+                        const subOpen = mobileSub === child.label;
+                        return (
+                          <div key={child.label} className="pl-3">
+                            <button
+                              type="button"
+                              className="w-full flex items-center justify-between py-2.5 text-sm font-body text-foreground"
+                              onClick={() => setMobileSub(subOpen ? null : child.label)}
+                              aria-expanded={subOpen}
+                            >
+                              {child.label}
+                              {subOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                            </button>
+                            {subOpen && (
+                              <div className="pl-3 pb-2">
+                                {child.children.map((sub) =>
+                                  renderLink(
+                                    sub,
+                                    "block py-2 text-sm font-body text-muted-foreground hover:text-primary",
+                                    () => setMobileOpen(false)
+                                  )
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      }
+                      return renderLink(
+                        child,
+                        "block pl-3 py-2 text-sm font-body text-muted-foreground hover:text-primary",
+                        () => setMobileOpen(false)
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
           <Link
             to={SCHEDULE_URL}
             className="block mt-4 bg-primary text-primary-foreground text-center px-6 py-3 rounded-full text-sm font-body font-semibold"
@@ -425,6 +550,7 @@ const Navbar = () => {
           </Link>
         </div>
       )}
+
     </nav>
   );
 };
