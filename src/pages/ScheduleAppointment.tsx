@@ -14,7 +14,7 @@ const existingPatientLinks = [
   { label: "Greeley, CO", url: "https://clinic.patienthealthcenters.org/schedule?code=GATEWF22GSCO" },
   { label: "Loveland, CO", url: "https://clinic.patienthealthcenters.org/schedule?code=GATEWF22GSCO" },
   { label: "Fort Collins, CO", url: "https://clinic.patienthealthcenters.org/schedule?code=GATEWF22GSCO" },
-  { label: "Erie, CO", url: "/schedule-existing-patients-erie-co", internal: true },
+  { label: "Erie, CO", url: "https://embed.chirocat.app/well-adjusted-chiropractic/bookings/office/well-adjusted-chiropractic-erie" },
 ];
 
 const locations = [
@@ -58,29 +58,18 @@ const ScheduleAppointment = () => {
               </button>
               {showExisting && (
                 <div className="absolute left-0 right-0 mt-2 bg-white shadow-lg rounded-md overflow-hidden z-50">
-                  {existingPatientLinks.map((l) =>
-                    l.internal ? (
-                      <Link
-                        key={l.label}
-                        to={l.url}
-                        className="block py-3 px-4 font-body text-sm border-b last:border-b-0 hover:bg-gray-50 transition-colors"
-                        style={{ color: PALETTE.textDark }}
-                      >
-                        {l.label}
-                      </Link>
-                    ) : (
-                      <a
-                        key={l.label}
-                        href={l.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block py-3 px-4 font-body text-sm border-b last:border-b-0 hover:bg-gray-50 transition-colors"
-                        style={{ color: PALETTE.textDark }}
-                      >
-                        {l.label}
-                      </a>
-                    )
-                  )}
+                  {existingPatientLinks.map((l) => (
+                    <a
+                      key={l.label}
+                      href={l.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block py-3 px-4 font-body text-sm border-b last:border-b-0 hover:bg-gray-50 transition-colors"
+                      style={{ color: PALETTE.textDark }}
+                    >
+                      {l.label}
+                    </a>
+                  ))}
                 </div>
               )}
             </div>
