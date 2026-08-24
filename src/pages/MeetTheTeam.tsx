@@ -136,7 +136,7 @@ const teamByTab: Record<string, TeamMember[]> = {
     {
       name: "Kyler Thompson, DC",
       title: "Chiropractic Doctor",
-      image: imgKyler
+      image: imgKyler,
       bio: "Dr. Kyler grew up in Liberal, Kansas, and earned his Doctor of Chiropractic degree from Parker University in Dallas, Texas. After graduation, he made Northern Colorado home and joined the Well Adjusted Chiropractic team. He enjoys helping patients get back to the things they love, from the gym and family time to outdoor activities and feeling their best. Dr. Kyler takes time to understand each patient’s goals and create care that fits their lifestyle. Outside the office, he enjoys CrossFit, fishing, camping, and exploring the Colorado mountains. He looks forward to serving Northern Colorado and building lasting relationships with patients.",
     },
     {
