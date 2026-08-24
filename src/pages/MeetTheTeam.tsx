@@ -135,7 +135,7 @@ const teamByTab: Record<string, TeamMember[]> = {
     },
     {
       name: "Kyler Thompson, DC",
-      title: "Chiropractic Doctor",
+      title: "Chiropractor",
       image: imgKyler,
       bio: "Dr. Kyler grew up in Liberal, Kansas, and earned his Doctor of Chiropractic degree from Parker University in Dallas, Texas. After graduation, he made Northern Colorado home and joined the Well Adjusted Chiropractic team. He enjoys helping patients get back to the things they love, from the gym and family time to outdoor activities and feeling their best. Dr. Kyler takes time to understand each patient’s goals and create care that fits their lifestyle. Outside the office, he enjoys CrossFit, fishing, camping, and exploring the Colorado mountains. He looks forward to serving Northern Colorado and building lasting relationships with patients.",
     },
@@ -167,7 +167,7 @@ const teamByTab: Record<string, TeamMember[]> = {
     },
     {
       name: "Dr. Nathan Potter, DC",
-      title: "Chiropractic Doctor",
+      title: "Chiropractor",
       image: imgNathan,
       bio: "Dr. Nate Potter discovered chiropractic after a failed leg surgery left him with nerve damage and chronic pain. Through chiropractic care, he experienced profound healing—regaining pain-free movement and improvements in sleep, digestion, and anxiety. Inspired by this transformation, he committed his life to helping others unlock their body's natural healing potential. Dr. Nate earned his Doctor of Chiropractic from Life University in 2012 after completing his undergraduate studies at Oklahoma State. He has advanced training in neurologically focused techniques, including Mastery Love & Service (MLS) and Bio-Geometric Integration (BGI). He and his wife, Dr. Brittnye Potter, also a chiropractor, practiced in Chicago before relocating to Northern Colorado to embrace a wellness-centered lifestyle. Dr. Nate now serves the Greeley community with passion, helping individuals and families live healthier, more vibrant lives.",
     },
