@@ -27,7 +27,6 @@ import imgAmber from "@/assets/team/amber-lyons.png";
 import imgElla from "@/assets/team/ella-bortolini.png";
 import imgFrancio from "@/assets/team/francio-sousa.png";
 import imgAntonio from "@/assets/team/antonio-sarinana.png";
-import imgSteven from "@/assets/team/steven-veloso.png";
 import imgKyler from "@/assets/team/kyler-thompson.png";
 
 const tabs = ["Management", "Central Support Team", "Arlington, TX", "Loveland, CO", "Greeley, CO", "Fort Collins, CO", "Erie, CO"];
@@ -97,12 +96,6 @@ const teamByTab: Record<string, TeamMember[]> = {
       title: "Patient Relations & Customer Service Specialist",
       image: imgAntonio,
       bio: "Antonio brings more than 16 years of combined experience across media, nonprofit organizations, government, education, and real estate. Known for his strong public speaking and networking skills, he enjoys connecting with people and building meaningful relationships. During his bachelor's degree, Antonio lived in Buenos Aires, Argentina, where he studied marketing and history. Outside of work, he enjoys playing tennis, traveling, and writing. He has also published a short novel on Wattpad.",
-    },
-    {
-      name: "Steven Veloso",
-      title: "Patient Relations & Customer Service Specialist",
-      image: imgSteven,
-      bio: "With more than 15 years of experience in healthcare administration, customer service, and bilingual communication, Steven is dedicated to making every patient feel heard and supported. At Well Adjusted Chiropractic, he assists patients with scheduling and communication while coordinating personal injury cases with attorneys, insurance representatives, and the clinical team. Fluent in English and Spanish, Steven brings compassion, attention to detail, and a calm, helpful approach to every interaction. He also volunteers with the 988 Suicide & Crisis Lifeline. Outside of work, Steven enjoys spending time in nature with his children.",
     },
   ],
   "Arlington, TX": [
