@@ -10,7 +10,7 @@ const PALETTE = {
 };
 
 const existingPatientLinks = [
-  { label: "Arlington, TX", url: "https://clinic.patienthealthcenters.org/schedule?code=WELLAD22GSTX" },
+  { label: "Arlington, TX", url: "https://embed.chirocat.app/well-adjusted-chiropractic/bookings/office/well-adjusted-chiropractic-arlington" },
   { label: "Greeley, CO", url: "https://clinic.patienthealthcenters.org/schedule?code=GATEWF22GSCO" },
   { label: "Loveland, CO", url: "https://clinic.patienthealthcenters.org/schedule?code=GATEWF22GSCO" },
   { label: "Fort Collins, CO", url: "https://clinic.patienthealthcenters.org/schedule?code=GATEWF22GSCO" },
