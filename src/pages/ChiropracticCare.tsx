@@ -181,7 +181,7 @@ const ChiropracticCare = () => {
             Get Relief at Well Adjusted Chiropractic
           </h2>
           <p className="text-muted-foreground font-body text-sm leading-relaxed mb-2">
-            If you're experiencing pain, stiffness, or injury-related discomfort, our expert chiropractors in Loveland CO, Greeley CO, Fort Collins CO, Erie CO and Arlington TX can help. Book a consultation today or take advantage of our $64 New Patient Special (normally $279) for a comprehensive 45-minute evaluation and exam.
+            If you're experiencing pain, stiffness, or injury-related discomfort, our expert chiropractors in Loveland CO, Greeley CO, Fort Collins CO, Erie CO and Arlington TX can help. Book a consultation today or take advantage of our $79 New Patient Special (normally $289) for a comprehensive 45-minute evaluation and exam.
           </p>
           <p className="font-heading text-xl text-primary uppercase mt-6 mb-6">
             New Patient Special Offer
