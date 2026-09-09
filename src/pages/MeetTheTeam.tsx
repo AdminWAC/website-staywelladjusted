@@ -28,6 +28,7 @@ import imgElla from "@/assets/team/ella-bortolini.png";
 import imgFrancio from "@/assets/team/francio-sousa.png";
 import imgAntonio from "@/assets/team/antonio-sarinana.png";
 import imgKyler from "@/assets/team/kyler-thompson.png";
+import imgCarlie from "@/assets/team/carlie-schibrowski.png";
 
 const tabs = ["Management", "Central Support Team", "Arlington, TX", "Loveland, CO", "Greeley, CO", "Fort Collins, CO", "Erie, CO"];
 
@@ -97,6 +98,12 @@ const teamByTab: Record<string, TeamMember[]> = {
       image: imgAntonio,
       bio: "Antonio brings more than 16 years of combined experience across media, nonprofit organizations, government, education, and real estate. Known for his strong public speaking and networking skills, he enjoys connecting with people and building meaningful relationships. During his bachelor's degree, Antonio lived in Buenos Aires, Argentina, where he studied marketing and history. Outside of work, he enjoys playing tennis, traveling, and writing. He has also published a short novel on Wattpad.",
     },
+    {
+      name: "Carlie Schibrowski",
+      title: "Patient Relations & Customer Service Specialist",
+      image: imgCarlie,
+      bio: "Carlie is a Communications Specialist dedicated to creating a positive and seamless experience for every patient. She supports patients through calls, texts, emails, scheduling, and follow-ups, helping ensure they feel heard, supported, and well cared for. With more than five years of experience in human resources, recruitment, administration, and customer service, Carlie brings strong organizational skills, attention to detail, and a genuine passion for working with people. Her adaptable and reliable approach helps support both patients and the smooth day-to-day operation of the practice.",
+    }
   ],
   "Arlington, TX": [
     {
