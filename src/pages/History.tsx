@@ -248,7 +248,7 @@ const events: Event[] = [
   {
     year: "2023",
     month: "September",
-    title: "Xelah Rain Baca Begins Journey to Become a Chiropractor",
+    title: "Our First Chiropractic Student",
     body:
       "We celebrated a proud moment as our first chiropractic assistant, Xelah Rain Baca, embarked on her journey to become a chiropractor at Life University in Macon, Georgia. Her dedication and passion for chiropractic care reflect the values and success of the team.",
     image: img19,
