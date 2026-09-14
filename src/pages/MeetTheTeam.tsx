@@ -46,7 +46,7 @@ const teamByTab: Record<string, TeamMember[]> = {
       name: "Michael Hughes, DC",
       title: "Co-CEO, Director of Acquisitions & Expansion, Chiropractor",
       image: imgMichael,
-      bio: "Dr. Michael Hughes, personally recruited by Dr. Jim Parker, leads thriving practices in Texas and Colorado. He specializes in neurological family care, pediatrics, and spinal decompression while mentoring interns from multiple chiropractic universities. Currently President-Elect now of the Colorado Chiropractic Association, he is on the path to becoming President. A dedicated educator and leader, he advocates for expanding chiropractic care. His nonprofit, Gateway to Wellness Foundation, supports those in need, furthering his mission to make high-quality chiropractic care accessible to more communities",
+      bio: "Dr. Michael Hughes, personally recruited by Dr. Jim Parker, leads thriving practices in Texas and Colorado. He specializes in neurological family care, pediatrics, and spinal decompression while mentoring interns from multiple chiropractic universities. Currently President-Elect now of the Colorado Chiropractic Association, and will be sworn in as President next month. A dedicated educator and leader, he advocates for expanding chiropractic care. His nonprofit, Gateway to Wellness Foundation, supports those in need, furthering his mission to make high-quality chiropractic care accessible to more communities",
     },
     {
       name: "David Hughes, DC",
