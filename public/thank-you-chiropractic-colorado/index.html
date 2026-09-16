@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,6 +99,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
 .section-divider{border:none;border-top:1px solid #ede9e2;margin:20px 0}
 .subsection-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--gold-cream)}
 .hidden{display:none!important}
+/* QA test-fill panel — only shown with ?qa=1 in the URL */
+.qa-panel{position:fixed;top:12px;right:12px;z-index:9999;background:#fff8e1;border:2px dashed var(--gold);border-radius:10px;padding:12px 16px;box-shadow:0 4px 14px rgba(0,0,0,.18);max-width:230px}
+.qa-panel strong{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#8a6d1f;margin-bottom:8px}
+.qa-panel-buttons{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.qa-panel button{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:6px 10px;border-radius:6px;border:1px solid var(--gold);background:var(--white);color:var(--navy);cursor:pointer}
+.qa-panel button:hover{background:var(--gold-cream)}
+.qa-panel .qa-reset{width:100%;background:none;border:1px solid #ddd8d0;color:var(--warm-gray)}
 .body-diagram-wrap{margin-bottom:20px}
 .body-diagram-wrap label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--navy-mid);margin-bottom:10px}
 .body-diagram-hint{font-size:13px;color:var(--warm-gray);margin-bottom:10px;font-style:italic}
@@ -132,7 +140,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
 .consent-text-box{background:var(--off-white);border:1px solid #ddd8d0;border-radius:8px;padding:20px;font-size:14px;line-height:1.8;color:var(--charcoal);margin-bottom:0}
 .consent-text-box h3{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy);margin-bottom:9px}
 .consent-text-box h4{font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--navy-mid);margin:13px 0 5px}
-.consent-text-box p{margin-bottom:7px}.consent-text-box ul{padding-left:18px;margin-bottom:7px}.consent-text-box li{margin-bottom:3px}
+.consent-text-box p{margin-bottom:7px}.consent-text-box ul,.consent-text-box ol{padding-left:18px;margin-bottom:7px}.consent-text-box li{margin-bottom:3px}
 .sig-wrap{border:1.5px solid #ddd8d0;border-radius:10px;overflow:hidden;background:var(--white)}
 .sig-toolbar{background:var(--off-white);border-bottom:1px solid #ddd8d0;padding:9px 14px;display:flex;align-items:center;justify-content:space-between}
 .sig-toolbar span{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--navy-mid)}
@@ -191,6 +199,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+
+<!-- QA TEST-FILL PANEL — only visible with ?qa=1 in the URL, never shown to patients -->
+<div class="qa-panel hidden" id="qaPanel">
+  <strong>QA Test Fill</strong>
+  <div class="qa-panel-buttons">
+    <button type="button" onclick="qaFillAdult('Loveland, CO (970) 669-7620', {senior:false})">Adult (Loveland)</button>
+    <button type="button" onclick="qaFillAdult('Erie, CO (303) 323-9931', {senior:true})">Senior 65+ (Erie)</button>
+    <button type="button" onclick="qaFillPed('Arlington, TX (682) 238-0625')">Pediatric (Arlington)</button>
+  </div>
+  <button type="button" class="qa-reset" onclick="location.reload()">Reset form</button>
+</div>
 
 <!-- HEADER -->
 <div class="form-header">
@@ -303,7 +322,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
       </div>
       <div class="field-row col-2">
         <div class="field"><label>Email <span class="req">*</span></label><input type="email" id="email" placeholder="email@example.com"></div>
-        <div class="field"><label>Date of Birth <span class="req">*</span></label><input type="date" id="dob"></div>
+        <div class="field"><label>Date of Birth <span class="req">*</span></label><input type="text" id="dob" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="MM/DD/YYYY" oninput="maskDateInput(this);handleDobChange()"></div>
       </div>
       <div class="field-row col-2">
         <div class="field"><label>Gender <span class="req">*</span></label><div class="radio-group"><label><input type="radio" name="gender" value="Male" onchange="handleGenderChange()"> Male</label><label><input type="radio" name="gender" value="Female" onchange="handleGenderChange()"> Female</label><label><input type="radio" name="gender" value="Other" onchange="handleGenderChange()"> Other</label></div></div>
@@ -320,7 +339,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
         <div class="field"><label>Emergency Contact Phone <span class="req">*</span></label><input type="tel" id="ecPhone" placeholder="(000) 000-0000"></div>
         <div class="field"><label>Relationship <span class="req">*</span></label><input type="text" id="ecRelationship" placeholder="e.g. Spouse, Parent"></div>
       </div>
-      <div class="field-row col-1"><div class="field"><label>Who may we thank for referring you?</label><input type="text" id="referral" placeholder="Name or source"></div></div>
+      <div class="field-row col-1"><div class="field"><label>How did you hear about us? <span class="req">*</span></label><select id="referralSource" onchange="toggleReferralName(this.value)"><option value="">Please select…</option><option value="Facebook">Facebook</option><option value="Instagram">Instagram</option><option value="Google">Google</option><option value="Yelp">Yelp</option><option value="Apple Maps">Apple Maps</option><option value="Referral">Referral</option><option value="Other">Other</option></select></div></div>
+      <div class="field-row col-1 conditional-block hidden" id="referralNameBlock"><div class="field"><label>Who may we thank for referring you? <span class="req">*</span></label><input type="text" id="referral" placeholder="Name of the person who referred you"></div></div>
     </div>
   </div>
 
@@ -486,7 +506,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
         <div class="field"><label>Child First Name <span class="req">*</span></label><input type="text" id="childFirst" placeholder="First name"></div>
         <div class="field"><label>Child Last Name <span class="req">*</span></label><input type="text" id="childLast" placeholder="Last name"></div>
       </div>
-      <div class="field-row col-1"><div class="field"><label>Date of Birth <span class="req">*</span></label><input type="date" id="childDob"></div></div>
+      <div class="field-row col-1"><div class="field"><label>Date of Birth <span class="req">*</span></label><input type="text" id="childDob" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="MM/DD/YYYY" oninput="maskDateInput(this)"></div></div>
       <div class="field-row col-1"><div class="field"><label>Street Address <span class="req">*</span></label><input type="text" id="pAddress1" placeholder="Street address"></div></div>
       <div class="field-row col-1"><div class="field"><label>Street Address Line 2</label><input type="text" id="pAddress2" placeholder="Apt, suite, unit…"></div></div>
       <div class="field-row col-3">
@@ -674,7 +694,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
         <p>Services may be rendered by a licensed Doctor of Chiropractic, licensed massage therapist, or other appropriately licensed healthcare professional acting within the scope of their credentials and under the policies of Well Adjusted Chiropractic.</p>
         <h4>Scope of Services</h4>
         <p>I understand that my care may include one or more of the following:</p>
-        <ul><li>Chiropractic adjustments and joint manipulations</li><li>Massage therapy</li><li>Electromagnetic or percussive modalities (e.g., PEMF therapy, vibration plate)</li><li>Intersegmental traction, spinal decompression</li><li>Prenatal, postnatal, and pediatric chiropractic care</li><li>Nutritional consultations and supplementation recommendations</li><li>Wellness coaching</li><li>Diagnostic imaging (e.g., X-rays, ultrasound)</li><li>Other therapeutic services offered now or in the future</li></ul>
+        <ul><li>Chiropractic adjustments and joint manipulations</li><li>Massage therapy</li><li>Shockwave therapy</li><li>Electromagnetic or percussive modalities (e.g., PEMF therapy, vibration plate)</li><li>Intersegmental traction, spinal decompression</li><li>Prenatal, postnatal, and pediatric chiropractic care</li><li>Nutritional consultations and supplementation recommendations</li><li>Wellness coaching</li><li>Diagnostic imaging (e.g., X-rays, ultrasound)</li><li>Other therapeutic services offered now or in the future</li></ul>
         <h4>Informed Consent</h4>
         <p>I understand that chiropractic and supportive therapies have been shown to be safe and effective for many conditions. Potential risks may include: temporary soreness, stiffness, or fatigue (common); minor aggravation of existing symptoms (occasional); sprain, strain, or soft tissue injury (rare); neurological injury or stroke (extremely rare).</p>
         <h4>Patient Rights and Expectations</h4>
@@ -696,6 +716,41 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
         <p>I hereby consent to be video and/or audio recorded during my visits to Well Adjusted Chiropractic, a training facility for Parker University and Life University. These recordings may be used for educational, training, and marketing purposes. My consent is voluntary and I may withdraw it at any time.</p>
       </div>
       <div class="field" style="margin-top:16px"><label>Your response <span class="req">*</span></label><div class="radio-group"><label><input type="radio" name="videoConsent" value="I agree to video/audio recording for educational and training purposes."> I agree to the video/audio recording</label><label><input type="radio" name="videoConsent" value="I do NOT agree to video/audio recording."> I do NOT agree</label></div></div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top:18px">
+    <div class="section-header"><span class="section-num" style="background:var(--gold-light)">★</span><h2>Permission to Communicate</h2></div>
+    <div class="section-body">
+      <div class="consent-text-box">
+        <p>Well Adjusted Chiropractic may need to contact your emergency contact or another person you designate — for example, to relay scheduling changes or, in urgent situations, information about your visit. By agreeing below, I authorize the clinic to communicate with the person I select using the methods I choose. This permission is voluntary, does not authorize release of my full chart or billing details, and I may revoke it at any time by notifying the clinic in writing. A separate, more detailed Permission to Communicate form is available if I want to designate a different person or broader communication rights.</p>
+      </div>
+      <div class="field" style="margin-top:16px"><label>Your response <span class="req">*</span></label><div class="radio-group" id="commConsentGroup"><label><input type="radio" name="commConsent" value="I authorize Well Adjusted Chiropractic to communicate with the person I selected using the methods selected." onchange="toggleCommMethods(false, true)"> I agree</label><label><input type="radio" name="commConsent" value="I do NOT authorize Well Adjusted Chiropractic to communicate with anyone on my behalf." onchange="toggleCommMethods(false, false)"> I do NOT agree</label></div></div>
+      <div class="conditional-block hidden" id="commMethodsBlock">
+        <div class="field"><label>Who should we communicate with? <span class="req">*</span></label><div class="radio-group" id="commContactGroup"><label><input type="radio" name="commContact" value="Emergency Contact" onchange="toggleCommContactOther(false, false)"> My emergency contact (<span id="commEcNameDisplay">—</span>)</label><label><input type="radio" name="commContact" value="Other" onchange="toggleCommContactOther(false, true)"> Another person</label></div></div>
+        <div class="conditional-block hidden" id="commOtherNameBlock" style="margin-top:14px">
+          <div class="field"><label>Name of authorized person <span class="req">*</span></label><input type="text" id="commOtherName" placeholder="Full name"></div>
+        </div>
+        <div class="field" style="margin-top:16px"><label>Authorized methods of communication <span class="req">*</span></label><div class="checkbox-group"><label><input type="checkbox" name="commMethods" value="Phone"> Phone</label><label><input type="checkbox" name="commMethods" value="Voicemail"> Voicemail</label><label><input type="checkbox" name="commMethods" value="Text message"> Text message</label><label><input type="checkbox" name="commMethods" value="Email"> Email</label><label><input type="checkbox" name="commMethods" value="Written correspondence"> Written correspondence</label></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section hidden" id="selfPayBlock" style="margin-top:18px">
+    <div class="section-header"><span class="section-num" style="background:var(--gold-light)">★</span><h2>Medicare / Self-Pay Election (Age 65+)</h2></div>
+    <div class="section-body">
+      <div class="consent-text-box">
+        <h3>Patient Election to Self Pay for Services<br>Insurance / Medicare Waiver</h3>
+        <p>I the undersigned patient, acknowledge that I understand and agree that:</p>
+        <ol>
+          <li>Well Adjusted Chiropractic is not a participating provider with Insurance companies or Medicare.</li>
+          <li>If you would like to use the Medicare benefits you're entitled to, Well Adjusted Chiropractic will happily refer you to a Medicare provider.</li>
+          <li>I do not wish Well Adjusted Chiropractic to submit claims to Medicare, nor will I submit any claims for services provided to me by Well Adjusted Chiropractic.</li>
+          <li>I have read this form and have had the opportunity to ask any questions I may have had about the form. Any questions I may have had about this form have been answered to my satisfaction.</li>
+          <li>I have freely chosen to self-pay for services after having asked Well Adjusted Chiropractic about payment options and having carefully considered those options.</li>
+        </ol>
+      </div>
+      <div class="field" style="margin-top:16px"><label>Your response <span class="req">*</span></label><div class="radio-group"><label><input type="radio" name="selfPayAck" value="I elect to self-pay for services and acknowledge that Well Adjusted Chiropractic is not a participating provider with Insurance companies or Medicare."> I agree to this self-pay election</label><label><input type="radio" name="selfPayAck" value="I do NOT agree to this self-pay election."> I do NOT agree</label></div></div>
     </div>
   </div>
 
@@ -738,7 +793,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
         <p>Services may be rendered by a licensed Doctor of Chiropractic, licensed massage therapist, or other appropriately licensed healthcare professional acting within the scope of their credentials and under the policies of Well Adjusted Chiropractic.</p>
         <h4>Scope of Services</h4>
         <p>I understand that the child's care may include one or more of the following:</p>
-        <ul><li>Pediatric chiropractic adjustments and joint manipulations</li><li>Massage therapy</li><li>Electromagnetic or percussive modalities (e.g., PEMF therapy, vibration plate)</li><li>Nutritional consultations and supplementation recommendations</li><li>Wellness coaching</li><li>Diagnostic imaging (e.g., X-rays, ultrasound)</li><li>Other therapeutic services offered now or in the future</li></ul>
+        <ul><li>Pediatric chiropractic adjustments and joint manipulations</li><li>Massage therapy</li><li>Shockwave therapy</li><li>Electromagnetic or percussive modalities (e.g., PEMF therapy, vibration plate)</li><li>Nutritional consultations and supplementation recommendations</li><li>Wellness coaching</li><li>Diagnostic imaging (e.g., X-rays, ultrasound)</li><li>Other therapeutic services offered now or in the future</li></ul>
         <h4>Informed Consent</h4>
         <p>I understand that pediatric chiropractic care is gentle, safe, and effective for many childhood conditions. Potential risks may include temporary soreness or stiffness (common), and minor aggravation of existing symptoms (occasional). Serious adverse events are extremely rare in pediatric chiropractic care.</p>
         <h4>Patient Rights</h4>
@@ -758,6 +813,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
         <p>I hereby consent to video and/or audio recording during the child's visits to Well Adjusted Chiropractic, a training facility for Parker University and Life University. These recordings may be used for educational, training, and marketing purposes. My consent is voluntary and I may withdraw it at any time.</p>
       </div>
       <div class="field" style="margin-top:16px"><label>Your response <span class="req">*</span></label><div class="radio-group"><label><input type="radio" name="pedVideoConsent" value="I agree to video/audio recording for educational and training purposes."> I agree to the video/audio recording</label><label><input type="radio" name="pedVideoConsent" value="I do NOT agree to video/audio recording."> I do NOT agree</label></div></div>
+    </div>
+  </div>
+
+  <div class="form-section" style="margin-top:18px">
+    <div class="section-header"><span class="section-num" style="background:var(--gold-light)">★</span><h2>Permission to Communicate</h2></div>
+    <div class="section-body">
+      <div class="consent-text-box">
+        <p>Well Adjusted Chiropractic may need to contact the emergency contact listed on this form or another person you designate — for example, to relay scheduling changes or, in urgent situations, information about the child's visit. By agreeing below, I authorize the clinic to communicate with the person I select using the methods I choose. This permission is voluntary, does not authorize release of the child's full chart or billing details, and I may revoke it at any time by notifying the clinic in writing.</p>
+      </div>
+      <div class="field" style="margin-top:16px"><label>Your response <span class="req">*</span></label><div class="radio-group" id="pedCommConsentGroup"><label><input type="radio" name="pedCommConsent" value="I authorize Well Adjusted Chiropractic to communicate with the person I selected using the methods selected." onchange="toggleCommMethods(true, true)"> I agree</label><label><input type="radio" name="pedCommConsent" value="I do NOT authorize Well Adjusted Chiropractic to communicate with anyone on my behalf." onchange="toggleCommMethods(true, false)"> I do NOT agree</label></div></div>
+      <div class="conditional-block hidden" id="pedCommMethodsBlock">
+        <div class="field"><label>Who should we communicate with? <span class="req">*</span></label><div class="radio-group" id="pedCommContactGroup"><label><input type="radio" name="pedCommContact" value="Emergency Contact" onchange="toggleCommContactOther(true, false)"> The emergency contact (<span id="pedCommEcNameDisplay">—</span>)</label><label><input type="radio" name="pedCommContact" value="Other" onchange="toggleCommContactOther(true, true)"> Another person</label></div></div>
+        <div class="conditional-block hidden" id="pedCommOtherNameBlock" style="margin-top:14px">
+          <div class="field"><label>Name of authorized person <span class="req">*</span></label><input type="text" id="pedCommOtherName" placeholder="Full name"></div>
+        </div>
+        <div class="field" style="margin-top:16px"><label>Authorized methods of communication <span class="req">*</span></label><div class="checkbox-group"><label><input type="checkbox" name="pedCommMethods" value="Phone"> Phone</label><label><input type="checkbox" name="pedCommMethods" value="Voicemail"> Voicemail</label><label><input type="checkbox" name="pedCommMethods" value="Text message"> Text message</label><label><input type="checkbox" name="pedCommMethods" value="Email"> Email</label><label><input type="checkbox" name="pedCommMethods" value="Written correspondence"> Written correspondence</label></div></div>
+      </div>
     </div>
   </div>
 
@@ -1103,6 +1175,7 @@ document.getElementById('signatureDate').value = new Date().toLocaleDateString('
 document.getElementById('pedSignatureDate').value = new Date().toLocaleDateString('en-US');
 initSignaturePads();
 prefillFromURL();
+initQAPanel();
 
 function prefillFromURL() {
   const p = new URLSearchParams(window.location.search);
@@ -1114,6 +1187,140 @@ function prefillFromURL() {
   const fn = p.get('firstName'), ln = p.get('lastName');
   if (fn) { const el = document.getElementById('motherFirst'); if (el && !el.value) el.value = decodeURIComponent(fn); }
   if (ln) { const el = document.getElementById('motherLast');  if (el && !el.value) el.value = decodeURIComponent(ln); }
+}
+
+// ── QA TEST FILL (visit with ?qa=1 to reveal the panel) ──────────────────
+// Fills every required field for a scenario, draws a signature, and jumps
+// straight to the Consent page so a real submit (real webhooks, real PDF)
+// is one click away. Never shown to patients — hidden unless ?qa=1 is set.
+function initQAPanel() {
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('qa') === '1') document.getElementById('qaPanel').classList.remove('hidden');
+}
+
+function qaCheck(name, value) {
+  const el = document.querySelector('input[name="' + name + '"][value="' + value + '"]');
+  if (el) el.checked = true;
+}
+
+function qaSetScale(scaleId, hiddenId, value) {
+  const btns = document.querySelectorAll('#' + scaleId + ' .scale-btn');
+  const btn = [...btns].find(b => b.textContent === String(value));
+  if (btn) setScale(scaleId, hiddenId, btn);
+}
+
+function qaDrawSignature(ctx, canvas) {
+  if (!ctx || !canvas) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const midY = canvas.height * 0.6;
+  ctx.beginPath();
+  ctx.moveTo(30, midY);
+  ctx.lineTo(canvas.width * 0.22, midY - canvas.height * 0.3);
+  ctx.lineTo(canvas.width * 0.42, midY + canvas.height * 0.22);
+  ctx.lineTo(canvas.width * 0.62, midY - canvas.height * 0.22);
+  ctx.lineTo(canvas.width * 0.85, midY + canvas.height * 0.15);
+  ctx.stroke();
+  hasSig = true;
+}
+
+function qaFillAdult(location, opts) {
+  opts = opts || {};
+  const stamp = Date.now().toString().slice(-6);
+  visitState.isChild = 'No'; visitState.autoAccident = 'No'; visitState.location = location;
+
+  document.getElementById('firstName').value = 'QA';
+  document.getElementById('lastName').value = (opts.senior ? 'Senior' : 'Adult') + stamp;
+  document.getElementById('address1').value = '123 Test St';
+  document.getElementById('city').value = location.split(',')[0];
+  document.getElementById('state').value = location.includes('TX') ? 'TX' : 'CO';
+  document.getElementById('zip').value = '80538';
+  document.getElementById('cellPhone').value = '(970) 555-0100';
+  document.getElementById('email').value = 'qa+' + stamp + '@example.com';
+  document.getElementById('dob').value = opts.senior ? '04/12/1955' : '06/15/1990';
+  qaCheck('gender', opts.senior ? 'Female' : 'Male');
+  qaCheck('marital', opts.senior ? 'Married' : 'Single');
+  if (opts.senior) document.getElementById('spouseName').value = 'QA Spouse';
+  handleGenderChange();
+  document.getElementById('employer').value = 'QA Testing Co';
+  document.getElementById('occupation').value = 'Tester';
+  document.getElementById('ecName').value = 'QA Contact';
+  document.getElementById('ecPhone').value = '(970) 555-0101';
+  document.getElementById('ecRelationship').value = 'Friend';
+  qaCheck('adjustedBefore', 'Yes');
+  qaCheck('recentXrays', 'No');
+
+  document.getElementById('chiefComplaint').value = 'QA test — low back pain';
+  document.getElementById('headacheFreq').value = 'Rarely';
+  qaSetScale('symptomsScale', 'symptomIntensity', 4);
+  qaCheck('symptoms', 'Aching');
+  qaSetScale('commitmentScale', 'healthCommitment', 8);
+  document.getElementById('goalImmediate').value = 'Reduce daily pain';
+  document.getElementById('goalDifficult').value = 'Sitting for long periods';
+  document.getElementById('goalLove').value = 'Gardening';
+
+  document.getElementById('wellnessRating').value = '6';
+  qaCheck('healthDirection', 'Health/wellness');
+  if (opts.senior) { qaCheck('pregnant', 'No'); document.getElementById('lmpDate').value = '1995-01-01'; }
+
+  qaCheck('conditions', 'None');
+  qaCheck('medications', 'None');
+  qaCheck('smoke', 'No');
+  qaCheck('coffee', 'Yes');
+  qaCheck('alcohol', 'No');
+  qaCheck('exercise', 'Yes');
+  qaCheck('orthotics', 'No');
+
+  document.getElementById('missingBannerAdult').classList.remove('visible');
+  handleDobChange();
+  qaCheck('videoConsent', 'I agree to video/audio recording for educational and training purposes.');
+  if (opts.senior) qaCheck('selfPayAck', 'I elect to self-pay for services and acknowledge that Well Adjusted Chiropractic is not a participating provider with Insurance companies or Medicare.');
+  qaCheck('commConsent', 'I authorize Well Adjusted Chiropractic to communicate with the person I selected using the methods selected.');
+  toggleCommMethods(false, true);
+  qaCheck('commContact', 'Emergency Contact');
+  qaCheck('commMethods', 'Text message');
+  qaDrawSignature(sigCtx, sigCanvas);
+  showPage('page3adult');
+}
+
+function qaFillPed(location) {
+  const stamp = Date.now().toString().slice(-6);
+  visitState.isChild = 'Yes'; visitState.autoAccident = 'No'; visitState.location = location;
+
+  document.getElementById('childFirst').value = 'QA';
+  document.getElementById('childLast').value = 'Kid' + stamp;
+  document.getElementById('childDob').value = '05/01/2019';
+  document.getElementById('pAddress1').value = '456 Test Ave';
+  document.getElementById('pCity').value = location.split(',')[0];
+  document.getElementById('pState').value = location.includes('TX') ? 'TX' : 'CO';
+  document.getElementById('pZip').value = '80516';
+  document.getElementById('hearAboutUs').value = 'QA script';
+
+  setRelation('Parent');
+  document.getElementById('motherFirst').value = 'QA';
+  document.getElementById('motherLast').value = 'Parent' + stamp;
+  document.getElementById('motherPhone').value = '(970) 555-0102';
+  qaCheck('ecPrimary', 'Mother');
+  document.getElementById('pEcName').value = 'QA Contact';
+  document.getElementById('pEcRelationship').value = 'Aunt';
+  document.getElementById('pEcPhone').value = '(970) 555-0103';
+
+  qaCheck('helpReason', 'Wellness Checkup');
+  qaCheck('emergencyTreatment', 'No');
+  qaCheck('pregnancyComplications', 'None');
+  qaCheck('birthType', 'Normal/Vaginal');
+  qaCheck('birthPresent', 'None');
+  qaCheck('childhoodDiseases', 'None');
+  qaCheck('childConditions', 'None');
+  qaCheck('vaccinated', 'As scheduled');
+
+  document.getElementById('missingBannerPed1').classList.remove('visible');
+  qaCheck('pedVideoConsent', 'I agree to video/audio recording for educational and training purposes.');
+  qaCheck('pedCommConsent', 'I authorize Well Adjusted Chiropractic to communicate with the person I selected using the methods selected.');
+  toggleCommMethods(true, true);
+  qaCheck('pedCommContact', 'Emergency Contact');
+  qaCheck('pedCommMethods', 'Text message');
+  qaDrawSignature(pedSigCtx, pedSigCanvas);
+  showPage('page3ped');
 }
 
 // ── PAGE DISPLAY ──────────────────────────────────────────────────────────
@@ -1218,6 +1425,13 @@ function handleGenderChange() {
   document.getElementById('womenOnlySection').classList.toggle('hidden', !showFemale);
   const lmpBlock = document.getElementById('lmpBlock');
   if (lmpBlock) lmpBlock.classList.toggle('hidden', !showFemale);
+  if (!showFemale) {
+    // Clear stale answers from hidden female-only fields so they can't leak into the PDF or webhook
+    document.querySelectorAll('input[name="pregnant"]').forEach(el => el.checked = false);
+    const pc = document.getElementById('pregnancyConcerns'); if (pc) pc.value = '';
+    const pp = document.getElementById('pastPregnancies'); if (pp) pp.value = '';
+    const lmp = document.getElementById('lmpDate'); if (lmp) lmp.value = '';
+  }
   // Sync body diagram gender
   if (g === 'Female') _diagGender = 'female';
   else if (g === 'Other') _diagGender = 'other';
@@ -1228,6 +1442,101 @@ function handleMaritalChange() {
   const m = getRadio('marital');
   document.getElementById('spouseRow').classList.toggle('hidden', m !== 'Married');
 }
+
+// ── DATE OF BIRTH ─────────────────────────────────────────────────────────
+// Birthdays are typed, not picked: the native date picker opens on the current
+// year and made patients scroll decades back to reach their birth year. These
+// fields are plain text with a typing mask; everything downstream (PDF, GHL,
+// Make) still receives ISO YYYY-MM-DD via dobToISO().
+
+// Punctuates the date as the patient types, so both 06151990 and 6/15/1990
+// land on 06/15/1990. A slash the patient types finishes the current segment
+// (6/ → 06), and the caret stays where they were editing rather than jumping
+// to the end of the field.
+function maskDateInput(el) {
+  const raw = el.value;
+  const caret = el.selectionStart == null ? raw.length : el.selectionStart;
+  const digitsBeforeCaret = raw.slice(0, caret).replace(/\D/g, '').length;
+
+  const cleaned = raw.replace(/[^\d/]/g, '');
+  // A slash at the end is one the patient just typed: it closes the segment
+  // they were on, so a single-digit month or day gets its leading zero.
+  const trailingSep = /\/$/.test(cleaned);
+  let digits = cleaned.replace(/\//g, '').slice(0, 8);
+  if (trailingSep) {
+    if (digits.length === 1) digits = '0' + digits;                              // 6/ → 06
+    else if (digits.length === 3) digits = digits.slice(0, 2) + '0' + digits[2];  // 06/5/ → 06/05
+  }
+
+  let out = digits.slice(0, 2);
+  if (digits.length > 2 || (digits.length === 2 && trailingSep)) out += '/';
+  out += digits.slice(2, 4);
+  if (digits.length > 4 || (digits.length === 4 && trailingSep)) out += '/';
+  out += digits.slice(4, 8);
+
+  if (out === raw) return;
+  const atEnd = caret >= raw.length;
+  el.value = out;
+  let pos = out.length;
+  if (!atEnd) {
+    pos = 0;
+    let seen = 0;
+    while (pos < out.length && seen < digitsBeforeCaret) { if (out[pos] !== '/') seen++; pos++; }
+    while (pos < out.length && out[pos] === '/') pos++;
+  }
+  try { el.setSelectionRange(pos, pos); } catch (e) { /* input types without selection support */ }
+}
+
+// Parses a typed MM/DD/YYYY birthday (ISO is accepted too, for prefilled
+// values). Returns null for anything incomplete, impossible (02/30/1990),
+// implausibly old, or in the future.
+function parseTypedDate(str) {
+  const s = (str || '').trim();
+  let mo, da, yr;
+  let m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(s);
+  if (m) { mo = +m[1]; da = +m[2]; yr = +m[3]; }
+  else {
+    m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s);
+    if (!m) return null;
+    yr = +m[1]; mo = +m[2]; da = +m[3];
+  }
+  if (yr < 1900) return null;
+  const d = new Date(yr, mo - 1, da);
+  // Rejects rolled-over dates the Date constructor silently accepts (02/30 → 03/02)
+  if (d.getFullYear() !== yr || d.getMonth() !== mo - 1 || d.getDate() !== da) return null;
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+  if (d.getTime() > today.getTime()) return null;
+  return d;
+}
+
+// Normalizes a typed birthday to ISO YYYY-MM-DD; '' when it can't be parsed.
+function dobToISO(str) {
+  const d = parseTypedDate(str);
+  if (!d) return '';
+  const pad = n => String(n).padStart(2, '0');
+  return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+}
+
+function calcAge(dobStr) {
+  const dob = parseTypedDate(dobStr);
+  if (!dob) return null;
+  const today = new Date();
+  let age = today.getFullYear() - dob.getFullYear();
+  const m = today.getMonth() - dob.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+  return age;
+}
+function handleDobChange() {
+  const age = calcAge(val('dob'));
+  const is65Plus = age !== null && age >= 65;
+  const block = document.getElementById('selfPayBlock');
+  if (block) block.classList.toggle('hidden', !is65Plus);
+  if (!is65Plus) {
+    // Clear a stale self-pay election from hidden field so it can't leak into the PDF or webhook
+    document.querySelectorAll('input[name="selfPayAck"]').forEach(el => el.checked = false);
+  }
+}
 function setRelation(val) {
   pedRelation = val;
   document.getElementById('relParent').classList.toggle('selected', val === 'Parent');
@@ -1236,6 +1545,38 @@ function setRelation(val) {
 }
 function toggleEmergencyDesc(show) {
   document.getElementById('emergencyDescRow').classList.toggle('hidden', !show);
+}
+function toggleReferralName(source) {
+  const show = source === 'Referral';
+  document.getElementById('referralNameBlock').classList.toggle('hidden', !show);
+  if (!show) document.getElementById('referral').value = '';
+}
+function toggleCommMethods(isPed, show) {
+  const block = document.getElementById(isPed ? 'pedCommMethodsBlock' : 'commMethodsBlock');
+  if (block) block.classList.toggle('hidden', !show);
+  if (show) {
+    const ecName = val(isPed ? 'pEcName' : 'ecName');
+    const display = document.getElementById(isPed ? 'pedCommEcNameDisplay' : 'commEcNameDisplay');
+    if (display) display.textContent = ecName || 'not provided yet';
+  } else {
+    document.querySelectorAll('input[name="' + (isPed ? 'pedCommMethods' : 'commMethods') + '"]').forEach(el => el.checked = false);
+    document.querySelectorAll('input[name="' + (isPed ? 'pedCommContact' : 'commContact') + '"]').forEach(el => el.checked = false);
+    toggleCommContactOther(isPed, false);
+  }
+}
+function toggleCommContactOther(isPed, show) {
+  const block = document.getElementById(isPed ? 'pedCommOtherNameBlock' : 'commOtherNameBlock');
+  if (block) block.classList.toggle('hidden', !show);
+  if (!show) document.getElementById(isPed ? 'pedCommOtherName' : 'commOtherName').value = '';
+}
+
+// A birthday that was typed but isn't a real date counts as missing, so the
+// patient is sent back to it instead of submitting a blank DOB downstream.
+function flagUnparsableDob(id, missing) {
+  const el = document.getElementById(id);
+  if (!el || !el.value.trim() || dobToISO(el.value)) return;
+  missing.push({ id: id, label: 'Date of Birth — please enter it as MM/DD/YYYY' });
+  el.classList.add('error-field');
 }
 
 // ── ADULT VALIDATION ──────────────────────────────────────────────────────
@@ -1253,11 +1594,14 @@ function validateAdult() {
     { id:'goalImmediate',label:'Immediate health goal' },
     { id:'goalDifficult',label:'Something difficult to do' },
     { id:'goalLove',label:'Something to get back to' },
+    { id:'referralSource',label:'How did you hear about us' },
   ];
   if (getRadio('marital') === 'Married') fields.push({ id:'spouseName',label:'Spouse Full Name' });
+  if (val('referralSource') === 'Referral') fields.push({ id:'referral',label:'Who may we thank for referring you' });
   const missing = [];
   document.querySelectorAll('.error-field').forEach(el => el.classList.remove('error-field'));
   fields.forEach(f => { const el = document.getElementById(f.id); if (!el||!el.value.trim()) { missing.push(f); if(el) el.classList.add('error-field'); } });
+  flagUnparsableDob('dob', missing);
   if (!getRadio('gender')) missing.push({ id:null, label:'Gender' });
   if (!getRadio('marital')) missing.push({ id:null, label:'Marital Status' });
   if (!getRadio('adjustedBefore')) missing.push({ id:null, label:'Adjusted before (chiropractic history)' });
@@ -1276,6 +1620,7 @@ function goToPage3Adult() {
     return;
   }
   document.getElementById('missingBannerAdult').classList.remove('visible');
+  handleDobChange();
   showPage('page3adult');
 }
 
@@ -1289,6 +1634,7 @@ function doneFixingAdult() {
     return;
   }
   document.getElementById('missingBannerAdult').classList.remove('visible');
+  handleDobChange();
   showPage('page3adult');
 }
 
@@ -1305,6 +1651,7 @@ function validatePed() {
   const missing = [];
   document.querySelectorAll('.error-field').forEach(el => el.classList.remove('error-field'));
   fields.forEach(f => { const el = document.getElementById(f.id); if (!el||!el.value.trim()) { missing.push(f); if(el) el.classList.add('error-field'); } });
+  flagUnparsableDob('childDob', missing);
   if (!pedRelation) missing.push({ id:null, label:'Relation to child (Parent or Guardian)' });
   if (!getRadio('ecPrimary')) missing.push({ id:null, label:'Primary emergency contact selection' });
   if (!getRadio('helpReason')) missing.push({ id:null, label:'How can we help your child' });
@@ -1399,20 +1746,20 @@ function clearSignature() {
 function collectAdultData() {
   return {
     mode: 'adult', location: visitState.location,
-    personal: { firstName:val('firstName'),lastName:val('lastName'),address1:val('address1'),address2:val('address2'),city:val('city'),state:val('state'),zip:val('zip'),cellPhone:val('cellPhone'),homePhone:val('homePhone'),email:val('email'),dob:val('dob'),gender:getRadio('gender'),marital:getRadio('marital'),spouseName:val('spouseName'),employer:val('employer'),occupation:val('occupation'),ecName:val('ecName'),ecPhone:val('ecPhone'),ecRelationship:val('ecRelationship'),referral:val('referral') },
+    personal: { firstName:val('firstName'),lastName:val('lastName'),address1:val('address1'),address2:val('address2'),city:val('city'),state:val('state'),zip:val('zip'),cellPhone:val('cellPhone'),homePhone:val('homePhone'),email:val('email'),dob:dobToISO(val('dob')),gender:getRadio('gender'),marital:getRadio('marital'),spouseName:val('spouseName'),employer:val('employer'),occupation:val('occupation'),ecName:val('ecName'),ecPhone:val('ecPhone'),ecRelationship:val('ecRelationship'),referralSource:val('referralSource'),referral:val('referralSource')==='Referral'?val('referral'):val('referralSource') },
     chiropracticHistory:{ adjustedBefore:getRadio('adjustedBefore'),recentXrays:getRadio('recentXrays') },
     reasonForVisit:{ chiefComplaint:val('chiefComplaint'),headacheFreq:val('headacheFreq'),symptomIntensity:val('symptomIntensity'),symptoms:getCheckboxes('symptoms'),interference:getCheckboxes('interference'),healthCommitment:val('healthCommitment'),bodyDiagram:getDiagramDataURL() },
     goals:{ immediate:val('goalImmediate'),difficult:val('goalDifficult'),love:val('goalLove') },
     wellness:{ rating:val('wellnessRating'),direction:getRadio('healthDirection'),pregnant:getRadio('pregnant'),pregnancyConcerns:val('pregnancyConcerns'),pastPregnancies:val('pastPregnancies') },
     healthHistory:{ conditions:getCheckboxes('conditions'),otherConditions:val('otherConditions'),medications:getCheckboxes('medications'),otherMedications:val('otherMedications'),smoke:getRadio('smoke'),coffee:getRadio('coffee'),alcohol:getRadio('alcohol'),allergies:val('allergies'),surgeries:val('surgeries'),supplements:val('supplements'),exercise:getRadio('exercise'),orthotics:getRadio('orthotics'),healthSupport:getCheckboxes('healthSupport'),healthChallenges:getCheckboxes('healthChallenges') },
-    consent:{ videoConsent:getRadio('videoConsent'),lmpDate:val('lmpDate'),signatureDate:val('signatureDate') }
+    consent:{ videoConsent:getRadio('videoConsent'),lmpDate:val('lmpDate'),selfPayElection:getRadio('selfPayAck'),commConsent:getRadio('commConsent'),commContact:getRadio('commContact'),commContactName:getRadio('commContact')==='Other'?val('commOtherName'):val('ecName'),commMethods:getCheckboxes('commMethods'),signatureDate:val('signatureDate') }
   };
 }
 
 function collectPedData() {
   return {
     mode: 'pediatric', location: visitState.location,
-    child:{ firstName:val('childFirst'),lastName:val('childLast'),dob:val('childDob'),address1:val('pAddress1'),address2:val('pAddress2'),city:val('pCity'),state:val('pState'),zip:val('pZip'),hearAboutUs:val('hearAboutUs') },
+    child:{ firstName:val('childFirst'),lastName:val('childLast'),dob:dobToISO(val('childDob')),address1:val('pAddress1'),address2:val('pAddress2'),city:val('pCity'),state:val('pState'),zip:val('pZip'),hearAboutUs:val('hearAboutUs') },
     family:{ relation:pedRelation,guardian:{ firstName:val('guardianFirst'),lastName:val('guardianLast'),occupation:val('guardianOccupation'),phone:val('guardianPhone'),email:val('guardianEmail') },mother:{ firstName:val('motherFirst'),lastName:val('motherLast'),occupation:val('motherOccupation'),phone:val('motherPhone'),email:val('motherEmail') },father:{ firstName:val('fatherFirst'),lastName:val('fatherLast'),occupation:val('fatherOccupation'),phone:val('fatherPhone'),email:val('fatherEmail') },ec:{ primary:getRadio('ecPrimary'),name:val('pEcName'),relationship:val('pEcRelationship'),phone:val('pEcPhone') } },
     visit:{ helpReason:getRadio('helpReason'),symptom:val('childSymptom'),emergencyTreatment:getRadio('emergencyTreatment'),emergencyDesc:val('emergencyDesc') },
     pregnancy:{ complications:getCheckboxes('pregnancyComplications') },
@@ -1421,7 +1768,7 @@ function collectPedData() {
     diseases:{ had:getCheckboxes('childhoodDiseases'),suffered:getCheckboxes('childConditions'),vaccinated:getRadio('vaccinated') },
     medical:{ allergies:val('childAllergies'),medications:val('childMedications'),surgeries:val('childSurgeries'),familyHistory:val('familyHistory') },
     siblings:{ numChildren:val('numChildren'),numPregnancies:val('numPregnancies'),ages:val('childrenAges'),currentlyPregnant:getRadio('currentlyPregnant'),otherConcerns:val('otherChildHealthConcerns') },
-    consent:{ videoConsent:getRadio('pedVideoConsent'),signatureDate:val('pedSignatureDate') }
+    consent:{ videoConsent:getRadio('pedVideoConsent'),commConsent:getRadio('pedCommConsent'),commContact:getRadio('pedCommContact'),commContactName:getRadio('pedCommContact')==='Other'?val('pedCommOtherName'):val('pEcName'),commMethods:getCheckboxes('pedCommMethods'),signatureDate:val('pedSignatureDate') }
   };
 }
 
@@ -2079,11 +2426,74 @@ async function generateAdultPDF(d) {
   hdr('Wellness Assessment');
   checkY(28);
   {const barX=M,barW=CW,barH=8;const stops=[[[192,57,43],[230,126,34]],[[230,126,34],[241,196,15]],[[241,196,15],[168,213,162]],[[168,213,162],[39,174,96]],[[39,174,96],[26,94,53]]];const segW=barW/stops.length;doc.setDrawColor(...BORDER);stops.forEach(([[r1,g1,b1],[r2,g2,b2]],i)=>{const rm=Math.round((r1+r2)/2),gm=Math.round((g1+g2)/2),bm=Math.round((b1+b2)/2);doc.setFillColor(rm,gm,bm);doc.rect(barX+i*segW,y,segW,barH,'F');});doc.roundedRect(barX,y,barW,barH,1,1,'S');doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.setTextColor(...CHAR);doc.text('0 — Pre-Mature Death',barX+2,y+barH+5);doc.text('5 — Comfort Zone',barX+barW/2,y+barH+5,{align:'center'});doc.text('10 — High-Level Wellness',barX+barW-2,y+barH+5,{align:'right'});y+=barH+9;}
-  {const wItems=[{label:'Health Rating',value:d.wellness.rating?d.wellness.rating+'/10':'—'},{label:'Health Direction',value:d.wellness.direction||'—'},{label:'Pregnant',value:d.wellness.pregnant||'—'}];const wHalf=CW/2;wItems.forEach(item=>{const rowH=14;checkY(rowH);doc.setFillColor(...WHITE);doc.setDrawColor(...BORDER);doc.roundedRect(M,y,wHalf,rowH,1,1,'FD');doc.setDrawColor(...BORDER);doc.line(M+LABEL_W,y,M+LABEL_W,y+rowH);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...NAVY);doc.text(item.label,M+3,y+rowH/2+2.5);doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...CHAR);doc.text(String(item.value||'—'),M+LABEL_W+3,y+rowH/2+2.5);doc.setFillColor(252,248,240);doc.setDrawColor(...BORDER);doc.roundedRect(M+wHalf+1,y,wHalf-1,rowH,1,1,'FD');const wtf=new AcroFormTextField();wtf.fieldName='wellness_npc_'+_rowCounter++;wtf.x=M+wHalf+2;wtf.y=y+1;wtf.width=wHalf-4;wtf.height=rowH-2;wtf.multiline=true;wtf.fontSize=0;wtf.maxFontSize=8;wtf.backgroundColor=undefined;wtf;doc.addField(wtf);y+=rowH+2;});y+=3;}
+  {const wItems=[{label:'Health Rating',value:d.wellness.rating?d.wellness.rating+'/10':'—'},{label:'Health Direction',value:d.wellness.direction||'—'},{label:'Pregnant',value:d.wellness.pregnant||'—'}];
+   if (d.consent.lmpDate) wItems.push({label:'Last Menstrual Period',value:d.consent.lmpDate});
+   const wHalf=CW/2;wItems.forEach(item=>{const rowH=14;checkY(rowH);doc.setFillColor(...WHITE);doc.setDrawColor(...BORDER);doc.roundedRect(M,y,wHalf,rowH,1,1,'FD');doc.setDrawColor(...BORDER);doc.line(M+LABEL_W,y,M+LABEL_W,y+rowH);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...NAVY);doc.text(item.label,M+3,y+rowH/2+2.5);doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...CHAR);doc.text(String(item.value||'—'),M+LABEL_W+3,y+rowH/2+2.5);doc.setFillColor(252,248,240);doc.setDrawColor(...BORDER);doc.roundedRect(M+wHalf+1,y,wHalf-1,rowH,1,1,'FD');const wtf=new AcroFormTextField();wtf.fieldName='wellness_npc_'+_rowCounter++;wtf.x=M+wHalf+2;wtf.y=y+1;wtf.width=wHalf-4;wtf.height=rowH-2;wtf.multiline=true;wtf.fontSize=0;wtf.maxFontSize=8;wtf.backgroundColor=undefined;wtf;doc.addField(wtf);y+=rowH+2;});y+=3;}
 
   // ── HEALTH CONDITIONS ─────────────────────────────────────────────────
   hdr('Health Conditions');
   {const hcItems=[{label:'Conditions',value:d.healthHistory.conditions||'—'},{label:'Other Conditions',value:d.healthHistory.otherConditions||'—'},{label:'Medications',value:d.healthHistory.medications||'—'},{label:'Other Medications',value:d.healthHistory.otherMedications||'—'},{label:'Smoke/Coffee/Alcohol',value:[d.healthHistory.smoke,d.healthHistory.coffee,d.healthHistory.alcohol].filter(Boolean).join(' / ')||'—'},{label:'Allergies',value:d.healthHistory.allergies||'—'},{label:'Surgeries',value:d.healthHistory.surgeries||'—'},{label:'Supplements',value:d.healthHistory.supplements||'—'},{label:'Exercise / Orthotics',value:(d.healthHistory.exercise||'—')+' / '+(d.healthHistory.orthotics||'—')}];const hcHalf=CW/2;hcItems.forEach(item=>{const strVal=String(item.value||'—');doc.setFont('helvetica','normal');doc.setFontSize(9);const lines=doc.splitTextToSize(strVal,hcHalf-LABEL_W-6);const rowH=Math.max(14,lines.length*5.5+4);checkY(rowH);doc.setFillColor(...WHITE);doc.setDrawColor(...BORDER);doc.roundedRect(M,y,hcHalf,rowH,1,1,'FD');doc.setDrawColor(...BORDER);doc.line(M+LABEL_W,y,M+LABEL_W,y+rowH);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...NAVY);doc.text(item.label,M+3,y+rowH/2+2.5);doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...CHAR);doc.text(lines,M+LABEL_W+3,y+rowH/2-(lines.length-1)*2.5+2.5);doc.setFillColor(252,248,240);doc.setDrawColor(...BORDER);doc.roundedRect(M+hcHalf+1,y,hcHalf-1,rowH,1,1,'FD');const hcTf=new AcroFormTextField();hcTf.fieldName='hc_npc_'+_rowCounter++;hcTf.x=M+hcHalf+2;hcTf.y=y+1;hcTf.width=hcHalf-4;hcTf.height=rowH-2;hcTf.multiline=true;hcTf.fontSize=0;hcTf.maxFontSize=8;hcTf.backgroundColor=undefined;hcTf;doc.addField(hcTf);y+=rowH+2;});y+=3;}
+
+  // ── SIGNED CONSENTS (own page) ────────────────────────────────────────
+  newPage();
+  {
+    function cHdr(txt){checkY(14);doc.setFillColor(...NAVY);doc.rect(M,y,CW,10,'F');doc.setFillColor(...GOLD);doc.rect(M,y+10,CW,1.5,'F');doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...WHITE);doc.text(txt,M+4,y+7);y+=14.5;}
+    function cSub(txt){checkY(8);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...NAVY);doc.text(txt,M,y+3.5);y+=6;}
+    function cBody(txt){doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(...CHAR);const lines=doc.splitTextToSize(txt,CW-2);checkY(lines.length*3.5+3);doc.text(lines,M,y+3);y+=lines.length*3.5+3.5;}
+    function cResp(label,value){const strVal=String(value||'Not answered');doc.setFont('helvetica','normal');doc.setFontSize(8.5);const lines=doc.splitTextToSize(strVal,CW-LABEL_W-6);const rowH=Math.max(11,lines.length*4.5+5);checkY(rowH+2);doc.setFillColor(...WHITE);doc.setDrawColor(...BORDER);doc.roundedRect(M,y,CW,rowH,1,1,'FD');doc.setDrawColor(...BORDER);doc.line(M+LABEL_W,y,M+LABEL_W,y+rowH);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(...NAVY);doc.text(label,M+3,y+rowH/2+2.5);doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...CHAR);doc.text(lines,M+LABEL_W+3,y+rowH/2-(lines.length-1)*2.25+2.5);y+=rowH+2.5;}
+
+    cHdr('Signed Consents');
+
+    cSub('Consent to Chiropractic Care, Supportive Therapies, Massage, and Diagnostic Services');
+    cBody('Valid for all locations: CO & TX. This document provides consent for chiropractic and related healthcare services offered by Well Adjusted Chiropractic and its team of licensed providers. Services may be rendered by a licensed Doctor of Chiropractic, licensed massage therapist, or other appropriately licensed healthcare professional acting within the scope of their credentials and under the policies of Well Adjusted Chiropractic.');
+    cBody('Scope of Services: I understand that my care may include chiropractic adjustments and joint manipulations; massage therapy; electromagnetic or percussive modalities (e.g., PEMF therapy, vibration plate); shockwave therapy; intersegmental traction and spinal decompression; prenatal, postnatal, and pediatric chiropractic care; nutritional consultations and supplementation recommendations; wellness coaching; diagnostic imaging (e.g., X-rays, ultrasound); and other therapeutic services offered now or in the future.');
+    cBody('Informed Consent: I understand that chiropractic and supportive therapies have been shown to be safe and effective for many conditions. Potential risks may include: temporary soreness, stiffness, or fatigue (common); minor aggravation of existing symptoms (occasional); sprain, strain, or soft tissue injury (rare); neurological injury or stroke (extremely rare).');
+    cBody('Patient Rights and Expectations: I may ask questions and express concerns at any time. I have the right to decline any part of my care. My provider will explain any alternatives and implications if I decline a part of my care.');
+    cBody('Consent Duration & Revocation: This consent is valid for the entire duration of my care at any Well Adjusted Chiropractic location unless I revoke it in writing.');
+    cBody('Limitation of Liability: I understand that individual results may vary and that no guarantee of specific outcomes has been made.');
+    cBody('Jurisdiction: I agree that any disputes arising from services rendered shall be governed by the laws of the state in which the care was provided.');
+    y += 2;
+
+    cSub('Consent for Video / Audio Recording');
+    cBody('I hereby consent to be video and/or audio recorded during my visits to Well Adjusted Chiropractic, a training facility for Parker University and Life University. These recordings may be used for educational, training, and marketing purposes. My consent is voluntary and I may withdraw it at any time.');
+    cResp('Response', d.consent.videoConsent);
+
+    cSub('Permission to Communicate');
+    cBody('I authorize Well Adjusted Chiropractic to communicate with the person I designate below using the methods I select regarding scheduling and, in urgent situations, my visit. This permission is voluntary, does not authorize release of my full chart or billing details, and I may revoke it at any time by notifying the clinic in writing.');
+    cResp('Response', d.consent.commConsent);
+    if (d.consent.commContactName) cResp('Authorized Contact', d.consent.commContactName + (d.consent.commContact === 'Other' ? ' (Other)' : ' (Emergency Contact)'));
+    if (d.consent.commMethods) cResp('Authorized Methods', d.consent.commMethods);
+
+    if (d.consent.selfPayElection) {
+      cSub('Medicare / Self-Pay Election (Age 65+)');
+      cBody('I the undersigned patient, acknowledge that I understand and agree that: (1) Well Adjusted Chiropractic is not a participating provider with Insurance companies or Medicare. (2) If you would like to use the Medicare benefits you\'re entitled to, Well Adjusted Chiropractic will happily refer you to a Medicare provider. (3) I do not wish Well Adjusted Chiropractic to submit claims to Medicare, nor will I submit any claims for services provided to me by Well Adjusted Chiropractic. (4) I have read this form and have had the opportunity to ask any questions I may have had about the form. Any questions I may have had about this form have been answered to my satisfaction. (5) I have freely chosen to self-pay for services after having asked Well Adjusted Chiropractic about payment options and having carefully considered those options.');
+      cResp('Response', d.consent.selfPayElection);
+    }
+
+    if (d.consent.lmpDate) {
+      cSub('Pregnancy Release');
+      cBody('To the best of my knowledge, I am not pregnant and give permission for X-ray evaluation if necessary. I have been advised X-rays can be hazardous to an unborn child.');
+      cResp('Last Menstrual Period', d.consent.lmpDate);
+    }
+
+    y += 2;
+    cSub('Patient Signature');
+    cBody('I have read and understand this consent, and I should not sign if any of my questions have not been answered.');
+    const sigImg = _compressCanvasForHTML(hasSig && sigCanvas ? sigCanvas : null, 600, 0.80);
+    const sigH = 16, sigW = 95;
+    checkY(sigH + 12);
+    doc.setFillColor(...WHITE); doc.setDrawColor(...BORDER); doc.roundedRect(M, y, CW, sigH + 10, 1, 1, 'FD');
+    if (sigImg) { try { doc.addImage(sigImg,'JPEG',M+3,y+2,sigW,sigH); } catch(e) { doc.setFont('helvetica','italic'); doc.setFontSize(8); doc.setTextColor(180,180,180); doc.text('Signature not captured',M+3,y+sigH/2+2); } }
+    else { doc.setFont('helvetica','italic'); doc.setFontSize(8); doc.setTextColor(180,180,180); doc.text('Signature not captured',M+3,y+sigH/2+2); }
+    doc.setDrawColor(160,160,160); doc.line(M+3, y+sigH+3, M+3+sigW, y+sigH+3);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(100,100,100);
+    doc.text(d.personal.firstName+' '+d.personal.lastName, M+3, y+sigH+7.5);
+    doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.setTextColor(...NAVY);
+    doc.text('Date Signed', M+sigW+14, y+sigH/2+2);
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(...CHAR);
+    doc.text(String(d.consent.signatureDate||'—'), M+sigW+42, y+sigH/2+2);
+    y += sigH + 13;
+  }
 
   // page numbers
   const pages=doc.getNumberOfPages();for(let p=1;p<=pages;p++){doc.setPage(p);doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(182,197,213);doc.text('Page '+p+' of '+pages,W-M,287,{align:'right'});}
@@ -2117,11 +2527,25 @@ async function handleSubmit() {
 
   if (isPed) {
     if (!getRadio('pedVideoConsent')) { showStatus('Please answer the video/audio recording consent.','error'); return; }
+    if (!getRadio('pedCommConsent')) { showStatus('Please answer the permission to communicate consent.','error'); return; }
+    if (getRadio('pedCommConsent').startsWith('I authorize')) {
+      if (!getRadio('pedCommContact')) { showStatus('Please select who we may communicate with.','error'); return; }
+      if (getRadio('pedCommContact') === 'Other' && !val('pedCommOtherName')) { showStatus('Please enter the name of the person we may communicate with.','error'); return; }
+      if (!getCheckboxes('pedCommMethods')) { showStatus('Please select at least one authorized method of communication.','error'); return; }
+    }
     if (!hasSig) { showStatus('Please sign before submitting.','error'); return; }
   } else {
     if (!getRadio('videoConsent')) { showStatus('Please answer the video/audio recording consent.','error'); return; }
     const lmpBlock = document.getElementById('lmpBlock');
     if (lmpBlock && !lmpBlock.classList.contains('hidden') && !val('lmpDate')) { showStatus('Please enter the date of your last menstrual period.','error'); return; }
+    const selfPayBlock = document.getElementById('selfPayBlock');
+    if (selfPayBlock && !selfPayBlock.classList.contains('hidden') && !getRadio('selfPayAck')) { showStatus('Please answer the Medicare / self-pay election.','error'); return; }
+    if (!getRadio('commConsent')) { showStatus('Please answer the permission to communicate consent.','error'); return; }
+    if (getRadio('commConsent').startsWith('I authorize')) {
+      if (!getRadio('commContact')) { showStatus('Please select who we may communicate with.','error'); return; }
+      if (getRadio('commContact') === 'Other' && !val('commOtherName')) { showStatus('Please enter the name of the person we may communicate with.','error'); return; }
+      if (!getCheckboxes('commMethods')) { showStatus('Please select at least one authorized method of communication.','error'); return; }
+    }
     if (!hasSig) { showStatus('Please sign before submitting.','error'); return; }
   }
 
@@ -2258,6 +2682,7 @@ async function handleSubmit() {
         occupation:        data.personal.occupation,
         homePhone:         data.personal.homePhone,
         referral:          data.personal.referral,
+        referralSource:    data.personal.referralSource,
         ecName:            data.personal.ecName,
         ecPhone:           data.personal.ecPhone,
         ecRelationship:    data.personal.ecRelationship,
@@ -2290,6 +2715,11 @@ async function handleSubmit() {
         otherConditions:   data.healthHistory.otherConditions,
         otherMedications:  data.healthHistory.otherMedications,
         videoConsent:      data.consent.videoConsent,
+        selfPayElection:   data.consent.selfPayElection,
+        communicationConsent:  data.consent.commConsent,
+        communicationContact:  data.consent.commContact,
+        communicationContactName: data.consent.commContactName,
+        communicationMethods:  data.consent.commMethods,
         signatureDate:     data.consent.signatureDate,
         source:            'New Patient Intake Form',
         examLocation:      data.location,
