@@ -155,7 +155,7 @@ const events: Event[] = [
     title: "Mentored by Dr. Ron Dahl — Building a Foundation for Future Success",
     body:
       "Acquired Dr. Ron Dahl's successful practice and spent nearly a year under his mentorship, gaining invaluable experience and laying the foundation for future success.",
-    images: [wac037, wac038, wac039, wac040, wac041, wac042, wac043, wac044, wac045, wac046, wac047, wac048, wac049],
+    images: [wac037, wac038, wac039, wac040, wac041, wac042, wac043, wac044, wac045, wac046, wac047, wac049],
   },
   {
     year: "2015",
