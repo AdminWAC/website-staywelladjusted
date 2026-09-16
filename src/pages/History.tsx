@@ -64,7 +64,6 @@ import wac044 from "@/assets/history/2013/wac044.jpg";
 import wac045 from "@/assets/history/2013/wac045.jpg";
 import wac046 from "@/assets/history/2013/wac046.jpg";
 import wac047 from "@/assets/history/2013/wac047.jpg";
-import wac048 from "@/assets/history/2013/wac048.jpg";
 import wac049 from "@/assets/history/2013/wac049.jpg";
 import wac050 from "@/assets/history/2015-march/wac050.jpg";
 import wac051 from "@/assets/history/2015-march/wac051.jpg";
