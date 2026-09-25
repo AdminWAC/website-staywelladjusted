@@ -40,6 +40,12 @@ import CustomFootOrthotics from "./pages/CustomFootOrthotics.tsx";
 import SportsPhysicals from "./pages/SportsPhysicals.tsx";
 import Workshops from "./pages/Workshops.tsx";
 import LiveStream from "./pages/LiveStream.tsx";
+import DiagnosticUltrasound from "./pages/DiagnosticUltrasound.tsx";
+import DotExam from "./pages/DotExam.tsx";
+import IntersegmentalTraction from "./pages/IntersegmentalTraction.tsx";
+import SpinalOrthotics from "./pages/SpinalOrthotics.tsx";
+import VibePlate from "./pages/VibePlate.tsx";
+import WeightLoss from "./pages/WeightLoss.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import ScrollToTop from "./components/ScrollToTop";
@@ -94,6 +100,12 @@ const App = () => (
           <Route path="/sports-physicals" element={<SportsPhysicals />} />
           <Route path="/workshops" element={<Workshops />} />
           <Route path="/live-stream" element={<LiveStream />} />
+          <Route path="/diagnostic-ultrasound" element={<DiagnosticUltrasound />} />
+          <Route path="/dot-exam" element={<DotExam />} />
+          <Route path="/intersegmental-traction" element={<IntersegmentalTraction />} />
+          <Route path="/spinal-orthotics" element={<SpinalOrthotics />} />
+          <Route path="/vibe-plate" element={<VibePlate />} />
+          <Route path="/weight-loss" element={<WeightLoss />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
