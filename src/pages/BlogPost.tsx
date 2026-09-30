@@ -35,6 +35,26 @@ const renderBlock = (block: BlogContent, i: number) => {
       );
     case "image":
       return null;
+    case "pLinks": {
+      const linkClass = "text-primary font-semibold underline underline-offset-2 hover:text-primary/80";
+      return (
+        <p key={i} className="font-body text-base leading-relaxed text-foreground/85 mb-5">
+          {block.segments.map((segment, j) => {
+            if (!segment.href) return <span key={j}>{segment.text}</span>;
+            const isExternal = /^https?:\/\//i.test(segment.href);
+            return isExternal ? (
+              <a key={j} href={segment.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                {segment.text}
+              </a>
+            ) : (
+              <Link key={j} to={segment.href} className={linkClass}>
+                {segment.text}
+              </Link>
+            );
+          })}
+        </p>
+      );
+    }
     case "pLink": {
       const isExternal = /^https?:\/\//i.test(block.href);
       const linkClass = "text-primary font-semibold underline underline-offset-2 hover:text-primary/80";
