@@ -38,6 +38,8 @@
     --gold: 37 45% 60%;
     --navy: 213 45% 33%;
     --light-gold: 40 40% 95%;
+    --nutrition-clinical: 210 18% 58%;
+    --nutrition-oils: 220 20% 94%;
   }
 }
 
@@ -54,6 +56,9 @@
 }
 
 /* Custom scrollbar */
+.nutrition-clinical { background-color: hsl(var(--nutrition-clinical)); }
+.nutrition-oils { background-color: hsl(var(--nutrition-oils)); }
+
 ::-webkit-scrollbar {
   width: 8px;
 }

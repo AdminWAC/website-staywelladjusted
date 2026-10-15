@@ -46,6 +46,7 @@ import IntersegmentalTraction from "./pages/IntersegmentalTraction.tsx";
 import SpinalOrthotics from "./pages/SpinalOrthotics.tsx";
 import VibePlate from "./pages/VibePlate.tsx";
 import WeightLoss from "./pages/WeightLoss.tsx";
+import Nutrition from "./pages/Nutrition.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import ScrollToTop from "./components/ScrollToTop";
@@ -106,6 +107,7 @@ const App = () => (
           <Route path="/spinal-orthotics" element={<SpinalOrthotics />} />
           <Route path="/vibe-plate" element={<VibePlate />} />
           <Route path="/weight-loss" element={<WeightLoss />} />
+          <Route path="/nutrition" element={<Nutrition />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -21,6 +21,7 @@ const staticEntries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0", lastmod: today },
   { path: "/health-starts-here", changefreq: "monthly", priority: "0.8", lastmod: today },
   { path: "/chiropractic-care", changefreq: "monthly", priority: "0.8", lastmod: today },
+  { path: "/nutrition", changefreq: "monthly", priority: "0.8", lastmod: today },
   { path: "/spinal-decompression", changefreq: "monthly", priority: "0.8", lastmod: today },
   { path: "/dual-shockwave", changefreq: "monthly", priority: "0.8", lastmod: today },
   { path: "/saatva-mattress-partner", changefreq: "monthly", priority: "0.6", lastmod: today },
